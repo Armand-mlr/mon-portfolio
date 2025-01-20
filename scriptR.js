@@ -34,12 +34,30 @@ const translations = {
     en: {
         language: "Français",
         cv:"My Curriculum",
-        projet:"Main Page",
+        pagePrincipale:"Main Page",
+        realisations:"Achievements",
+        plats:"My meals",
+        photographies:"My favorites photographs",
+        sweet:'Sweet',
+        all:'All',
+        salty:'Salty',
+        personnes:'People',
+        decor:'Scenery',
+        toutes:'All'
     },
     fr: {
         language: "English",
         cv:"Mon CV",
-        projet:"PagePrincipale",
+        pagePrincipale:"PagePrincipale",
+        realisations:"Réalisations",
+        plats:"Mes plats",
+        photographies:"Mes photographies favorites",
+        sweet:'Sucré',
+        all:'Tous',
+        salty:'Salé',
+        personnes:'Personnes',
+        decor:'Décor',
+        toutes:'Toutes'
     }
 };
 
@@ -75,7 +93,11 @@ languageSwitcher.addEventListener('click', () => {
 const sweetbutton = document.getElementById('sweet');
 const allbutton = document.getElementById('all');
 const saltybutton = document.getElementById('salty');
-let currenttypemeals = "all";  // Utilise 'let' pour pouvoir modifier cette variable
+const peoplebutton = document.getElementById('personnes');
+const all2button = document.getElementById('toutes');
+const scenerybutton = document.getElementById('decor');
+let currenttypemeals = "all"; 
+let currenttypephotos = "all"; // Utilise 'let' pour pouvoir modifier cette variable
 
 sweetbutton.addEventListener('click', () => {
     currenttypemeals = "sweet";  // Ici, on met à jour currenttypemeals
@@ -90,6 +112,21 @@ allbutton.addEventListener('click', () => {
 saltybutton.addEventListener('click', () => {
     currenttypemeals = "salty";  // Et ici également
     filterGallery(currenttypemeals);
+});
+
+peoplebutton.addEventListener('click', () => {
+    currenttypephotos = "personnes";  // Et ici également
+    filterGallery(currenttypephotos);
+});
+
+all2button.addEventListener('click', () => {
+    currenttypephotos = "all";  // Et ici également
+    filterGallery(currenttypephotos);
+});
+
+scenerybutton.addEventListener('click', () => {
+    currenttypephotos = "decor";  // Et ici également
+    filterGallery(currenttypephotos);
 });
 
 function filterGallery(category) {
