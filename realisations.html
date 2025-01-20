@@ -6,29 +6,33 @@
     <title>Mon Portfolio</title>
     <link rel="stylesheet" href="styleR.css">
 </head>
+<div id="underbody">
 <body>
+</div>
     <header>
         <nav>
             <ul class="button-list">
                 <li class="list-button"><a href="assets/CV2025.pdf" download="CV_ARMAND_MULIER" data-key="cv">Mon CV</a></li>
-                <li class="list-button"><a href="index.html" data-key="projet">Page Principale</a></li>
+                <li class="list-button"><a href="index.html" data-key="pagePrincipale">Page Principale</a></li>
             </ul>
         </nav>
         <button data-key='language' id="language-switcher" class="language-button">English</button>
-        <h1 data-key="Armand" id="Armand">Réalisations</h1>
+        <h1 data-key="realisations" id="realisations">Réalisations</h1>
         <button id="mode-toggle" title="Changer le mode (clair/sombre)">
             🌙
         </button>
     </header>
     <main>
         <section id="cuisine">
-            <h2>Mes plats</h2>
-            <div id="filters">
-                <button id="sweet">Sucré</button>
-                <button id="all" >Tous</button>
-                <button id="salty" >Salé</button>
-            </div>
+        <div id="main-gallery">
             <div id="gallery">
+                <h2 data-key="plats">Mes plats</h2>
+                <div id="filters">
+                    <button id="sweet" data-key="sweet">Sucré</button>
+                    <button id="all" data-key="all">Tous</button>
+                    <button id="salty" data-key="salty">Salé</button>
+                </div>
+            <div class="photos-container">
                 <div class="photo" data-category="sweet">
                     <img src="photos/Profiteroles1.jpg" alt="Plat 1">
                 </div>
@@ -36,43 +40,98 @@
                     <img src="photos/BabaRhum1.jpg" alt="Plat 2">
                 </div>
                 <div class="photo" data-category="sweet">
-                    <img src="photos/Fraisier.jpg" alt="Plat 2">
+                    <img src="photos/Fraisier.jpg" alt="Plat 3">
                 </div>
                 <div class="photo" data-category="salty">
-                    <img src="photos/CoteBoeuf.jpg" alt="Plat 2">
+                    <img src="photos/CoteBoeuf.jpg" alt="Plat 4">
                 </div>
                 <div class="photo" data-category="salty">
-                    <img src="photos/VeauMarengo.jpg" alt="Plat 2">
+                    <img src="photos/VeauMarengo.jpg" alt="Plat 5">
                 </div>
                 <div class="photo" data-category="salty">
-                    <img src="photos/SaladeCesar.jpg" alt="Plat 2">
+                    <img src="photos/SaladeCesar.jpg" alt="Plat 6">
                 </div>
                 <div class="photo" data-category="sweet">
-                    <img src="photos/Profiteroles2.jpg" alt="Plat 2">
+                    <img src="photos/Profiteroles2.jpg" alt="Plat 7">
                 </div>
                 <div class="photo" data-category="salty">
-                    <img src="photos/PouletSauceC.jpg" alt="Plat 2">
+                    <img src="photos/PouletSauceC.jpg" alt="Plat 8">
                 </div>
                 <div class="photo" data-category="salty">
-                    <img src="photos/PorcSaumure.jpg" alt="Plat 2">
+                    <img src="photos/PorcSaumure.jpg" alt="Plat 9">
                 </div>
                 <div class="photo" data-category="salé">
-                    <img src="photos/patesTomates.jpg" alt="Plat 2">
+                    <img src="photos/patesTomates.jpg" alt="Plat 10">
                 </div>
                 <div class="photo" data-category="sweet">
-                    <img src="photos/BabaRhum2.jpg" alt="Plat 2">
+                    <img src="photos/BabaRhum2.jpg" alt="Plat 11">
                 </div>
                 <div class="photo" data-category="salty">
-                    <img src="photos/CoteBoeuf2.jpg" alt="Plat 2">
+                    <img src="photos/CoteBoeuf2.jpg" alt="Plat 12">
                 </div>
                 <div class="photo" data-category="salty">
-                    <img src="photos/carbonara.jpg" alt="Plat 2">
+                    <img src="photos/carbonara.jpg" alt="Plat 13">
                 </div>
                 <div class="photo" data-category="salty">
-                    <img src="photos/Burger.jpg" alt="Plat 2">
+                    <img src="photos/Burger.jpg" alt="Plat 14">
                 </div>
+            </div>
                 <!-- Autres images -->
             </div>
+            <div id="gallery">
+                <h2 data-key="photographies">Mes photos favorites</h2>
+                <div id="filters">
+                    <button id="personnes" data-key="personnes">Personnes</button>
+                    <button id="toutes" data-key="toutes">Toutes</button>
+                    <button id="decor" data-key="decor">Décor</button>
+                </div>
+            <div class="photos-container">
+                <div class="photo" data-category="personnes">
+                    <img src="photos/portrait.jpg" alt="Plat 1">
+                </div>
+                <div class="photo" data-category="personnes">
+                    <img src="photos/portrait2.jpg" alt="Plat 2">
+                </div>
+                <div class="photo" data-category="decor">
+                    <img src="photos/sapin.jpg" alt="Plat 2">
+                </div>
+                <div class="photo" data-category="decor">
+                    <img src="photos/debarcadere.jpg" alt="Plat 2">
+                </div>
+                <div class="photo" data-category="decor">
+                    <img src="photos/porsche.jpg" alt="Plat 2">
+                </div>
+                <div class="photo" data-category="decor">
+                    <img src="photos/bateau.jpg" alt="Plat 2">
+                </div>
+                <div class="photo" data-category="decor">
+                    <img src="photos/cinema.jpg" alt="Plat 2">
+                </div>
+                <div class="photo" data-category="decor">
+                    <img src="photos/etoile.jpg" alt="Plat 2">
+                </div>
+                <div class="photo" data-category="decor">
+                    <img src="photos/escalier.jpg" alt="Plat 2">
+                </div>
+                <div class="photo" data-category="decor">
+                    <img src="photos/fete.jpg" alt="Plat 2">
+                </div>
+                <div class="photo" data-category="decor">
+                    <img src="photos/petrole.jpg" alt="Plat 2">
+                </div>
+                <div class="photo" data-category="personnes">
+                    <img src="photos/crique.jpg" alt="Plat 2">
+                </div>
+                <div class="photo" data-category="decor">
+                    <img src="photos/adresse.jpg" alt="Plat 2">
+                </div>
+                <div class="photo" data-category="decor">
+                    <img src="photos/mer.jpg" alt="Plat 2">
+                </div>
+            </div>
+                <!-- Autres images -->
+            </div>
+        </div>
         </section>
     </main>
     <script src="scriptR.js"></script>
