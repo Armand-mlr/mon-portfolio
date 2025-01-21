@@ -200,10 +200,9 @@ footer {
 }
 
 .photos-container {
-    display: grid; /* Active le mode grille */
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 1rem; /* Espace entre les photos */
-    justify-content: center; /* Centre les colonnes */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 1rem;
 }
 
 /* Styles pour les photos */
@@ -294,50 +293,63 @@ body.dark-mode #filters button {
     }
 }
 
+/* Responsive design */
 @media (max-width: 768px) {
     header {
-        padding: 2rem 0;
+        padding: 1.5rem 0.5rem;
     }
 
-    #Armand {
-        font-size: 2rem; /* Réduction du titre */
+    #realisations {
+        font-size: 2.5rem;
     }
 
-    nav ul li a {
-        font-size: 1rem; /* Réduction de la taille des liens */
-    }
-
-    section {
-        max-width: 90%; /* Sections plus étroites */
-        padding: 20px;
-    }
-
-    #navigation-dots {
-        left: 2%; /* Rapprocher les puces sur petits écrans */
-    }
-}
-
-/* Très petits écrans */
-@media (max-width: 480px) {
     nav ul {
-        flex-direction: column; /* Navigation en colonne */
+        flex-direction: column; /* Navigation empilée sur petits écrans */
         gap: 1rem;
     }
 
-    #Armand {
-        font-size: 1.5rem;
-    }
-
     section {
-        max-width: 100%;
-        padding: 10px;
+        font-size: 1rem;
     }
 
     #gallery {
-        max-width: 90%;
+        width: 100%;
+        padding: 1rem;
     }
 
-    #navigation-dots {
-        gap: 10px;
+    .photos-container {
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+        gap: 0.5rem;
+    }
+
+    #mode-toggle {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    header {
+        padding: 1rem 0.5rem;
+    }
+
+    nav ul li a {
+        font-size: 0.9rem;
+    }
+
+    #gallery {
+        padding: 0.5rem;
+    }
+
+    .photos-container {
+        grid-template-columns: repeat(2, 1fr); /* Deux photos par ligne */
+    }
+
+    #mode-toggle {
+        top: 5px;
+        right: 5px;
+        width: 35px;
+        height: 35px;
     }
 }
