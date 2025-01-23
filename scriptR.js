@@ -1,33 +1,33 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-if (localStorage.getItem('darkMode') === 'enabled') {
-    document.body.classList.add('dark-mode');
-} else {
-    document.body.classList.remove('dark-mode');
-}
+    const modeToggle = document.getElementById("mode-toggle");
+    const body = document.body;
 
-// Appliquer la langue préférée
-if (localStorage.getItem('language') === 'en') {
-    document.documentElement.lang = 'en';
-} else {
-    document.documentElement.lang = 'fr';
-}
+    // Récupère les préférences enregistrées dans le localStorage pour le mode sombre/clair
+    const darkModeEnabled = localStorage.getItem('darkMode') === 'enabled';
 
-const modeToggle = document.getElementById("mode-toggle");
-const body = document.body;
-// Change l'icône ou le texte du bouton en fonction du mode
-modeToggle.addEventListener("click", () => {
-    body.classList.toggle("dark-mode");
-    
-    // Changer l'icône du bouton
-    if (body.classList.contains("dark-mode")) {
-        modeToggle.textContent = "🌞";  // Icône de soleil pour passer au mode clair
+    // Applique le mode sombre/clair dès le chargement
+    if (darkModeEnabled) {
+        body.classList.add("dark-mode");
+        modeToggle.textContent = "🌞"; // Icône de soleil
     } else {
-        modeToggle.textContent = "🌙";  // Icône de lune pour passer au mode sombre
+        body.classList.remove("dark-mode");
+        modeToggle.textContent = "🌙"; // Icône de lune
     }
-});
 
-const languageSwitcher = document.getElementById('language-switcher');
+    // Gestion du mode sombre/clair avec sauvegarde dans le localStorage
+    modeToggle.addEventListener("click", () => {
+        body.classList.toggle("dark-mode");
+
+        // Met à jour l'icône et enregistre l'état dans localStorage
+        if (body.classList.contains("dark-mode")) {
+            modeToggle.textContent = "🌞"; // Icône de soleil
+            localStorage.setItem('darkMode', 'enabled');
+        } else {
+            modeToggle.textContent = "🌙"; // Icône de lune
+            localStorage.setItem('darkMode', 'disabled');
+        }
+    });
 
 // Texte en français et anglais
 const translations = {
@@ -61,34 +61,39 @@ const translations = {
     }
 };
 
-// Langue par défaut
-let currentLanguage = 'fr';
+    const languageSwitcher = document.getElementById('language-switcher');
 
-function translatePage(lang) {
-    document.querySelectorAll("[data-key]").forEach(element => {
-        const key = element.getAttribute("data-key");
-        if (key && translations[lang][key]) {
-            element.textContent = translations[lang][key];
-        }
+    // Récupère la langue sauvegardée ou utilise 'fr' comme langue par défaut
+    let currentLanguage = localStorage.getItem('language') || 'fr';
+
+    // Fonction pour traduire la page
+    function translatePage(lang) {
+        document.querySelectorAll("[data-key]").forEach(element => {
+            const key = element.getAttribute("data-key");
+            if (key && translations[lang][key]) {
+                element.textContent = translations[lang][key];
+            }
+        });
+    }
+
+    // Applique les traductions dès le chargement de la page
+    translatePage(currentLanguage);
+
+    // Met à jour le texte du bouton de changement de langue
+    languageSwitcher.textContent = translations[currentLanguage].language;
+
+    // Gestionnaire de clic pour alterner entre 'fr' et 'en'
+    languageSwitcher.addEventListener('click', () => {
+        // Alterne entre 'fr' et 'en'
+        currentLanguage = currentLanguage === 'fr' ? 'en' : 'fr';
+
+        // Applique la traduction et met à jour le localStorage
+        translatePage(currentLanguage);
+        localStorage.setItem('language', currentLanguage);
+
+        // Met à jour le texte du bouton de changement de langue
+        languageSwitcher.textContent = translations[currentLanguage].language;
     });
-}
-
-languageSwitcher.addEventListener('click', () => {
-    // Alterne entre 'fr' et 'en'
-    currentLanguage = currentLanguage === 'fr' ? 'en' : 'fr';
-    translatePage(currentLanguage)
-});
-
-
-// Récupère la langue sauvegardée au chargement
-currentLanguage = localStorage.getItem('language') || 'fr';
-languageSwitcher.textContent = translations[currentLanguage].language;
-
-// Sauvegarde la langue sélectionnée
-languageSwitcher.addEventListener('click', () => {
-    localStorage.setItem('language', currentLanguage);
-});
-
 
 const sweetbutton = document.getElementById('sweet');
 const allbutton = document.getElementById('all');
