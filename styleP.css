@@ -29,11 +29,10 @@ header {
 
 /* Animation et style du titre "Armand" */
 #Armand {
-    display: inline-block;
-    margin-top: 1rem;
+    display: inline-block; /* Limite la zone du texte */
     display: grid;
     justify-content: center;
-    font-size: 4rem;
+    font-size: clamp(1.8rem, 8vw,4rem);
     font-weight: bold;
     text-transform: uppercase;
     text-align: center;
@@ -57,14 +56,14 @@ nav ul {
     list-style-type: none;
     display: flex;
     justify-content: center;
-    gap: 2rem;
+    gap: clamp(0.5rem,2rem,2.3em);
     margin: 0;
     padding: 0;
 }
 
 nav ul li a {
     text-decoration: none;
-    font-size: clamp(1rem, 2vw, 1.5rem);
+    font-size: clamp(0.3em, 4vw, 1.5rem); /* Ajuste la taille selon la largeur */
     color: #FAF3E0;
     position: relative;
     transition: color 0.3s ease;
@@ -100,7 +99,7 @@ nav ul li a:hover::after {
 
 .carousel-item {
     position: absolute;
-    width: 80%;
+    width: 70%;
     height: 70%;
     max-width: 800px;
     background: #FAF3E0;
@@ -129,14 +128,14 @@ nav ul li a:hover::after {
 }
 
 .carousel-item p, .carousel-item div, .carousel-item a {
-    font-size: 2vw;
+    font-size: clamp(0.5rem,1.5rem);
     line-height: 1.6;
 }
 
 /* Points de navigation du carrousel */
 #navigation-dots {
     position: absolute;
-    left: 5%;
+    left: clamp(0.3rem,0.5rem,1em);
     top: 50%;
     transform: translateY(-50%);
     display: flex;
@@ -194,8 +193,8 @@ footer {
     right: 20px;
     background-color: transparent;
     border: 2px solid #FAF3E0;
-    padding: 5px;
-    font-size: 1.5rem;
+    padding: min(0.6em, 8%);
+    font-size: clamp(0.1em,6vw,1.2rem);
     color: #FAF3E0;
     cursor: pointer;
     border-radius: 100px;
@@ -203,7 +202,8 @@ footer {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #1d2638;
+    background-color:#1d2638;
+    transition: all 0.6s ease-in-out;
 }
 
 #mode-toggle:hover {
@@ -212,19 +212,18 @@ footer {
 
 /* Bouton de sélection de la langue */
 .language-button {
-    position: absolute;
-    top: 20px;
-    left: 20px;
+    position: absolute; /* Permet de le placer n'importe où sur la page */
+    top: 20px; /* Décalage du haut de la page (ajuste selon ton besoin) */
+    left: 20px; /* Décalage du côté gauche de la page */
     background-color: transparent;
-    border: 2px solid #fff;
-    color: #fff;
-    font-size: 16px;
+    border: 2px solid #fff; /* Bordure fine blanche */
+    color: #fff; /* Texte en blanc */
+    font-size: clamp(0.1em,3vw,1rem);
     font-weight: bold;
-    padding: 10px 20px;
+    padding: min(0.7em, 8%);
     border-radius: 25px;
     cursor: pointer;
-    transition: all 0.3s ease;
-    outline: none;
+    transition: all 0.3s ease; /* Transition fluide */
     text-transform: uppercase;
 }
 
@@ -286,55 +285,10 @@ body.dark-mode nav ul li a::after {
     }
 }
 
-/* Media Queries pour petits écrans */
-@media (max-width: 768px) {
-    header {
-        padding: 2rem 0;
-    }
-
-    #Armand {
-        font-size: 2rem;
-    }
-
-    nav ul li a {
-        font-size: 1rem;
-    }
-
-    section {
-        max-width: 90%;
-        padding: 20px;
-    }
-
-    #carousel {
-        height: 50vh;
-    }
-
-    #navigation-dots {
-        left: 2%;
-    }
-}
-
-@media (max-width: 480px) {
+@media screen and (max-width: 428px) {
     nav ul {
+        display:flex;
         flex-direction: column;
-        gap: 1rem;
-    }
-
-    #Armand {
-        font-size: 1.5rem;
-    }
-
-    section {
-        max-width: 100%;
-        padding: 10px;
-    }
-
-    #carousel {
-        height: 40vh;
-    }
-
-    #navigation-dots {
-        gap: 10px;
+        gap: 1vh;
     }
 }
-
