@@ -281,6 +281,10 @@ body.dark-mode #filters button {
     background-color: #1e2024;
 }
 
+body.dark-mode #filters button:hover{
+    background-color: #E1B703;
+}
+
 @keyframes gradient-move {
     0%, 100% {
         background-position: 0% 50%;
