@@ -23,7 +23,7 @@ main {
 header {
     background-color: #004225;
     color: #FAF3E0;
-    padding: 2rem 1rem;
+    padding: min(1.5em, 8%);
     text-align: center;
 }
 
