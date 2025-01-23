@@ -290,7 +290,7 @@ body.dark-mode #filters button {
     }
 }
 
-@media screen and (max-width: 428px) {
+@media screen and (max-width: 428px) and (max-height: 926px){
     nav ul {
         display:flex;
         flex-direction: column;
