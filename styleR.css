@@ -300,6 +300,11 @@ body.dark-mode #filters button:hover{
     main {
         width: 100%; /* Prend toute la largeur */
     }
+    nav ul {
+        display:flex;
+        flex-direction: column;
+        gap: 1vh;
+    }
     section {
         max-width: 300px;
         margin: 0 auto; /* Centre horizontalement */
