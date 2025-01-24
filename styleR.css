@@ -310,10 +310,7 @@ body.dark-mode #filters button:hover{
         margin: 0 auto; /* Centre horizontalement */
     }
     #gallery {
-        width: 90%; /* S'assure que ça reste dans le viewport */
+        width: 75%; /* S'assure que ça reste dans le viewport */
         margin: 0 auto;
-    }
-    .photos-container {
-    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
     }
 }
