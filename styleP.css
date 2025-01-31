@@ -7,6 +7,10 @@ body {
     margin: 0;
     padding: 0;
     background-color: hsl(44, 100%, 87%);
+    height: 100%;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
 /* Conteneur principal pour centrer le contenu */
@@ -14,9 +18,7 @@ main {
     margin: 0 auto;
     padding: 20px;
     max-width: 1200px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    height: 100%;
 }
 
 /* En-tête de la page */
@@ -25,17 +27,16 @@ header {
     color: #FAF3E0;
     padding: min(1.5em, 8%);
     text-align: center;
+    width: 100%;
 }
 
 /* Animation et style du titre "Armand" */
 #Armand {
-    display: inline-block; /* Limite la zone du texte */
     display: grid;
     justify-content: center;
     font-size: clamp(1.8rem, 8vw,3rem);
     font-weight: bold;
     text-transform: uppercase;
-    text-align: center;
     background: linear-gradient(90deg, #FFD700, #F4C542, #FFF5C3, #E1B703);
     background-size: 300%;
     -webkit-background-clip: text;
@@ -86,108 +87,46 @@ nav ul li a:hover::after {
 
 /* Carrousel d'images ou contenu */
 #carousel {
+    min-height: center;
     position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    perspective: 1000px;
-    overflow: hidden;
+    place-items: center;
+    gap: 10%;
     width: 100%;
-    height: 70vh;
+    height: 100%
 }
 
-.carousel-item {
-    position: absolute;
-    width: 70%;
-    height: 70%;
-    max-width: 800px;
-    background: #FAF3E0;
-    border-radius: 30px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    transition: transform 0.5s, opacity 0.5s;
+.hidden{
     opacity: 0;
-    transform: scale(0.8) translateZ(-200px);
-    overflow: hidden;
-    overflow-y:auto;
+    filter:blur(5px);
+    transform: translateX(-100%);
+    transition: all 1.5s;
 }
 
-.carousel-item.active {
+.show{
     opacity: 1;
-    transform: scale(1) translateZ(0);
-    z-index: 10;
-}
-
-.carousel-item.prev, .carousel-item.next {
-    opacity: 0.6;
-    transform: scale(0.9) translateZ(-100px);
-    z-index: 5;
-}
-
-.carousel-item h2 {
-    font-size: clamp(0.5rem,1.5rem);
-}
-
-.carousel-item p, .carousel-item div, .carousel-item a {
-    line-height: 1.6;
-    font-size: clamp(0.5rem,1rem);
-}
-
-.carousel-item.active {
-    opacity: 1;
-    transform: scale(1) translateZ(0);
-    z-index: 10;
-}
-
-
-/* Points de navigation du carrousel */
-#navigation-dots {
-    position: absolute;
-    left: clamp(0.3rem,0.5rem,1em);
-    top: 50%;
-    transform: translateY(-50%);
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    z-index: 15;
-}
-
-#navigation-dots div {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    transform: scale(0.7);
-    background-color: rgba(0, 0, 0, 0.5);
-    transition: transform 0.3s, background-color 0.3s;
-}
-
-#navigation-dots div.active {
-    background-color: #004225;
-    transform: scale(1.2);
+    filter:blur(0);
+    transform: translateX(0);
 }
 
 /* Sections principales de contenu */
 section {
     padding: 2rem;
     text-align: center;
-    background: #FAF3E0;
     font-size: 1.2rem;
     margin: 20px auto;
     width: 90%;
     max-width: 800px;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 section:hover {
     transform: scale(1.02);
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
 }
 
 /* Pied de page */
 footer {
+    bottom: 0;
+    width: 100%;
     text-align: center;
     background-color: #004225;
     color: #FAF3E0;
@@ -264,7 +203,6 @@ body.dark-mode #mode-toggle {
 }
 
 body.dark-mode section {
-    background-color: #1d2638;
     color: #ddd;
 }
 
@@ -273,10 +211,6 @@ body.dark-mode a {
 }
 
 body.dark-mode footer {
-    background-color: #1d2638;
-}
-
-body.dark-mode #navigation-dots div.active {
     background-color: #1d2638;
 }
 
