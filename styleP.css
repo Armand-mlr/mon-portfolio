@@ -245,7 +245,7 @@ body.dark-mode nav ul li a::after {
         transform: scale(1.1);
     }
     .language-button:hover {
-        background-color: none;
+        background-color: transparent;
         transform: scale(1.1);
     }
 }
