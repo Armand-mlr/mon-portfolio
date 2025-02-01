@@ -229,7 +229,7 @@ body.dark-mode nav ul li a::after {
     }
 }
 
-@media screen and (max-width: 428px) {
+@media screen and (max-width: 600px) {
     nav ul {
         display:flex;
         flex-direction: column;
