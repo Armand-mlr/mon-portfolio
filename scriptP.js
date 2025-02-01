@@ -110,6 +110,8 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    const hiddenElements = document.querySelectorAll('.hidden');
-    hiddenElements.forEach((el) => observer.observe(el));
+    const hiddenElementsRight = document.querySelectorAll('.hiddenr');
+    const hiddenElementsLeft = document.querySelectorAll('.hiddenl');
+    hiddenElementsRight.forEach((el) => observer.observe(el));
+    hiddenElementsLeft.forEach((el) => observer.observe(el));
 });
