@@ -30,7 +30,6 @@ header {
     padding: min(1.5em, 8%);
     width: 100%;
     text-align: center;
-    margin: 0 auto;
 }
 
 /* Animation et style du titre "Armand" */
@@ -235,11 +234,18 @@ body.dark-mode nav ul li a::after {
         flex-direction: column;
         gap: 1vh;
     }
+    header{
+        width: auto;
+    }
+    footer{
+        width: auto;
+    }
     #mode-toggle:hover {
         background-color: #fff;
         transform: scale(1.1);
     }
     .language-button:hover {
+        background-color: none;
         transform: scale(1.1);
     }
 }
