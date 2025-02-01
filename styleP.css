@@ -1,9 +1,9 @@
 /* Importation de la police Lato depuis Google Fonts */
-@import url('https://fonts.googleapis.com/css?family=Lato:100&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap');
 
 /* Style général du corps de la page */
 body {
-    font-family: 'Lato', sans-serif;
+    font-family: 'Baskerville', sans-serif;
     margin: 0;
     padding: 0;
     background-color: hsl(44, 100%, 87%);
@@ -16,10 +16,10 @@ body {
 }
 
 main {
-    padding: 20px;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    text-align: center;
 }
 
 
@@ -28,8 +28,8 @@ header {
     background-color: #004225;
     color: #FAF3E0;
     padding: min(1.5em, 8%);
-    text-align: center;
     width: 100%;
+    text-align: center;
     margin: 0 auto;
 }
 
@@ -45,7 +45,6 @@ header {
     animation: gradient-move 3s infinite ease;
     cursor:pointer;
     transition: all 0.3s ease;
-    place-items: center;
 }
 
 #Armand:hover {
@@ -93,10 +92,17 @@ nav ul li a:hover::after {
 
 /* Carrousel d'images ou contenu */
 
-.hidden{
+.hiddenr{
     opacity: 0;
     filter:blur(5px);
     transform: translateX(-100%);
+    transition: all 1.5s;
+}
+
+.hiddenl{
+    opacity: 0;
+    filter:blur(5px);
+    transform: translateX(100%);
     transition: all 1.5s;
 }
 
@@ -106,15 +112,16 @@ nav ul li a:hover::after {
     transform: translateX(0);
 }
 
+#right{
+    transform: translateX(100%);
+}
+
 /* Sections principales de contenu */
 section {
-    padding: 2rem;
-    text-align: center;
+    margin: 0 auto;
     font-size: 1.2rem;
-    margin: 20px auto;
-    width: 90%;
-    max-width: 800px; /* Limite la largeur maximale */
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: 90%; /* Limite la largeur maximale */
+    transition: transform 0.3s ease;
 }
 
 section:hover {
@@ -161,7 +168,7 @@ footer {
     border: 2px solid #fff; /* Bordure fine blanche */
     color: #fff; /* Texte en blanc */
     font-size: clamp(0.1em,3vw,1rem);
-    font-weight: bold;
+    font-family: 'Baskerville', sans-serif;
     padding: min(0.7em, 8%);
     border-radius: 25px;
     cursor: pointer;
@@ -227,5 +234,17 @@ body.dark-mode nav ul li a::after {
         display:flex;
         flex-direction: column;
         gap: 1vh;
+    }
+    footer{
+        width: 100%;
+    }
+    body{
+        width: 100%;
+    }
+    #mode-toggle:hover {
+        transform: scale(1.1);
+    }
+    .language-button:hover {
+        transform: scale(1.1);
     }
 }
