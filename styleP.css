@@ -9,18 +9,17 @@ body {
     background-color: hsl(44, 100%, 87%);
     height: 100%;
     min-height: 100%;
+    width : 100%;
     display: flex;
     flex-direction: column;
-    align-items: center; /* Centrer tout le contenu horizontalement */
+    justify-content: center;
 }
 
 main {
-    margin: 0 auto;
     padding: 20px;
-    width: 100%;
     display: flex;
     flex-direction: column;
-    align-items: center; /* Centrer les sections horizontalement */
+    justify-content: center;
 }
 
 
@@ -31,7 +30,7 @@ header {
     padding: min(1.5em, 8%);
     text-align: center;
     width: 100%;
-    margin: 0 auto; /* Centrer le header horizontalement */
+    margin: 0 auto;
 }
 
 /* Animation et style du titre "Armand" */
@@ -125,13 +124,12 @@ section:hover {
 /* Pied de page */
 footer {
     bottom: 0;
-    margin-left: 5vh;
     text-align: center;
     background-color: #004225;
     color: #FAF3E0;
     padding: 1rem;
     font-size: 1rem;
-    width: 110%;
+    width:100%;
 }
 
 /* Bouton de bascule du mode sombre */
@@ -140,21 +138,18 @@ footer {
     top: 20px;
     right: 20px;
     background-color: transparent;
-    border: 2px solid #FAF3E0;
     padding: min(0.6em, 8%);
     font-size: clamp(0.1em,6vw,1.2rem);
-    color: #FAF3E0;
     cursor: pointer;
-    border-radius: 100px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color:#1d2638;
     transition: all 0.3s ease-in-out;
+    border: 2px solid #fff;
+    border-radius: 1000px;
 }
 
 #mode-toggle:hover {
     transform: scale(1.1);
+    background-color: #fff;
+    box-shadow: 20px 0px 40px rgba(255, 255, 255, 0.57), -20px 0px 40px rgba(255, 255, 255, 0.571);
 }
 
 /* Bouton de sélection de la langue */
@@ -178,7 +173,7 @@ footer {
     background-color: #fff;
     color: #333;
     transform: translateY(-3px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 20px 0px 40px rgba(255, 255, 255, 0.57), -20px 0px 40px rgba(255, 255, 255, 0.571);
 }
 
 .language-button:focus {
