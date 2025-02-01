@@ -235,12 +235,6 @@ body.dark-mode nav ul li a::after {
         flex-direction: column;
         gap: 1vh;
     }
-    footer{
-        width: 100%;
-    }
-    body{
-        width: 100%;
-    }
     #mode-toggle:hover {
         transform: scale(1.1);
     }
