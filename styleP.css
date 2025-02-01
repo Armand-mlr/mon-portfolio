@@ -142,8 +142,8 @@ footer {
 /* Bouton de bascule du mode sombre */
 #mode-toggle {
     position: absolute;
-    top: 20px;
-    right: 20px;
+    top: 2%;
+    right: 2%;
     background-color: transparent;
     padding: min(0.6em, 8%);
     font-size: clamp(0.1em,6vw,1.2rem);
@@ -236,6 +236,7 @@ body.dark-mode nav ul li a::after {
         gap: 1vh;
     }
     #mode-toggle:hover {
+        background-color: #fff;
         transform: scale(1.1);
     }
     .language-button:hover {
