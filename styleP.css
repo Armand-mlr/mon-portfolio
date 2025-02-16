@@ -24,9 +24,6 @@ main {
 /* En-tête de la page */
 header {
     background-color: #004225;
-    background-attachment: fixed;
-    background-position-y: -;
-    background-size: 100%;
     color: #FAF3E0;
     padding: min(1.5em, 8%);
     width: 100%;
