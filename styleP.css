@@ -92,17 +92,10 @@ nav ul li a:hover::after {
 
 /* Carrousel d'images ou contenu */
 
-.hiddenr{
+.hidden{
     opacity: 0;
     filter:blur(5px);
     transform: translateX(-100%);
-    transition: all 1.5s;
-}
-
-.hiddenl{
-    opacity: 0;
-    filter:blur(5px);
-    transform: translateX(100%);
     transition: all 1.5s;
 }
 
@@ -110,10 +103,6 @@ nav ul li a:hover::after {
     opacity: 1;
     filter:blur(0);
     transform: translateX(0);
-}
-
-#right{
-    transform: translateX(100%);
 }
 
 /* Sections principales de contenu */
