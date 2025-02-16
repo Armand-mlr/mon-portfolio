@@ -148,7 +148,7 @@ const translations = {
     const allThemeButton = document.getElementById('allThemeButton');
     const photographiesThemeButton = document.getElementById('photographiesThemeButton');
     const mealsThemeButton = document.getElementById('mealsThemeButton');
-    let currentTheme = 'photographies';
+    let currentTheme = 'all';
 
     allThemeButton.addEventListener('click', () => {
         currentTheme = "all";
