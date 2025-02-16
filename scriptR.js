@@ -174,7 +174,9 @@ const translations = {
         if (activeButton) {
             activeButton.classList.remove("active"); 
         }
-        currentThemeButton.classList.add("active"); 
+        currentThemeButton.classList.add("active");
+        currenttypemeals = "all"; 
+        currenttypephotos = "all";
     }
 
     function applyFilter(filter) {
