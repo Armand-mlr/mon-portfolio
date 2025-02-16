@@ -327,8 +327,19 @@ body.dark-mode #filters button:hover{
     }
 }
 
-@media screen and (max-width: 428px) and (max-height: 926px) {
-    main {
-        width: 90%; /* Prend toute la largeur */
+@media screen and (max-width: 600px) {
+    nav ul {
+        display:flex;
+        flex-direction: column;
+        gap: 1vh;
+    }
+    header{
+        width: auto;
+    }
+    footer{
+        width: auto;
+    }
+    *:hover {
+        all: unset !important;
     }
 }
