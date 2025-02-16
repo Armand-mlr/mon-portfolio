@@ -23,108 +23,117 @@
         <button id="mode-toggle" title="Changer le mode (clair/sombre)">🌙</button>
     </header>
     <main>
-        <section id="cuisine">
-            <div id="main-gallery">
-                <div id="gallery">
-                    <h2 data-key="plats">Mes plats</h2>
-                    <div id="filters">
-                        <button id="sweet" data-key="sweet">Sucré</button>
-                        <button id="all" data-key="all">Tous</button>
-                        <button id="salty" data-key="salty">Salé</button>
-                    </div>
-                    <div class="photos-container">
-                        <div class="photo" data-category="sweet">
-                            <img src="photos/Profiteroles1.jpg" alt="Plat 1">
-                        </div>
-                        <div class="photo" data-category="sweet">
-                            <img src="photos/BabaRhum1.jpg" alt="Plat 2">
-                        </div>
-                        <div class="photo" data-category="sweet">
-                            <img src="photos/Fraisier.jpg" alt="Plat 3">
-                        </div>
-                        <div class="photo" data-category="salty">
-                            <img src="photos/CoteBoeuf.jpg" alt="Plat 4">
-                        </div>
-                        <div class="photo" data-category="salty">
-                            <img src="photos/VeauMarengo.jpg" alt="Plat 5">
-                        </div>
-                        <div class="photo" data-category="salty">
-                            <img src="photos/SaladeCesar.jpg" alt="Plat 6">
-                        </div>
-                        <div class="photo" data-category="sweet">
-                            <img src="photos/Profiteroles2.jpg" alt="Plat 7">
-                        </div>
-                        <div class="photo" data-category="salty">
-                            <img src="photos/patesTomates.jpg" alt="Plat 10">
-                        </div>
-                        <div class="photo" data-category="sweet">
-                            <img src="photos/BabaRhum2.jpg" alt="Plat 11">
-                        </div>
-                        <div class="photo" data-category="salty">
-                            <img src="photos/CoteBoeuf2.jpg" alt="Plat 12">
-                        </div>
-                        <div class="photo" data-category="salty">
-                            <img src="photos/carbonara.jpg" alt="Plat 13">
-                        </div>
-                        <div class="photo" data-category="salty">
-                            <img src="photos/Burger.jpg" alt="Plat 14">
-                        </div>
-                    </div>
+        <div class="theme-buttons">
+            <button class="theme-button" id="photographiesThemeButton" data-key="photographies">Mes photos favorites</button>
+            <button class="theme-button active" id="allThemeButton" data-key="toutes">Tout</button>
+            <button class="theme-button" id="mealsThemeButton" data-key="plats">Mes plats</button>
+        </div>
+        <div class="main-gallery">
+            <div class= "gallery" id="cuisine">
+                <h2 data-key="plats">Mes plats</h2>
+                <div id="filters">
+                    <button id="sweet" data-key="sweet">Sucré</button>
+                    <button id="all" data-key="all">Tous</button>
+                    <button id="salty" data-key="salty">Salé</button>
                 </div>
-                <div id="gallery">
-                    <h2 data-key="photographies">Mes photos favorites</h2>
-                    <div id="filters">
-                        <button id="personnes" data-key="personnes">Personnes</button>
-                        <button id="toutes" data-key="toutes">Toutes</button>
-                        <button id="decor" data-key="decor">Décor</button>
+                <div class="photos-container">
+                    <div class="photo" data-category="sweet">
+                        <img src="photos/Profiteroles1.jpg" alt="Plat 1">
                     </div>
-                    <div class="photos-container">
-                        <div class="photo" data-category="personnes">
-                            <img src="photos/portrait.jpg" alt="Portrait 1">
-                        </div>
-                        <div class="photo" data-category="personnes">
-                            <img src="photos/portrait2.jpg" alt="Portrait 2">
-                        </div>
-                        <div class="photo" data-category="decor">
-                            <img src="photos/sapin.jpg" alt="Sapin">
-                        </div>
-                        <div class="photo" data-category="decor">
-                            <img src="photos/debarcadere.jpg" alt="Débarcadère">
-                        </div>
-                        <div class="photo" data-category="decor">
-                            <img src="photos/porsche.jpg" alt="Porsche">
-                        </div>
-                        <div class="photo" data-category="decor">
-                            <img src="photos/bateau.jpg" alt="Bateau">
-                        </div>
-                        <div class="photo" data-category="decor">
-                            <img src="photos/cinema.jpg" alt="Cinéma">
-                        </div>
-                        <div class="photo" data-category="decor">
-                            <img src="photos/etoile.jpg" alt="Étoile">
-                        </div>
-                        <div class="photo" data-category="decor">
-                            <img src="photos/escalier.jpg" alt="Escalier">
-                        </div>
-                        <div class="photo" data-category="decor">
-                            <img src="photos/fete.jpg" alt="Fête">
-                        </div>
-                        <div class="photo" data-category="decor">
-                            <img src="photos/petrole.jpg" alt="Pétrole">
-                        </div>
-                        <div class="photo" data-category="personnes">
-                            <img src="photos/crique.jpg" alt="Crique">
-                        </div>
-                        <div class="photo" data-category="decor">
-                            <img src="photos/adresse.jpg" alt="Adresse">
-                        </div>
-                        <div class="photo" data-category="decor">
-                            <img src="photos/mer.jpg" alt="Mer">
-                        </div>
+                    <div class="photo" data-category="sweet">
+                        <img src="photos/BabaRhum1.jpg" alt="Plat 2">
+                    </div>
+                    <div class="photo" data-category="sweet">
+                        <img src="photos/Fraisier.jpg" alt="Plat 3">
+                    </div>
+                    <div class="photo" data-category="salty">
+                        <img src="photos/CoteBoeuf.jpg" alt="Plat 4">
+                    </div>
+                    <div class="photo" data-category="salty">
+                        <img src="photos/VeauMarengo.jpg" alt="Plat 5">
+                    </div>
+                    <div class="photo" data-category="salty">
+                        <img src="photos/SaladeCesar.jpg" alt="Plat 6">
+                    </div>
+                    <div class="photo" data-category="sweet">
+                        <img src="photos/Profiteroles2.jpg" alt="Plat 7">
+                    </div>
+                    <div class="photo" data-category="salty">
+                        <img src="photos/patesTomates.jpg" alt="Plat 10">
+                    </div>
+                    <div class="photo" data-category="sweet">
+                        <img src="photos/BabaRhum2.jpg" alt="Plat 11">
+                    </div>
+                    <div class="photo" data-category="salty">
+                        <img src="photos/CoteBoeuf2.jpg" alt="Plat 12">
+                    </div>
+                    <div class="photo" data-category="salty">
+                        <img src="photos/carbonara.jpg" alt="Plat 13">
+                    </div>
+                    <div class="photo" data-category="salty">
+                        <img src="photos/Burger.jpg" alt="Plat 14">
                     </div>
                 </div>
             </div>
-        </section>
+            <div class="gallery" id="photographies">
+                <h2 data-key="photographies">Mes photos favorites</h2>
+                <div id="filters">
+                    <button id="personnes" data-key="personnes">Personnes</button>
+                    <button id="toutes" data-key="toutes">Toutes</button>
+                    <button id="decor" data-key="decor">Décor</button>
+                </div>
+                <div class="photos-container">
+                    <div class="photo" data-category="personnes">
+                        <img src="photos/portrait.jpg" alt="Portrait 1">
+                    </div>
+                    <div class="photo" data-category="personnes">
+                        <img src="photos/portrait2.jpg" alt="Portrait 2">
+                    </div>
+                    <div class="photo" data-category="decor">
+                        <img src="photos/sapin.jpg" alt="Sapin">
+                    </div>
+                    <div class="photo" data-category="decor">
+                        <img src="photos/debarcadere.jpg" alt="Débarcadère">
+                    </div>
+                    <div class="photo" data-category="decor">
+                        <img src="photos/porsche.jpg" alt="Porsche">
+                    </div>
+                    <div class="photo" data-category="decor">
+                        <img src="photos/bateau.jpg" alt="Bateau">
+                    </div>
+                    <div class="photo" data-category="decor">
+                        <img src="photos/cinema.jpg" alt="Cinéma">
+                    </div>
+                    <div class="photo" data-category="decor">
+                        <img src="photos/etoile.jpg" alt="Étoile">
+                    </div>
+                    <div class="photo" data-category="decor">
+                        <img src="photos/escalier.jpg" alt="Escalier">
+                    </div>
+                    <div class="photo" data-category="decor">
+                        <img src="photos/fete.jpg" alt="Fête">
+                    </div>
+                    <div class="photo" data-category="decor">
+                        <img src="photos/petrole.jpg" alt="Pétrole">
+                    </div>
+                    <div class="photo" data-category="personnes">
+                        <img src="photos/crique.jpg" alt="Crique">
+                    </div>
+                    <div class="photo" data-category="decor">
+                        <img src="photos/adresse.jpg" alt="Adresse">
+                    </div>
+                    <div class="photo" data-category="decor">
+                        <img src="photos/mer.jpg" alt="Mer">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="lightbox">
+            <span id="close">&times;</span>
+            <img id="lightbox-img" src="" alt="Aperçu">
+            <span id="prev" class="nav-arrow">&#10094;</span>
+            <span id="next" class="nav-arrow">&#10095;</span>
+        </div>
     </main>
     <footer>
         <p id="copyright">&copy; 2025 Armand Mulier</p>
