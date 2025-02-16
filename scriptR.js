@@ -175,8 +175,6 @@ const translations = {
             activeButton.classList.remove("active"); 
         }
         currentThemeButton.classList.add("active");
-        currenttypemeals = "all"; 
-        currenttypephotos = "all";
     }
 
     function applyFilter(filter) {
