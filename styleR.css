@@ -339,7 +339,4 @@ body.dark-mode #filters button:hover{
     footer{
         width: auto;
     }
-    *:hover {
-        all: unset !important;
-    }
 }
