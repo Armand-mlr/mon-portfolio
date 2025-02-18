@@ -24,16 +24,20 @@ main {
 /* En-tête de la page */
 header {
     background-color: #004225;
+    background-attachment: fixed;
+    background-size: 100%;
     color: #FAF3E0;
     padding: min(1.5em, 8%);
     width: 100%;
     text-align: center;
+    margin-bottom: 2em;
 }
 
 /* Animation et style du titre "Armand" */
 #Armand {
     font-size: clamp(1.8rem, 8vw,3rem);
     font-weight: bold;
+    font-family: 'Lato', sans-serif;
     text-transform: uppercase;
     background: linear-gradient(90deg, #FFD700, #F4C542, #FFF5C3, #E1B703);
     background-size: 300%;
@@ -109,6 +113,10 @@ section {
     width: 90%; /* Limite la largeur maximale */
     transition: transform 0.3s ease;
     margin-bottom: 5rem;
+    box-shadow: 0px 5px 30px rgb(62, 62, 62);
+    overflow-x: hidden;
+    border-radius: 15px;
+    padding: 2%;
 }
 
 section:hover {
@@ -227,12 +235,7 @@ body.dark-mode nav ul li a::after {
     footer{
         width: auto;
     }
-    #mode-toggle:hover {
-        background-color: #fff;
-        transform: scale(1.1);
-    }
-    .language-button:hover {
-        background-color: transparent;
-        transform: scale(1.1);
+    *:hover {
+        all: unset !important;
     }
 }
