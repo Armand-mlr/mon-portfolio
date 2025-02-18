@@ -235,7 +235,4 @@ body.dark-mode nav ul li a::after {
     footer{
         width: auto;
     }
-    *:hover {
-        all: unset !important;
-    }
 }
