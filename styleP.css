@@ -209,7 +209,7 @@ body.dark-mode {
 
 body.dark-mode .contact {
     color: #333;
-    background: linear-gradient(135deg, #FFD700, #F4C542, #ffd83d, #E1B703);
+    background: linear-gradient(135deg, #FFD700, #ffe59e, #ffd83d, #E1B703);
 }
 
 body.dark-mode header {
