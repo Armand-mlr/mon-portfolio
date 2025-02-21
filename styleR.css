@@ -102,6 +102,10 @@ footer {
     width:100%;
 }
 
+footer a {
+    color: #FAF3E0;
+}
+
 #mode-toggle {
     position: absolute;
     top: 2%;
@@ -275,6 +279,7 @@ footer {
 
 #prev { left: 20px; }
 #next { right: 20px; }
+
 
 /* Mode sombre */
 body.dark-mode {
