@@ -43,8 +43,6 @@ document.addEventListener("DOMContentLoaded", () => {
             sectionN4: "My experiences",
             section4: "I have completed two separate internships (a total of one month) at the same organization in the field of collective catering. I have also taught computer science classes. In 2025, I plan to work for two months in the restaurant industry.",
             sectionN5: "Contact me",
-            section5: "Send me a message at:",
-            email:"My mail adress"
             // Ajoute ici d'autres traductions en anglais
         },
         fr: {
@@ -59,9 +57,7 @@ document.addEventListener("DOMContentLoaded", () => {
             section3: "J'aime cuisiner pour ma famille et moi-même, explorer l'art de la mixologie en créant différents cocktails, développer des projets en informatique, écouter de la musique, jouer du piano, m'essayer à la photographie et à la cinématographie, et apprendre constamment de nouvelles choses, tant sur le plan théorique que pratique.",
             sectionN4: "Mes expériences",
             section4: "J'ai effectué deux stages distincts (pour un total d'un mois) au sein d'un même établissement, dans le domaine de la restauration collective. J'ai également donné des cours en informatique. En 2025, je prévois de travailler pendant deux mois dans le secteur de la restauration.",
-            sectionN5: "Me contacter",
-            section5: "Envoyez-moi un message à : ",
-            email:"Mon adresse mail"
+            sectionN5: "Contactez-moi",
         }
     };
 
