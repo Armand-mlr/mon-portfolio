@@ -9,6 +9,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="photos/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="photos/favicon-16x16.png">
     <link rel="manifest" href="photos/site.webmanifest">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 </head>
 <body>
     <header>
@@ -41,14 +42,13 @@
             <h2 class="hidden" data-key="sectionN4">Mes expériences</h2>
             <p class="hidden" data-key="section4">J'ai effectué deux stages distincts (pour un total d'un mois) au sein d'un même établissement, dans le domaine de la restauration collective. J'ai également donné des cours en informatique. En 2025, je prévois de travailler pendant deux mois dans le secteur de la restauration.</p>
         </section>
-        <section id="contact">
-            <h2 class="hidden" data-key="sectionN5">Me contacter</h2>
-            <p> <div class="hidden" data-key="section5"> Envoyez un message à :</div>  <a href="mailto:a.ml1020@icloud.com" class="hidden" data-key="email">Mon Adresse Mail</a></p>
-        </section>
+        <section class="contact" data-key="sectionN5" onclick="window.location.href='mailto:a.ml1020@icloud.com'">Contactez-moi</section>
     </main>
     <script src="scriptP.js"></script>
 </body>
 <footer>
+    <p><i class="fas fa-envelope"></i> <a href="mailto:a.ml1020@icloud.com">a.ml1020@icloud.com</a></p>
+    <p><i class="fas fa-phone"></i> <a href="tel:+33633595499">+33 6 33 59 54 99</a></p>
     <p id="copyright">&copy; 2025 Armand Mulier</p>
 </footer>
 </html>
