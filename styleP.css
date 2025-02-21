@@ -60,6 +60,10 @@ a {
     color: #004225;
 }
 
+footer a {
+    color: #ddd;
+}
+
 /* Navigation principale */
 nav ul {
     list-style-type: none;
@@ -184,10 +188,28 @@ footer {
     box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.8);
 }
 
+.contact {
+    background: linear-gradient(135deg, #FFD700, #ffe59e, #ffd83d, #E1B703);
+    color: #333;
+    font-size: 2em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+.contact:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
 /* Styles pour le mode sombre */
 body.dark-mode {
     background-color: #1e2024;
     color: #fff;
+}
+
+body.dark-mode .contact {
+    color: #333;
+    background: linear-gradient(135deg, #FFD700, #F4C542, #ffd83d, #E1B703);
 }
 
 body.dark-mode header {
