@@ -1,7 +1,8 @@
-@import url('https://fonts.googleapis.com/css?family=Lato:100&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
 
 body {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family:"Raleway", serif;
+    font-weight: 200;
     margin: 0;
     padding: 0;
     background-color: hsl(44, 100%, 87%);
@@ -32,11 +33,14 @@ header {
     padding: min(1.5em, 8%);
     width: 100%;
     text-align: center;
+    margin-bottom: 4em;
+    box-shadow: 0px 5px 50px rgb(62, 62, 62);
 }
 
 #realisations {
     font-size: clamp(1.8rem, 8vw,3rem);
-    font-weight: bold;
+    font-weight: 200;
+    font-family: 'Lato', serif;
     text-transform: uppercase;
     background: linear-gradient(90deg, #FFD700, #F4C542, #FFF5C3, #E1B703);
     background-size: 300%;
@@ -63,6 +67,8 @@ nav ul {
 }
 
 nav ul li a {
+    font-weight: 300;
+    font-family: 'Lato', serif;
     text-decoration: none;
     font-size: clamp(0.3em, 4vw, 1.5rem); /* Ajuste la taille selon la largeur */
     color: #FAF3E0;
