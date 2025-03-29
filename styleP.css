@@ -24,7 +24,7 @@ main {
 
 /* En-tête de la page */
 header {
-    background-color: #004225;
+    background: linear-gradient(90deg, #186d2c, #226d2a, #10481a, #0f3817);
     background-attachment: fixed;
     background-size: 100%;
     color: #FAF3E0;
@@ -32,7 +32,7 @@ header {
     width: 100%;
     text-align: center;
     margin-bottom: 4em;
-    box-shadow: 0px 5px 50px rgb(62, 62, 62);
+    box-shadow: 0px 5px 50px rgba(117, 117, 117, 0.662);
 }
 
 /* Animation et style du titre "Armand" */
@@ -106,7 +106,7 @@ section {
     width: 90%; /* Limite la largeur maximale */
     transition: all 0.3s ease;
     margin-bottom: 5rem;
-    box-shadow: 0px 5px 30px rgb(62, 62, 62);
+    box-shadow: 0px 5px 30px rgba(99, 99, 99, 0.766);
     overflow-x: hidden;
     border-radius: 15px;
     padding: 2%;
@@ -133,7 +133,7 @@ section:hover {
 footer {
     bottom: 0;
     text-align: center;
-    background-color: #004225;
+    background: linear-gradient(90deg, #0f3817, #10481a, #226d2a, #186d2c);
     color: #FAF3E0;
     padding: 1rem;
     font-size: 1rem;
@@ -213,7 +213,7 @@ body.dark-mode .contact {
 }
 
 body.dark-mode header {
-    background-color: #1d2638;
+    background: linear-gradient(90deg,#1c1d20,#23252a,#3a3f4a, #4a5261);
 }
 
 body.dark-mode #mode-toggle {
@@ -230,7 +230,7 @@ body.dark-mode a {
 }
 
 body.dark-mode footer {
-    background-color: #1d2638;
+    background: linear-gradient(90deg,#4a5261,#3a3f4a,#23252a, #1c1d20);
 }
 
 body.dark-mode nav ul li a::after {
