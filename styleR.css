@@ -25,8 +25,7 @@ main {
 
 
 /* En-tête de la page */
-header {
-    background-color: #004225;
+header {background: linear-gradient(90deg, #186d2c, #226d2a, #10481a, #0f3817);background-color: #004225;
     background-attachment: fixed;
     background-size: 100%;
     color: #FAF3E0;
@@ -95,7 +94,7 @@ nav ul li a:hover::after {
 footer {
     bottom: 0;
     text-align: center;
-    background-color: #004225;
+    background: linear-gradient(90deg, #0f3817, #10481a, #226d2a, #186d2c);
     color: #FAF3E0;
     padding: 1rem;
     font-size: 1rem;
@@ -226,6 +225,7 @@ footer a {
 
 .theme-button:hover {
     background: #e0e0e0;
+    color : #333;
     transform: translateY(-2px);
 }
 
@@ -288,7 +288,7 @@ body.dark-mode {
 }
 
 body.dark-mode header {
-    background-color: #1d2638; /* Fond du header sombre */
+    background: linear-gradient(90deg,#1c1d20,#23252a,#3a3f4a, #4a5261);
 }
 
 body.dark-mode #mode-toggle {
@@ -308,11 +308,7 @@ body.dark-mode a {
 
 /* Autres éléments en mode sombre */
 body.dark-mode footer {
-    background-color: #1d2638; /* Fond du footer sombre */
-}
-
-body.dark-mode #navigation-dots div.active {
-    background-color: #1d2638; /* Bleu */
+    background: linear-gradient(90deg,#4a5261,#3a3f4a,#23252a, #1c1d20); /* Fond du footer sombre */
 }
 
 body.dark-mode nav ul li a::after {
