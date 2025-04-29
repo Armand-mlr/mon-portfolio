@@ -160,6 +160,43 @@ footer {
     box-shadow: 20px 0px 40px rgba(255, 255, 255, 0.57), -20px 0px 40px rgba(255, 255, 255, 0.571);
 }
 
+#photo-container {
+    position:relative;
+    width: 15rem;
+    height: 15rem;
+    margin: 0 auto;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0px 5px 30px rgba(99, 99, 99, 0.766);
+}
+
+#maphoto {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: blur(10px) brightness(50%);
+    transition: filter 0.5s ease-in-out;
+    border-radius: 50%;
+}
+
+#photo-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    background-color: rgba(70, 70, 70, 0.362);
+    font-size: 0.9rem;
+    pointer-events: none; /* Permet le clic sur le container sans bloquer */
+    transition: opacity 0.5s ease;
+}
+
 /* Bouton de sélection de la langue */
 .language-button {
     position: absolute; /* Permet de le placer n'importe où sur la page */
