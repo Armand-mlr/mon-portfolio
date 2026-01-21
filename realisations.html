@@ -3,144 +3,69 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mon Portfolio</title>
-    <link rel="stylesheet" href="styleR.css">
-    <link rel="apple-touch-icon" sizes="180x180" href="photos/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="photos/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="photos/favicon-16x16.png">
-    <link rel="manifest" href="photos/site.webmanifest">
+    <title>Réalisations | Armand Mulier</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Italianno&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="styleR.css">
 </head>
 <body>
-    <header>
-        <nav>
-            <ul class="button-list">
-                <li class="list-button"><a href="photos/CV2025ArmandMulierPDF.pdf" download="CV_ARMAND_MULIER" data-key="cv">Mon CV</a></li>
-                <li class="list-button"><a href="index.html" data-key="pagePrincipale">Page Principale</a></li>
-            </ul>
-        </nav>
-        <button data-key="language" id="language-switcher" class="language-button">English</button>
-        <h1 data-key="realisations" id="realisations">Réalisations</h1>
-        <button id="mode-toggle" title="Changer le mode (clair/sombre)">🌙</button>
+    <header class="glass-header">
+        <div class="header-content">
+            <div class="logo">Armand Mulier</div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html" class="nav-capsule" data-key="pagePrincipale">Accueil</a></li>
+                    <li><a href="photos/CV2025ArmandMulierPDF.pdf" download="CV_ARMAND_MULIER" class="nav-capsule special-capsule" data-key="cv">Mon CV</a></li>
+                </ul>
+            </nav>
+            <div class="header-tools">
+                <button id="language-switcher" class="tool-btn">English</button>
+                <button id="mode-toggle" class="tool-btn">🌙</button>
+            </div>
+        </div>
     </header>
+
     <main>
-        <div class="theme-buttons">
-            <button class="theme-button active" id="allThemeButton" data-key="toutes">Tout</button>
-            <button class="theme-button" id="photographiesThemeButton" data-key="photographies">Mes photos favorites</button>
-            <button class="theme-button" id="mealsThemeButton" data-key="plats">Mes plats</button>
-        </div>
-        <div class="main-gallery">
-            <div class= "gallery" id="cuisine">
-                <h2 data-key="plats">Mes plats</h2>
-                <div id="filters">
-                    <button id="sweet" data-key="sweet">Sucré</button>
-                    <button id="all" data-key="all">Tous</button>
-                    <button id="salty" data-key="salty">Salé</button>
-                </div>
-                <div class="photos-container">
-                    <div class="photo" data-category="sweet">
-                        <img src="photos/Profiteroles1.jpg" alt="Plat 1">
-                    </div>
-                    <div class="photo" data-category="sweet">
-                        <img src="photos/BabaRhum1.jpg" alt="Plat 2">
-                    </div>
-                    <div class="photo" data-category="sweet">
-                        <img src="photos/Fraisier.jpg" alt="Plat 3">
-                    </div>
-                    <div class="photo" data-category="salty">
-                        <img src="photos/CoteBoeuf.jpg" alt="Plat 4">
-                    </div>
-                    <div class="photo" data-category="salty">
-                        <img src="photos/VeauMarengo.jpg" alt="Plat 5">
-                    </div>
-                    <div class="photo" data-category="salty">
-                        <img src="photos/SaladeCesar.jpg" alt="Plat 6">
-                    </div>
-                    <div class="photo" data-category="sweet">
-                        <img src="photos/Profiteroles2.jpg" alt="Plat 7">
-                    </div>
-                    <div class="photo" data-category="salty">
-                        <img src="photos/patesTomates.jpg" alt="Plat 10">
-                    </div>
-                    <div class="photo" data-category="sweet">
-                        <img src="photos/BabaRhum2.jpg" alt="Plat 11">
-                    </div>
-                    <div class="photo" data-category="salty">
-                        <img src="photos/CoteBoeuf2.jpg" alt="Plat 12">
-                    </div>
-                    <div class="photo" data-category="salty">
-                        <img src="photos/carbonara.jpg" alt="Plat 13">
-                    </div>
-                    <div class="photo" data-category="salty">
-                        <img src="photos/Burger.jpg" alt="Plat 14">
-                    </div>
-                </div>
+        <section class="page-title-section fade-in">
+            <h1 data-key="realisations">Mes Réalisations</h1>
+            <p class="subtitle" data-key="introGallery">Une collection de moments et de saveurs.</p>
+        </section>
+
+        <section class="controls-section fade-in">
+            <div class="segmented-control main-filter">
+                <button class="segment-btn active" data-filter="all" data-key="toutes">Tout</button>
+                <button class="segment-btn" data-filter="cuisine" data-key="plats">Cuisine</button>
+                <button class="segment-btn" data-filter="photo" data-key="photographies">Photos</button>
             </div>
-            <div class="gallery" id="photographies">
-                <h2 data-key="photographies">Mes photos favorites</h2>
-                <div id="filters">
-                    <button id="personnes" data-key="personnes">Personnes</button>
-                    <button id="toutes" data-key="toutes">Toutes</button>
-                    <button id="decor" data-key="decor">Décor</button>
+
+            <div id="sub-filters" class="sub-filters-container">
                 </div>
-                <div class="photos-container">
-                    <div class="photo" data-category="personnes">
-                        <img src="photos/portrait.jpg" alt="Portrait 1">
-                    </div>
-                    <div class="photo" data-category="personnes">
-                        <img src="photos/portrait2.jpg" alt="Portrait 2">
-                    </div>
-                    <div class="photo" data-category="decor">
-                        <img src="photos/sapin.jpg" alt="Sapin">
-                    </div>
-                    <div class="photo" data-category="decor">
-                        <img src="photos/debarcadere.jpg" alt="Débarcadère">
-                    </div>
-                    <div class="photo" data-category="decor">
-                        <img src="photos/porsche.jpg" alt="Porsche">
-                    </div>
-                    <div class="photo" data-category="decor">
-                        <img src="photos/bateau.jpg" alt="Bateau">
-                    </div>
-                    <div class="photo" data-category="decor">
-                        <img src="photos/cinema.jpg" alt="Cinéma">
-                    </div>
-                    <div class="photo" data-category="decor">
-                        <img src="photos/etoile.jpg" alt="Étoile">
-                    </div>
-                    <div class="photo" data-category="decor">
-                        <img src="photos/escalier.jpg" alt="Escalier">
-                    </div>
-                    <div class="photo" data-category="decor">
-                        <img src="photos/fete.jpg" alt="Fête">
-                    </div>
-                    <div class="photo" data-category="decor">
-                        <img src="photos/petrole.jpg" alt="Pétrole">
-                    </div>
-                    <div class="photo" data-category="personnes">
-                        <img src="photos/crique.jpg" alt="Crique">
-                    </div>
-                    <div class="photo" data-category="decor">
-                        <img src="photos/adresse.jpg" alt="Adresse">
-                    </div>
-                    <div class="photo" data-category="decor">
-                        <img src="photos/mer.jpg" alt="Mer">
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div id="lightbox">
-            <span id="close">&times;</span>
+        </section>
+
+        <section id="gallery-grid" class="gallery-grid">
+            </section>
+
+        <div id="lightbox" class="glass-lightbox">
+            <button id="close-lightbox" class="close-btn">&times;</button>
+            <button id="prev" class="nav-arrow"><i class="fas fa-chevron-left"></i></button>
+            
             <img id="lightbox-img" src="" alt="Aperçu">
-            <span id="prev" class="nav-arrow">&#10094;</span>
-            <span id="next" class="nav-arrow">&#10095;</span>
+            
+            <button id="next" class="nav-arrow"><i class="fas fa-chevron-right"></i></button>
+            <div class="lightbox-caption" id="lightbox-caption"></div>
         </div>
     </main>
+
     <footer>
-        <p><i class="fas fa-envelope"></i> <a href="mailto:armand.mulier.pro@icloud.com">armand.mulier.pro@icloud.com</a></p>
-        <p><i class="fas fa-phone"></i> <a href="tel:+33633595499">+33 6 33 59 54 99</a></p>
-        <p id="copyright">&copy; 2025 Armand Mulier</p>
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="mailto:armand.mulier.pro@icloud.com"><i class="fas fa-envelope"></i> Contact</a>
+            </div>
+            <p>&copy; 2025 Armand Mulier.</p>
+        </div>
     </footer>
+
     <script src="scriptR.js"></script>
 </body>
 </html>
