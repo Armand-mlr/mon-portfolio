@@ -1,10 +1,8 @@
 /* --- VARIABLES & RESET --- */
 :root {
-    /* Mêmes dimensions pour la cohérence */
     --site-width: 62.5rem;
     --section-spacing: clamp(4rem, 10vh, 8rem);
 
-    /* Palette */
     --bg-color: #F5F5F7;
     --text-color: #1D1D1F;
     --accent-color: #C7A97B;
@@ -28,22 +26,37 @@ body.dark-mode {
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
+html {
+    scroll-behavior: smooth; 
+    /* Fond de base pour éviter le blanc lors du scroll élastique */
+    background-color: var(--bg-color);
+}
+
 body {
     font-family: 'Inter', sans-serif;
     background-color: var(--bg-color);
     color: var(--text-color);
     transition: background-color 0.4s ease, color 0.4s ease;
     overflow-x: hidden;
+    /* Safe Area Insets pour l'iPhone */
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
 }
 
-/* --- HEADER (Copie adaptée avec unités relatives) --- */
+/* --- HEADER --- */
 .glass-header {
     position: fixed; top: 0; width: 100%; z-index: 100;
     background: var(--glass-bg);
     backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
     border-bottom: 0.0625rem solid var(--glass-border);
-    padding: 1rem 0;
+    
+    /* GESTION NOTCH (ENCOCHE) */
+    padding-top: max(1rem, env(safe-area-inset-top));
+    padding-bottom: 1rem;
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
 }
+
 .header-content {
     width: 90%; max-width: var(--site-width); margin: 0 auto;
     display: flex; justify-content: space-between; align-items: center;
@@ -76,10 +89,10 @@ body {
 
 /* --- CONTENU PRINCIPAL --- */
 main {
-    /* Alignement consistant avec la page d'accueil */
     width: 90%;
     max-width: var(--site-width);
-    margin: 8rem auto 3rem; /* Espace pour le header fixe */
+    /* MARGE PAR DEFAUT (PC) */
+    margin: 8rem auto 3rem; 
     min-height: 80vh;
 }
 
@@ -87,7 +100,7 @@ main {
 .page-title-section h1 { font-size: 2.5rem; font-weight: 700; margin-bottom: 0.5rem; }
 .subtitle { color: var(--accent-color); font-weight: 400; font-size: 1.1rem; }
 
-/* --- FILTRES (Segmented Control) --- */
+/* --- FILTRES --- */
 .controls-section {
     display: flex; flex-direction: column; align-items: center; gap: 1.5rem; margin-bottom: 3rem;
 }
@@ -131,7 +144,6 @@ main {
 /* --- GALERIE GRID --- */
 .gallery-grid {
     display: grid;
-    /* Grid responsive intelligent en REM */
     grid-template-columns: repeat(auto-fill, minmax(17.5rem, 1fr)); 
     gap: 1.25rem;
 }
@@ -194,9 +206,19 @@ main {
 @keyframes fadeInAnim { from {opacity: 0; transform: translateY(1.25rem);} to {opacity: 1; transform: translateY(0);} }
 
 /* Footer */
-footer { text-align: center; padding: 2rem; margin-top: 3rem; opacity: 0.6; font-size: 0.8rem; }
+footer {
+    text-align: center; padding: 2rem; margin-top: 3rem; opacity: 0.6; font-size: 0.8rem;
+    /* GESTION SAFE AREA BAS IPHONE */
+    padding-bottom: max(2rem, env(safe-area-inset-bottom));
+}
 footer a { color: var(--text-color); text-decoration: none; }
 
+/* --- GESTION MOBILE --- */
 @media screen and (max-width: 48em) { /* 768px */
     .header-content { flex-direction: column; gap: 1rem; padding: 1rem; }
+    
+    /* FIX DU CHEVAUCHEMENT : Sur mobile, le header est plus grand, donc on pousse le main vers le bas */
+    main {
+        margin-top: 13rem; /* On passe de 8rem à 13rem */
+    }
 }
