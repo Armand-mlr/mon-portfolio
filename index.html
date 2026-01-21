@@ -3,60 +3,98 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mon Portfolio</title>
-    <link rel="stylesheet" href="styleP.css">
-    <link rel="apple-touch-icon" sizes="180x180" href="photos/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="photos/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="photos/favicon-16x16.png">
-    <link rel="manifest" href="photos/site.webmanifest">
+    <title>Armand Mulier | Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Italianno&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="styleP.css">
 </head>
 <body>
-    <header>
-        <nav>
-            <ul class="button-list">
-                <li class="list-button"><a href="photos/CV2025ArmandMulierPDF.pdf" download="CV_ARMAND_MULIER" data-key="cv">Mon CV</a></li>
-                <li class="list-button"><a href="realisations.html" data-key="projet">Réalisations</a></li>
-            </ul>
-        </nav>
-        <button data-key='language' id="language-switcher" class="language-button">English</button>
-        <h1 data-key="Armand" id="Armand">Armand Mulier</h1>
-        <button id="mode-toggle" title="Changer le mode (clair/sombre)">
-            🌙
-        </button>
-    </header>
-    <main>
-        <section id="presentation">
-            <h2 data-key="sectionN0">Bienvenue sur mon site</h2>
-            <div id="photo-container" class="float-shape">
-                <img id="maphoto" src="photos/photoPerso.jpg" alt="photo de moi">
-                <div id="photo-overlay" data-key="photo">Voir ma photo</div>
+    <header class="glass-header">
+        <div class="header-content">
+            <div class="logo">Armand Mulier</div>
+            
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#about" class="nav-capsule" data-key="navAbout">À propos</a></li>
+                    <li><a href="realisations.html" class="nav-capsule" data-key="projet">Réalisations</a></li>
+                    <li><a href="photos/CV2025ArmandMulierPDF.pdf" download="CV_ARMAND_MULIER" class="nav-capsule special-capsule" data-key="cv">Mon CV</a></li>
+                </ul>
+            </nav>
+
+            <div class="header-tools">
+                <button id="language-switcher" class="tool-btn" data-key="language">English</button>
+                <button id="mode-toggle" class="tool-btn" title="Changer le mode">🌙</button>
             </div>
-            <h2 data-key="section0">Mon CV se trouve en l'onglet dédié, mes contacts, en bas !</h2>
+        </div>
+    </header>
+
+    <main>
+        <section id="presentation" class="hero-section">
+            <div class="profile-container fade-in">
+                <div class="photo-frame">
+                    <img id="maphoto" src="photos/photoPerso.jpg" alt="Armand Mulier">
+                </div>
+            </div>
+            
+            <h1 class="main-title fade-in gradient-text">Armand Mulier</h1>
+            <h2 class="subtitle fade-in" data-key="sectionN0">Bienvenue sur mon portfolio</h2>
+            
+            <p class="intro-text fade-in" data-key="section0">Étudiant curieux et motivé. Mon CV et mes projets sont accessibles via le menu.</p>
+
+            <div class="scroll-indicator fade-in">
+                <i class="fa-solid fa-chevron-down"></i>
+            </div>
         </section>
-        <section id="about">
-            <h2 class="hidden" data-key="sectionN1">À propos de mes études</h2>
-            <p class="hidden" data-key="section1">Je suis en première année de licence Maths/Info. J’ai eu un bac général avec les spécialités Maths, NSI et l’option Maths expertes. Aujourd’hui, j’étudie en région parisienne, pas loin du centre de Paris. J’aime ce que j’apprends, même si ce n’est pas toujours facile, et j’essaie de progresser un peu chaque jour.</p>
+
+        <section id="about" class="content-section scroll-reveal">
+            <div class="section-header">
+                <h2 data-key="sectionN2">Qui je suis</h2>
+            </div>
+            <div class="text-content">
+                <p data-key="section2">Je suis quelqu’un de curieux et motivé. J’aime apprendre de nouvelles choses, que ce soit à travers mes cours ou mes projets perso. Quand je commence quelque chose, j’essaie d’aller jusqu’au bout, même si ça prend du temps. J’aime bien comprendre comment les choses fonctionnent et me lancer des petits défis.</p>
+            </div>
         </section>
-        <section id="qui-je-suis">
-            <h2 class="hidden" data-key="sectionN2">Qui je suis</h2>
-            <p class="hidden" data-key="section2">Je suis quelqu’un de curieux et motivé. J’aime apprendre de nouvelles choses, que ce soit à travers mes cours ou mes projets perso. Quand je commence quelque chose, j’essaie d’aller jusqu’au bout, même si ça prend du temps. J’aime bien comprendre comment les choses fonctionnent et me lancer des petits défis.</p>
+
+         <section id="studies" class="content-section scroll-reveal">
+            <div class="section-header">
+                 <h2 data-key="sectionN1">Mes études</h2>
+            </div>
+            <div class="text-content">
+                 <p data-key="section1">Je suis en première année de licence Maths/Info. J’ai eu un bac général avec les spécialités Maths, NSI et l’option Maths expertes. Aujourd’hui, j’étudie en région parisienne. J’aime ce que j’apprends, et j’essaie de progresser un peu chaque jour.</p>
+            </div>
         </section>
-        <section id="ce-que-jaime">
-            <h2 class="hidden" data-key="sectionN3">Ce que j'aime faire</h2>
-            <p class="hidden" data-key="section3">J’aime cuisiner pour les gens que j’aime, tester des recettes ou inventer des cocktails. Je passe aussi pas mal de temps sur des projets informatiques, à écouter de la musique ou à jouer du piano. La photo et la vidéo m’attirent beaucoup, j’aime m’y essayer dès que j’ai le temps.</p>
+
+        <section id="hobbies" class="content-section scroll-reveal">
+            <div class="section-header">
+                <h2 data-key="sectionN3">Ce que j'aime faire</h2>
+            </div>
+            <div class="text-content">
+                <p data-key="section3">J’aime cuisiner, tester des recettes ou inventer des cocktails. Je passe aussi pas mal de temps sur des projets informatiques, à écouter de la musique ou à jouer du piano. La photo et la vidéo m’attirent beaucoup.</p>
+            </div>
         </section>
-        <section id="mes-experiences">
-            <h2 class="hidden" data-key="sectionN4">Mes expériences</h2>
-            <p class="hidden" data-key="section4">Je n’ai pas encore énormément d’expérience professionnelles, mais j’ai déjà travaillé sur plusieurs projets personels (comme ce site), notamment en informatique. J’ai aussi eu l’occasion de travailler dans la restauration, ce qui m’a appris à gérer le stress, le rythme, et le contact avec les gens. En parallèle, je m’investis dans mes propres apprentissages : coder, cuisiner, me cultiver, étoffer ma maîtrise des langues étrangères, et donner des cours de sciences... J'ai constamment l'envie d'apprendre et de m'améliorer, j'avance donc dans ce sens dès que je le peux...</p>
+
+         <section id="contact-cta" class="scroll-reveal">
+            <div class="glass-card contact-card">
+                <h2 data-key="sectionN5">Contactez-moi</h2>
+                <p data-key="contactIntro">Un projet ? Une question ? N'hésitez pas.</p>
+                <a href="mailto:armand.mulier.pro@icloud.com" class="glass-button big-button">
+                    <i class="fas fa-paper-plane"></i> Envoyer un email
+                </a>
+            </div>
         </section>
-        <section class="contact" data-key="sectionN5" onclick="window.location.href='mailto:a.ml1020@icloud.com'">Contactez-moi</section>
     </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="mailto:armand.mulier.pro@icloud.com"><i class="fas fa-envelope"></i> armand.mulier.pro@icloud.com</a>
+                <a href="tel:+33633595499"><i class="fas fa-phone"></i> +33 6 33 59 54 99</a>
+            </div>
+            <p id="copyright">&copy; 2025 Armand Mulier.</p>
+        </div>
+    </footer>
+
     <script src="scriptP.js"></script>
 </body>
-<footer>
-    <p><i class="fas fa-envelope"></i> <a href="mailto:armand.mulier.pro@icloud.com">armand.mulier.pro@icloud.com</a></p>
-    <p><i class="fas fa-phone"></i> <a href="tel:+33633595499">+33 6 33 59 54 99</a></p>
-    <p id="copyright">&copy; 2025 Armand Mulier</p>
-</footer>
 </html>
