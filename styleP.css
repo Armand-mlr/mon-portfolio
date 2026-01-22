@@ -1,4 +1,4 @@
-/* --- VARIABLES & RESET --- */
+/* --- VARIABLES --- */
 :root {
     --site-width: 62.5rem;
     --section-spacing: clamp(4rem, 10vh, 8rem);
@@ -21,12 +21,7 @@ body.dark-mode {
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
-html { 
-    scroll-behavior: smooth; 
-    font-size: 100%; 
-    /* IMPORTANT : Couleur de fond html pour éviter les barres blanches lors du scroll élastique sur iPhone */
-    background-color: var(--bg-color); 
-}
+html { scroll-behavior: smooth; font-size: 100%; background-color: var(--bg-color); }
 
 body {
     font-family: 'Inter', sans-serif;
@@ -35,233 +30,227 @@ body {
     transition: background-color 0.5s ease, color 0.5s ease;
     line-height: 1.6;
     overflow-x: hidden;
-    /* Gestion des zones sûres iPhone pour le corps général */
-    padding-left: env(safe-area-inset-left);
-    padding-right: env(safe-area-inset-right);
+    /* On vire les padding latéraux compliqués ici */
 }
 
-/* --- HEADER GLASSMORPHISM & ALIGNEMENT --- */
+/* --- HEADER --- */
 .glass-header {
-    position: fixed;
-    top: 0; width: 100%; z-index: 100;
+    position: fixed; top: 0; width: 100%; z-index: 100;
     background: var(--glass-bg);
     backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
     border-bottom: 0.0625rem solid var(--glass-border);
     
-    /* GESTION NOTCH IPHONE : On ajoute du padding en haut si besoin */
+    /* GESTION SIMPLE IPHONE : On pousse le contenu sous l'encoche, mais le fond va jusqu'en haut */
     padding-top: max(1rem, env(safe-area-inset-top));
     padding-bottom: 1rem;
-    padding-left: env(safe-area-inset-left);
-    padding-right: env(safe-area-inset-right);
 }
 
 .header-content {
-    width: 90%; 
-    max-width: var(--site-width);
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    width: 90%; max-width: var(--site-width); margin: 0 auto;
+    display: flex; justify-content: space-between; align-items: center;
 }
 
-/* --- LOGO SIGNATURE --- */
 .logo {
-    font-family: 'Italianno', cursive;
-    font-size: 2.8rem;
-    font-weight: 400;
-    color: var(--text-color);
-    cursor: pointer;
-    position: relative;
-    user-select: none;
+    font-family: 'Italianno', cursive; font-size: 2.8rem; font-weight: 400;
+    color: var(--text-color); cursor: pointer; position: relative; user-select: none;
     transform-origin: left center;
-    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
-                color 0.4s ease, 
-                text-shadow 0.4s ease;
+    transition: transform 0.4s ease, color 0.4s ease, text-shadow 0.4s ease;
 }
-
-.logo:hover {
-    transform: scale(1.08); 
-    color: var(--accent-color);
-    text-shadow: 0 0 1rem rgba(199, 169, 123, 0.5);
-}
-
+.logo:hover { transform: scale(1.08); color: var(--accent-color); text-shadow: 0 0 1rem rgba(199, 169, 123, 0.5); }
 .logo::after {
-    content: ''; position: absolute;
-    width: 0%; height: 0.0625rem;
-    bottom: 0.3rem; left: 0;
-    background-color: var(--accent-color);
-    transition: width 0.4s ease;
+    content: ''; position: absolute; width: 0%; height: 0.0625rem; bottom: 0.3rem; left: 0;
+    background-color: var(--accent-color); transition: width 0.4s ease;
 }
-
 .logo:hover::after { width: 100%; }
 
-/* --- NAVIGATION --- */
 .main-nav ul { display: flex; list-style: none; gap: 1rem; }
-
 .nav-capsule {
-    text-decoration: none; color: var(--text-color);
-    font-weight: 500; font-size: 0.9rem;
-    padding: 0.6rem 1.2rem;
-    border-radius: 3rem;
-    transition: all 0.3s ease;
+    text-decoration: none; color: var(--text-color); font-weight: 500; font-size: 0.9rem;
+    padding: 0.6rem 1.2rem; border-radius: 3rem; transition: all 0.3s ease;
     background: rgba(125, 125, 125, 0.05);
 }
-
 .nav-capsule:hover { background: var(--text-color); color: var(--bg-color); }
-
-.nav-capsule.special-capsule {
-    background: transparent; border: 0.125rem solid var(--accent-color); color: var(--accent-color);
-}
+.nav-capsule.special-capsule { background: transparent; border: 0.125rem solid var(--accent-color); color: var(--accent-color); }
 .nav-capsule.special-capsule:hover { background: var(--accent-color); color: #fff; }
 
 .header-tools { display: flex; gap: 0.6rem; }
-
-.tool-btn {
-    background: transparent; border: none;
-    color: var(--text-color); font-size: 1rem;
-    cursor: pointer; padding: 0.5rem; border-radius: 50%;
-    transition: transform 0.3s ease;
-}
+.tool-btn { background: transparent; border: none; color: var(--text-color); font-size: 1rem; cursor: pointer; padding: 0.5rem; transition: transform 0.3s ease; }
 .tool-btn:hover { transform: scale(1.1); }
-
-#language-switcher {
-    font-size: 0.8rem; font-weight: 600; text-transform: uppercase;
-    border: 0.0625rem solid var(--glass-border);
-    border-radius: 1.25rem; padding: 0.5rem 1rem;
-}
+#language-switcher { font-size: 0.8rem; font-weight: 600; text-transform: uppercase; border: 0.0625rem solid var(--glass-border); border-radius: 1.25rem; padding: 0.5rem 1rem; }
 
 /* --- HERO SECTION --- */
 .hero-section {
-    /* 100dvh est mieux que 100vh pour mobile (gère la barre d'adresse) */
-    min-height: 100dvh; 
+    min-height: 100vh; /* Prend tout l'écran */
     display: flex; flex-direction: column;
     justify-content: center; align-items: center;
     text-align: center;
-    padding: clamp(8rem, 15vh, 10rem) 1rem 3rem;
+    /* C'est ICI qu'on gère l'espace sous le header sans couper le fond */
+    padding: 0 1rem; 
 }
 
 .photo-frame {
-    width: 11.25rem; height: 11.25rem;
-    border-radius: 50%; overflow: hidden;
-    margin-bottom: 2rem;
-    box-shadow: var(--shadow-soft);
-    border: 0.2rem solid var(--accent-color);
-    padding: 0.2rem;
-    background: var(--bg-color);
+    margin: 2em;
+    width: 11.25rem; height: 11.25rem; border-radius: 50%; overflow: hidden; margin-bottom: 2rem;
+    box-shadow: var(--shadow-soft); border: 0.2rem solid var(--accent-color); padding: 0.2rem; background: var(--bg-color);
 }
-
 .photo-frame img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
 
 .gradient-text {
-    font-size: clamp(2.5rem, 5vw, 4rem);
-    font-weight: 700; margin-bottom: 0.5rem;
+    font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 700; margin-bottom: 0.5rem;
     background: linear-gradient(135deg, var(--text-color) 30%, var(--accent-color) 100%);
-    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-    letter-spacing: -0.06rem;
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; letter-spacing: -0.06rem;
 }
+.subtitle { font-size: clamp(1.2rem, 3vw, 1.5rem); font-weight: 300; color: var(--accent-color); margin-bottom: 2rem; }
+.intro-text { max-width: 37.5rem; font-weight: 300; font-size: 1.1rem; opacity: 0.8; }
+.scroll-indicator { position: absolute; bottom: 2.5rem; font-size: 1.5rem; color: var(--accent-color); animation: bounce 2s infinite; }
 
-.subtitle {
-    font-size: clamp(1.2rem, 3vw, 1.5rem);
-    font-weight: 300; color: var(--accent-color); margin-bottom: 2rem;
-}
-
-.intro-text {
-    max-width: 37.5rem;
-    font-weight: 300; font-size: 1.1rem; opacity: 0.8;
-}
-
-.scroll-indicator {
-    position: absolute; bottom: 2.5rem;
-    font-size: 1.5rem; color: var(--accent-color);
-    animation: bounce 2s infinite;
-}
-
-/* --- MAIN CONTENT & ALIGNEMENT --- */
+/* --- MAIN --- */
 main {
-    width: 90%;
-    max-width: var(--site-width);
-    margin: 0 auto;
-    margin-bottom: 4rem;
+    width: 90%; max-width: var(--site-width); margin : 0 auto; margin-bottom: 4rem;
 }
-
-.content-section {
-    margin-bottom: var(--section-spacing);
-    padding: 0; 
-}
-
-.section-header {
-    margin-bottom: 2rem;
-    border-left: 0.25rem solid var(--accent-color);
-    padding-left: 1.5rem;
-}
-
+.content-section { margin-bottom: var(--section-spacing); padding: 0; }
+.section-header { margin-bottom: 2rem; border-left: 0.25rem solid var(--accent-color); padding-left: 1.5rem; }
 .section-header h2 { font-size: 2rem; font-weight: 700; }
 .text-content p { font-size: 1.1rem; font-weight: 300; text-align: justify; }
 
-/* --- CONTACT CARD --- */
+/* --- CONTACT & FOOTER --- */
 #contact-cta { margin-bottom: var(--section-spacing); }
-
 .glass-card {
-    background: var(--glass-bg);
-    backdrop-filter: blur(30px); -webkit-backdrop-filter: blur(30px);
-    border: 0.0625rem solid var(--glass-border);
-    padding: 4rem 2rem;
-    border-radius: 2rem;
-    text-align: center;
-    box-shadow: var(--shadow-soft);
+    background: var(--glass-bg); backdrop-filter: blur(30px); -webkit-backdrop-filter: blur(30px);
+    border: 0.0625rem solid var(--glass-border); padding: 4rem 2rem; border-radius: 2rem; text-align: center; box-shadow: var(--shadow-soft);
 }
-
 .glass-button {
-    display: inline-block; margin-top: 2rem; text-decoration: none;
-    background: var(--accent-color); color: #fff;
-    padding: 1rem 2.5rem; border-radius: 3rem; font-weight: 600;
-    transition: all 0.3s ease;
-    box-shadow: 0 0.6rem 1.2rem -0.6rem var(--accent-color);
+    display: inline-block; margin-top: 2rem; text-decoration: none; background: var(--accent-color); color: #fff;
+    padding: 1rem 2.5rem; border-radius: 3rem; font-weight: 600; transition: all 0.3s ease; box-shadow: 0 0.6rem 1.2rem -0.6rem var(--accent-color);
 }
+.glass-button:hover { transform: translateY(-0.2rem); box-shadow: 0 1rem 2rem -0.6rem var(--accent-color); }
 
-.glass-button:hover {
-    transform: translateY(-0.2rem);
-    box-shadow: 0 1rem 2rem -0.6rem var(--accent-color);
-}
-
-/* --- FOOTER --- */
 footer {
-    text-align: center; padding: 4rem 0; margin-top: 4rem;
-    border-top: 0.0625rem solid var(--glass-border);
+    text-align: center; padding: 4rem 0; margin-top: 4rem; border-top: 0.0625rem solid var(--glass-border);
     font-size: 0.9rem; opacity: 0.7;
-    /* GESTION BAS D'ECRAN IPHONE */
+    /* Protection Safe Area BAS iPhone */
     padding-bottom: max(2rem, env(safe-area-inset-bottom));
 }
 .footer-links { display: flex; justify-content: center; gap: 2rem; margin-bottom: 1rem; }
 footer a { color: var(--text-color); text-decoration: none; }
 
-/* --- ANIMATIONS --- */
-@keyframes bounce {
-    0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
-    40% {transform: translateY(-0.6rem);}
-    60% {transform: translateY(-0.3rem);}
-}
-
+@keyframes bounce { 0%, 20%, 50%, 80%, 100% {transform: translateY(0);} 40% {transform: translateY(-0.6rem);} 60% {transform: translateY(-0.3rem);} }
 .fade-in { opacity: 0; animation: fadeInAnim 1s ease forwards; }
 .fade-in:nth-child(2) { animation-delay: 0.2s; }
 .fade-in:nth-child(3) { animation-delay: 0.4s; }
 .fade-in:nth-child(4) { animation-delay: 0.6s; }
+@keyframes fadeInAnim { from { opacity: 0; transform: translateY(1.25rem); } to { opacity: 1; transform: translateY(0); } }
 
-@keyframes fadeInAnim {
-    from { opacity: 0; transform: translateY(1.25rem); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
+/* Animation au scroll (Modifiée pour venir de la GAUCHE) */
 .scroll-reveal {
-    opacity: 0; transform: translateY(2.5rem);
-    transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    opacity: 0;
+    /* On le déplace vers la gauche par défaut */
+    transform: translateX(-5rem); 
+    
+    /* Une transition un peu plus lente pour l'effet "glissé" latéral */
+    transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    
+    /* Optionnel : pour éviter que le scroll horizontal apparaisse pendant l'anim */
+    filter: blur(5px); 
 }
-.scroll-reveal.show { opacity: 1; transform: translateY(0); }
 
-/* --- GESTION MOBILE --- */
-@media screen and (max-width: 48em) { /* 768px */
+.scroll-reveal.show {
+    opacity: 1;
+    /* On le remet à sa place d'origine */
+    transform: translateX(0);
+    
+    /* On enlève le flou */
+    filter: blur(0);
+}
+
+/* --- SYSTÈME DE PIÈCE 3D --- */
+
+/* 1. Le conteneur : Définit la perspective et la zone de l'ombre au sol */
+.coin-container {
+    width: 11.25rem; height: 11.25rem;
+    margin-bottom: 2rem;
+    margin-top: 10rem;
+    perspective: 1000px;
+    border-radius: 50%;
+    /* On garde l'ombre ici pour faire "le sol" */
+    background: transparent; 
+    cursor: pointer;
+    /* Suppression de la bordure ici pour qu'elle ne reste pas fixe */
+}
+
+/* 2. La pièce mobile : C'est elle qui reçoit l'animation */
+.coin {
+    width: 100%; height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    border-radius: 50%;
+    /* L'ombre portée de la pièce elle-même qui va bouger avec elle */
+    box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.2); 
+}
+
+/* 3. Les faces : On met la bordure ICI pour qu'elle tourne */
+.coin-face {
+    position: absolute;
+    width: 100%; height: 100%;
+    top: 0; left: 0;
+    backface-visibility: hidden; 
+    -webkit-backface-visibility: hidden;
+    border-radius: 50%;
+    overflow: hidden;
+    
+    /* C'EST ICI QU'ON DÉPLACE LA BORDURE DORÉE */
+    border: 0.2rem solid var(--accent-color); 
+    background-color: var(--bg-color); /* Fond pour éviter la transparence */
+    
+    /* Important pour que la bordure soit incluse dans la taille */
+    box-sizing: border-box; 
+}
+
+.coin-face img { 
+    width: 100%; height: 100%; object-fit: cover; 
+    /* Petit correctif pour que l'image ne morde pas sur la bordure arrondie */
+    border-radius: 50%; 
+}
+
+/* 4. États initiaux */
+.coin-front { transform: rotateY(0deg); }
+.coin-back { transform: rotateY(180deg); }
+
+
+/* --- ANIMATIONS --- */
+
+/* On applique l'animation sur .coin (l'élément intérieur) */
+.coin.anim-to-back {
+    animation: flipToBack 1.5s ease-in-out forwards;
+}
+
+.coin.anim-to-front {
+    animation: flipToFront 1.5s ease-in-out forwards;
+}
+
+@keyframes flipToBack {
+    0% { transform: translateY(0) rotateY(0); }
+    50% { 
+        transform: translateY(-60px) rotateY(900deg) scale(1.1); 
+        box-shadow: 0 2rem 3rem rgba(0,0,0,0.15); /* L'ombre s'éloigne */
+    }
+    100% { 
+        transform: translateY(0) rotateY(180deg) scale(1); 
+    }
+}
+
+@keyframes flipToFront {
+    0% { transform: translateY(0) rotateY(180deg); }
+    50% { 
+        transform: translateY(-60px) rotateY(-720deg) scale(1.1); 
+        box-shadow: 0 2rem 3rem rgba(0,0,0,0.15);
+    }
+    100% { 
+        transform: translateY(0) rotateY(0deg) scale(1); 
+    }
+}
+
+@media screen and (max-width: 48em) {
     .header-content { flex-direction: column; gap: 1rem; padding: 1rem; }
     .main-nav ul { gap: 0.5rem; flex-wrap: wrap; justify-content: center; }
-    
-    /* FIX: On ne change pas le margin ici car hero-section prend 100dvh */
 }
