@@ -91,18 +91,22 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     // --- ANIMATION AU SCROLL (Améliorée) ---
+    // --- ANIMATION AU SCROLL (REJOUABLE) ---
     const observerOptions = {
         root: null,
         threshold: 0.15, // L'élément doit être visible à 15% pour déclencher
-        rootMargin: "0px 0px -50px 0px" // Décale un peu le point de déclenchement vers le haut
+        rootMargin: "0px 0px -50px 0px" 
     };
 
-    const observer = new IntersectionObserver((entries, observer) => {
+    const observer = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
             if (entry.isIntersecting) {
+                // Quand l'élément rentre dans l'écran : on lance l'anim
                 entry.target.classList.add('show');
-                // Une fois affiché, on arrête d'observer pour ne pas rejouer l'animation
-                observer.unobserve(entry.target);
+            } else {
+                // C'EST LA CLEF : Quand l'élément sort, on retire la classe.
+                // Comme ça, la prochaine fois qu'il rentre, l'anim se relance.
+                entry.target.classList.remove('show');
             }
         });
     }, observerOptions);
@@ -110,3 +114,28 @@ document.addEventListener("DOMContentLoaded", () => {
     const hiddenElements = document.querySelectorAll('.scroll-reveal');
     hiddenElements.forEach((el) => observer.observe(el));
 });
+
+// --- ANIMATION PIÈCE 3D CORRIGÉE ---
+    const coinTrigger = document.getElementById('coin-trigger'); // Le conteneur (zone de clic)
+    const coin = document.getElementById('myCoin'); // La pièce qui tourne
+    let isFlipped = false;
+
+    if (coinTrigger && coin) {
+        coinTrigger.addEventListener('click', () => {
+            // On nettoie les classes d'animation
+            coin.classList.remove('anim-to-back', 'anim-to-front');
+            
+            // Le trick pour redémarrer l'anim (Reflow)
+            void coin.offsetWidth;
+
+            if (!isFlipped) {
+                // Pile -> Face
+                coin.classList.add('anim-to-back');
+                isFlipped = true;
+            } else {
+                // Face -> Pile
+                coin.classList.add('anim-to-front');
+                isFlipped = false;
+            }
+        });
+    }
