@@ -1,111 +1,362 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>Armand Mulier | Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Italianno&display=swap" rel="stylesheet">
-    <link rel="apple-touch-icon" sizes="180x180" href="photos/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="photos/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="photos/favicon-16x16.png">
-    <link rel="manifest" href="photos/site.webmanifest">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <link rel="stylesheet" href="styleP.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Armand Mulier — Apprenti Ingénieur</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header class="glass-header">
-        <div class="header-content">
-            <div class="logo">Armand Mulier</div>
-            
-            <nav class="main-nav">
-                <ul>
-                    <li><a href="#about" class="nav-capsule" data-key="navAbout">À propos</a></li>
-                    <li><a href="realisations.html" class="nav-capsule" data-key="projet">Réalisations</a></li>
-                    <li><a href="photos/CV2025ArmandMulierPDF.pdf" download="CV_ARMAND_MULIER" class="nav-capsule special-capsule" data-key="cv">Mon CV</a></li>
-                </ul>
-            </nav>
 
-            <div class="header-tools">
-                <button id="language-switcher" class="tool-btn" data-key="language">English</button>
-                <button id="mode-toggle" class="tool-btn" title="Changer le mode">🌙</button>
-            </div>
+  <!-- Barre de progression lecture -->
+  <div id="progress" aria-hidden="true"></div>
+
+  <!-- ══ NAVIGATION ══ -->
+  <header id="site-header">
+    <div class="header-inner">
+      <a href="#" class="wordmark">Armand Mulier</a>
+      <nav>
+        <a href="#about">Profil</a>
+        <a href="#projects">Projets</a>
+        <a href="#skills">Compétences</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <a href="#contact" class="header-cta">Alternance Septembre 2026</a>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ══ HERO ══ -->
+    <section id="hero">
+      <div class="hero-eyebrow reveal">
+        <span class="dot"></span>
+        Apprenti Ingénieur ESIEE PARIS · Disponible en alternance
+      </div>
+
+      <h1 class="hero-title">
+        <span class="line reveal" data-delay="0">Armand</span>
+        <span class="line italic reveal" data-delay="1">Mulier.</span>
+      </h1>
+
+      <div class="hero-bottom">
+        <p class="hero-desc reveal" data-delay="2">
+          L2 Informatique, Université Gustave Eiffel.<br>
+          Je construis des choses qui fonctionnent vraiment.
+        </p>
+        <div class="hero-actions reveal" data-delay="3">
+          <a href="#projects" class="btn-primary">Voir les projets</a>
+          <a href="CVAM2026.pdf" download class="btn-ghost">Télécharger le CV</a>
         </div>
-    </header>
+      </div>
 
-    <main>
-        <section id="presentation" class="hero-section">
-            <div class="profile-container fade-in">
-                <div class="coin-container" id="coin-trigger">
-                    <div class="coin" id="myCoin">
-                        <div class="coin-face coin-front">
-                            <img src="photos/photoPerso.jpg" alt="Armand Face 1">
-                        </div>
-                        <div class="coin-face coin-back">
-                            <img src="photos/photoPerso2.jpg" alt="Armand Face 2">
-                        </div>
-                    </div>
+      <!-- Trait décoratif vertical -->
+      <div class="hero-rule reveal" data-delay="4" aria-hidden="true"></div>
+    </section>
+
+    <!-- ══ ABOUT ══ -->
+    <section id="about">
+      <div class="section-label reveal">
+        <span>01</span> Profil
+      </div>
+
+      <div class="about-layout">
+        <div class="about-headline">
+          <h2 class="reveal">Je finis ce que<br><em>je commence.</em></h2>
+        </div>
+
+        <div class="about-body">
+          <p class="lead reveal">
+            Bac général avec spécialités Mathématiques, NSI et Maths expertes. 
+            Aujourd'hui en cours de L2 Informatique, je travaille sur des sujets allant 
+            de la vérification d'arbres binaires en C à la théorie des automates.
+            Futur apprenti Ingénieur à l'ESIEE PARIS et en recherche d'alternance pour septembre 2026
+          </p>
+          <p class="reveal">
+            Quand je commence quelque chose, j'essaie d'aller jusqu'au bout — 
+            même si ça prend du temps. J'aime comprendre comment les choses 
+            fonctionnent, pas seulement les utiliser.
+          </p>
+          <p class="reveal">
+            À côté du code : cuisine, piano, photographie. 
+            Des pratiques qui demandent précision, patience et œil — 
+            exactement ce que je mets dans mes projets.
+          </p>
+
+          <!-- Encadré technique discret -->
+          <div class="code-aside reveal">
+            <div class="code-aside-label">en bref</div>
+<pre><code>formation  : L2 Informatique, Gustave Eiffel
+objectif   : Alternance — septembre 2026
+apprend    : vite, seul, en profondeur
+atout      : junior sans mauvaises habitudes</code></pre>
+          </div>
+        </div>
+
+        <div class="about-stats reveal">
+          <div class="stat">
+            <span class="stat-n">2</span>
+            <span class="stat-u">ans</span>
+            <span class="stat-l">d'études supérieures en informatique</span>
+          </div>
+          <div class="stat">
+            <span class="stat-n">5+</span>
+            <span class="stat-l">projets terminés, de zéro à livraison</span>
+          </div>
+          <div class="stat">
+            <span class="stat-n">Île-<br>de-France</span>
+            <span class="stat-l">disponible en présentiel et télétravail</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ PROJETS ══ -->
+    <section id="projects">
+      <div class="section-label reveal">
+        <span>02</span> Projets
+      </div>
+
+      <h2 class="section-title reveal">Ce que<br><em>j'ai construit.</em></h2>
+
+      <div class="projects-list">
+
+        <!-- PROJET A -->
+        <article class="project-item reveal">
+          <div class="project-header">
+            <div class="project-meta">
+              <span class="project-index">01</span>
+              <span class="project-type">C · Interface terminal · Algorithme</span>
+            </div>
+            <h3 class="project-name">Boggle Game</h3>
+          </div>
+          <div class="project-body">
+            <div class="project-description">
+              <p>
+                Jeu de lettres complet en C avec interface ncurses.
+                Grille 4×4 générée aléatoirement, dictionnaire trié par 
+                recherche dichotomique, validation des mots en temps réel.
+                Architecture en 12 fichiers C séparés par responsabilité.
+              </p>
+              <div class="project-detail-grid">
+                <div class="detail-col">
+                  <h4>Ce que j'ai fait</h4>
+                  <p>Structure de données dictionnaire en tableau trié + recherche binaire O(log n). Gestion des entrées clavier via ncurses. Séparation claire des modules.</p>
                 </div>
+                <div class="detail-col">
+                  <h4>Limites honnêtes</h4>
+                  <p>Pas de score persistant. Pas d'IA adverse. Site statique uniquement.</p>
+                </div>
+                <div class="detail-col">
+                  <h4>Ce que j'ajouterais</h4>
+                  <p>Mode multijoueur réseau avec sockets. Sauvegarde en base de données.</p>
+                </div>
+              </div>
             </div>
-            
-            <h1 class="main-title fade-in gradient-text">Armand Mulier</h1>
-            <h2 class="subtitle fade-in" data-key="sectionN0">Bienvenue sur mon portfolio</h2>
-            
-            <p class="intro-text fade-in" data-key="section0">Étudiant curieux et motivé. Mon CV et mes projets sont accessibles via le menu.</p>
+            <div class="project-tags">
+              <span>C</span><span>ncurses</span><span>Makefile</span><span>Recherche binaire</span><span>Gestion mémoire</span>
+            </div>
+          </div>
+        </article>
 
-            <div class="scroll-indicator fade-in">
-                <i class="fa-solid fa-chevron-down"></i>
+        <!-- PROJET B -->
+        <article class="project-item reveal">
+          <div class="project-header">
+            <div class="project-meta">
+              <span class="project-index">02</span>
+              <span class="project-type">Web · HTML/CSS/JS · Design</span>
             </div>
-        </section>
+            <h3 class="project-name">Portfolio Web</h3>
+          </div>
+          <div class="project-body">
+            <div class="project-description">
+              <p>
+                Portfolio web entièrement conçu et développé de zéro.
+                Galerie dynamique avec filtres, dark mode, traduction FR/EN,
+                animations CSS avancées et design responsive mobile-first.
+              </p>
+              <div class="project-detail-grid">
+                <div class="detail-col">
+                  <h4>Ce que j'ai fait</h4>
+                  <p>Architecture modulaire (6 fichiers). Filtres dynamiques avec rendu conditionnel. IntersectionObserver pour les animations. Persistance localStorage.</p>
+                </div>
+                <div class="detail-col">
+                  <h4>Limites honnêtes</h4>
+                  <p>Pas de framework JS. Pas de backend. Pas de CI/CD automatisé.</p>
+                </div>
+                <div class="detail-col">
+                  <h4>Ce que j'ajouterais</h4>
+                  <p>Migration React. Backend Node.js pour les données. Pipeline de déploiement.</p>
+                </div>
+              </div>
+            </div>
+            <div class="project-tags">
+              <span>HTML</span><span>CSS</span><span>JavaScript</span><span>DOM API</span><span>localStorage</span>
+            </div>
+          </div>
+        </article>
 
-        <section id="about" class="content-section scroll-reveal">
-            <div class="section-header">
-                <h2 data-key="sectionN2">Qui je suis</h2>
+        <!-- PROJET C — mis en valeur -->
+        <article class="project-item project-featured reveal">
+          <div class="project-header">
+            <div class="project-meta">
+              <span class="project-index">03</span>
+              <span class="project-type">Algorithmique · C · Python · Analyse</span>
             </div>
-            <div class="text-content">
-                <p data-key="section2">Je suis quelqu’un de curieux et motivé. J’aime apprendre de nouvelles choses, que ce soit à travers mes cours ou mes projets perso. Quand je commence quelque chose, j’essaie d’aller jusqu’au bout, même si ça prend du temps. J’aime bien comprendre comment les choses fonctionnent et me lancer des petits défis.</p>
-            </div>
-        </section>
+            <h3 class="project-name">Arbres Binaires<br>de Recherche</h3>
+          </div>
+          <div class="project-body">
+            <div class="project-description">
+              <p>
+                Projet allant au-delà de l'implémentation : vérification et génération d'ABR,
+                analyse de complexité formelle, benchmarking sur 10 000 arbres générés,
+                visualisations matplotlib et rapport complet avec preuves algorithmiques.
+              </p>
+              <div class="project-detail-grid">
+                <div class="detail-col">
+                  <h4>Ce que j'ai fait</h4>
+                  <p>Implémentation C de la vérification ABR en O(n). Scripts Python de génération et benchmarking. Figures matplotlib automatisées.</p>
+                </div>
+                <div class="detail-col">
+                  <h4>Ce qui m'a rendu fier</h4>
+                  <p>Passer de « ça marche » à « je prouve pourquoi ça marche en O(n) et pas O(n²) ».</p>
+                </div>
+              </div>
 
-         <section id="studies" class="content-section scroll-reveal">
-            <div class="section-header">
-                 <h2 data-key="sectionN1">Mes études</h2>
+              <!-- Snippet de code — discret, élégant -->
+              <div class="code-snippet">
+                <div class="code-snippet-label">vérification ABR — O(n)</div>
+<pre><code>bool is_bst(Node *n, int min, int max) {
+    if (!n) return true;
+    return n->val > min && n->val < max
+        && is_bst(n->left,  min,    n->val)
+        && is_bst(n->right, n->val, max);
+}</code></pre>
+              </div>
             </div>
-            <div class="text-content">
-                 <p data-key="section1">Je suis en première année de licence Maths/Info. J’ai eu un bac général avec les spécialités Maths, NSI et l’option Maths expertes. Aujourd’hui, j’étudie en région parisienne. J’aime ce que j’apprends, et j’essaie de progresser un peu chaque jour.</p>
+            <div class="project-tags">
+              <span>C</span><span>Python</span><span>Matplotlib</span><span>Complexité O(n)</span><span>Induction structurelle</span>
             </div>
-        </section>
+          </div>
+        </article>
 
-        <section id="hobbies" class="content-section scroll-reveal">
-            <div class="section-header">
-                <h2 data-key="sectionN3">Ce que j'aime faire</h2>
-            </div>
-            <div class="text-content">
-                <p data-key="section3">J’aime cuisiner, tester des recettes ou inventer des cocktails. Je passe aussi pas mal de temps sur des projets informatiques, à écouter de la musique ou à jouer du piano. La photo et la vidéo m’attirent beaucoup.</p>
-            </div>
-        </section>
+      </div>
+    </section>
 
-         <section id="contact-cta" class="scroll-reveal">
-            <div class="glass-card contact-card">
-                <h2 data-key="sectionN5">Contactez-moi</h2>
-                <p data-key="contactIntro">Un projet ? Une question ? N'hésitez pas.</p>
-                <a href="mailto:armand.mulier.pro@icloud.com" class="glass-button big-button">
-                    <i class="fas fa-paper-plane"></i> Envoyer un email
-                </a>
-            </div>
-        </section>
-    </main>
+    <!-- ══ COMPÉTENCES ══ -->
+    <section id="skills">
+      <div class="section-label reveal">
+        <span>03</span> Compétences
+      </div>
 
-    <footer>
-        <div class="footer-content">
-            <div class="footer-links">
-                <a href="mailto:armand.mulier.pro@icloud.com"><i class="fas fa-envelope"></i> armand.mulier.pro@icloud.com</a>
-                <a href="tel:+33633595499"><i class="fas fa-phone"></i> +33 6 33 59 54 99</a>
-            </div>
-            <p id="copyright">&copy; 2025 Armand Mulier.</p>
+      <h2 class="section-title reveal">Ce que<br><em>je maîtrise.</em></h2>
+
+      <div class="skills-layout">
+        <div class="skills-col reveal">
+          <h3>Langages</h3>
+          <ul class="skill-list">
+            <li><span class="skill-name">Python</span><span class="skill-bar"><span style="--w:75%"></span></span></li>
+            <li><span class="skill-name">C</span><span class="skill-bar"><span style="--w:65%"></span></span></li>
+            <li><span class="skill-name">JavaScript</span><span class="skill-bar"><span style="--w:55%"></span></span></li>
+            <li><span class="skill-name">SQL</span><span class="skill-bar"><span style="--w:50%"></span></span></li>
+            <li><span class="skill-name">HTML / CSS</span><span class="skill-bar"><span style="--w:75%"></span></span></li>
+          </ul>
         </div>
-    </footer>
+        <div class="skills-col reveal" style="transition-delay:.1s">
+          <h3>Théorie & Algorithmique</h3>
+          <ul class="skill-list">
+            <li><span class="skill-name">Structures de données</span><span class="skill-bar"><span style="--w:80%"></span></span></li>
+            <li><span class="skill-name">Complexité algorithmique</span><span class="skill-bar"><span style="--w:70%"></span></span></li>
+            <li><span class="skill-name">Automates & Langages</span><span class="skill-bar"><span style="--w:65%"></span></span></li>
+            <li><span class="skill-name">Induction structurelle</span><span class="skill-bar"><span style="--w:60%"></span></span></li>
+          </ul>
+        </div>
+        <div class="skills-col reveal" style="transition-delay:.2s">
+          <h3>Outils & Pratiques</h3>
+          <ul class="skill-list">
+            <li><span class="skill-name">Git / GitHub</span><span class="skill-bar"><span style="--w:65%"></span></span></li>
+            <li><span class="skill-name">Linux / Terminal</span><span class="skill-bar"><span style="--w:60%"></span></span></li>
+            <li><span class="skill-name">Matplotlib</span><span class="skill-bar"><span style="--w:50%"></span></span></li>
+            <li><span class="skill-name">Makefile / GCC</span><span class="skill-bar"><span style="--w:55%"></span></span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
 
-    <script src="scriptP.js"></script>
+    <!-- ══ GALERIE ══ -->
+    <section id="gallery">
+      <div class="section-label reveal">
+        <span>04</span> Ailleurs
+      </div>
+
+      <div class="gallery-intro">
+        <h2 class="reveal">Au-delà<br><em>du code.</em></h2>
+        <p class="reveal">
+          La cuisine apprend la précision. La photographie apprend à cadrer. 
+          Le piano apprend la patience. Ces pratiques forment la même logique 
+          que le développement — et je les emmène au travail.
+        </p>
+      </div>
+
+      <!-- Carrousel défilant -->
+      <div class="gallery-ribbon-wrap reveal">
+        <div class="gallery-ribbon" id="gallery-ribbon">
+          <!-- Les items sont injectés par JS pour la boucle infinie -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ CONTACT ══ -->
+    <section id="contact">
+      <div class="section-label reveal">
+        <span>05</span> Contact
+      </div>
+
+      <div class="contact-layout">
+        <div class="contact-left">
+          <h2 class="reveal">Travaillons<br><em>ensemble.</em></h2>
+          <p class="reveal">
+            Je cherche une alternance à partir de septembre 2025.
+            Motivé, curieux, et je lis les documentations en entier.
+          </p>
+        </div>
+
+        <div class="contact-right">
+          <div class="contact-item reveal">
+            <span class="contact-lbl">Email</span>
+            <a href="mailto:armand.mulier.pro@icloud.com" class="contact-val">
+              armand.mulier.pro@icloud.com
+            </a>
+          </div>
+          <div class="contact-item reveal" style="transition-delay:.08s">
+            <span class="contact-lbl">Téléphone</span>
+            <a href="tel:+33633595499" class="contact-val">+33 6 33 59 54 99</a>
+          </div>
+          <div class="contact-item reveal" style="transition-delay:.16s">
+            <span class="contact-lbl">Localisation</span>
+            <span class="contact-val muted">Île-de-France</span>
+          </div>
+          <div class="reveal" style="transition-delay:.24s; margin-top:2.5rem;">
+            <a href="mailto:armand.mulier.pro@icloud.com" class="btn-primary">
+              Envoyer un message
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ══ FOOTER ══ -->
+  <footer>
+    <span>© 2025 Armand Mulier</span>
+    <span>Disponible en alternance — Île-de-France</span>
+    <span>Conçu & développé à la main</span>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
