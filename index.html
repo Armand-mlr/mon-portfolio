@@ -8,6 +8,26 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <style>
+    /* ── Bouton langue ── */
+    #lang-toggle {
+      background: none;
+      border: 1px solid currentColor;
+      border-radius: 4px;
+      padding: 0.25rem 0.6rem;
+      font-family: inherit;
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      cursor: pointer;
+      color: inherit;
+      opacity: 0.65;
+      transition: opacity .2s;
+      margin-left: 0.75rem;
+      flex-shrink: 0;
+    }
+    #lang-toggle:hover { opacity: 1; }
+  </style>
 </head>
 <body>
 
@@ -19,12 +39,15 @@
     <div class="header-inner">
       <a href="#" class="wordmark">Armand Mulier</a>
       <nav>
-        <a href="#about">Profil</a>
-        <a href="#projects">Projets</a>
-        <a href="#skills">Compétences</a>
-        <a href="#contact">Contact</a>
+        <a href="#about"    data-i18n="nav_about">Profil</a>
+        <a href="#projects" data-i18n="nav_projects">Projets</a>
+        <a href="#skills"   data-i18n="nav_skills">Compétences</a>
+        <a href="#contact"  data-i18n="nav_contact">Contact</a>
       </nav>
-      <a href="#contact" class="header-cta">Alternance Septembre 2026</a>
+      <div style="display:flex;align-items:center;gap:.5rem">
+        <a href="#contact" class="header-cta" data-i18n="header_cta">Alternance Septembre 2026</a>
+        <button id="lang-toggle" aria-label="Switch language">EN</button>
+      </div>
     </div>
   </header>
 
@@ -34,7 +57,7 @@
     <section id="hero">
       <div class="hero-eyebrow reveal">
         <span class="dot"></span>
-        Apprenti Ingénieur ESIEE PARIS · Disponible en alternance
+        <span data-i18n="hero_eyebrow">Apprenti Ingénieur ESIEE PARIS · Disponible en alternance</span>
       </div>
 
       <h1 class="hero-title">
@@ -43,53 +66,51 @@
       </h1>
 
       <div class="hero-bottom">
-        <p class="hero-desc reveal" data-delay="2">
-          L2 Informatique, Université Gustave Eiffel.<br>
+        <p class="hero-desc reveal" data-delay="2" data-i18n="hero_desc">
+          L2 Informatique &amp; Applications, Université Gustave Eiffel.<br>
           Je construis des choses qui fonctionnent vraiment.
         </p>
         <div class="hero-actions reveal" data-delay="3">
-          <a href="#projects" class="btn-primary">Voir les projets</a>
-          <a href="photos/CVAM2026F.pdf" download class="btn-ghost">Télécharger le CV</a>
+          <a href="#projects" class="btn-primary" data-i18n="hero_btn_projects">Voir les projets</a>
+          <a href="photos/CVAM2026F.pdf" download class="btn-ghost" data-i18n="hero_btn_cv">Télécharger le CV</a>
         </div>
       </div>
 
-      <!-- Trait décoratif vertical -->
       <div class="hero-rule reveal" data-delay="4" aria-hidden="true"></div>
     </section>
 
     <!-- ══ ABOUT ══ -->
     <section id="about">
       <div class="section-label reveal">
-        <span>01</span> Profil
+        <span>01</span> <span data-i18n="nav_about">Profil</span>
       </div>
 
       <div class="about-layout">
         <div class="about-headline">
-          <h2 class="reveal">Je finis ce que<br><em>je commence.</em></h2>
+          <h2 class="reveal" data-i18n="about_headline">Je finis ce que<br><em>je commence.</em></h2>
         </div>
 
         <div class="about-body">
-          <p class="lead reveal">
-            Bac général avec spécialités Mathématiques, NSI et Maths expertes. 
-            Aujourd'hui en cours de L2 Informatique, je travaille sur des sujets allant 
+          <p class="lead reveal" data-i18n="about_lead">
+            Bac général avec spécialités Mathématiques, NSI et Maths expertes.
+            Aujourd'hui en L2 Informatique &amp; Applications, je travaille sur des sujets allant
             de la vérification d'arbres binaires en C à la théorie des automates.
-            Futur apprenti Ingénieur à l'ESIEE PARIS et en recherche d'alternance pour septembre 2026
+            Futur apprenti Ingénieur à l'ESIEE PARIS et en recherche d'alternance pour septembre 2026.
           </p>
-          <p class="reveal">
-            Quand je commence quelque chose, j'essaie d'aller jusqu'au bout — 
-            même si ça prend du temps. J'aime comprendre comment les choses 
+          <p class="reveal" data-i18n="about_p2">
+            Quand je commence quelque chose, j'essaie d'aller jusqu'au bout —
+            même si ça prend du temps. J'aime comprendre comment les choses
             fonctionnent, pas seulement les utiliser.
           </p>
-          <p class="reveal">
-            À côté du code : cuisine, piano, photographie. 
-            Des pratiques qui demandent précision, patience et œil — 
-            exactement ce que je mets dans mes projets.
+          <p class="reveal" data-i18n="about_p3">
+            À côté du code : cuisine, piano, plaisir à prendre des photos, DJing.
+            Des pratiques qui demandent chacune leur forme de patience et d'attention —
+            et qui, sans que j'y pense forcément, influencent la façon dont j'aborde un projet.
           </p>
 
-          <!-- Encadré technique discret -->
           <div class="code-aside reveal">
-            <div class="code-aside-label">en bref</div>
-<pre><code>formation  : L2 Informatique, Gustave Eiffel
+            <div class="code-aside-label" data-i18n="about_code_label">en bref</div>
+<pre><code data-i18n="about_code">formation  : L2 Informatique & Applications, Gustave Eiffel
 objectif   : Alternance — septembre 2026
 apprend    : vite, seul, en profondeur
 atout      : junior sans mauvaises habitudes</code></pre>
@@ -99,16 +120,16 @@ atout      : junior sans mauvaises habitudes</code></pre>
         <div class="about-stats reveal">
           <div class="stat">
             <span class="stat-n">2</span>
-            <span class="stat-u">ans</span>
-            <span class="stat-l">d'études supérieures en informatique</span>
+            <span class="stat-u" data-i18n="stat_years_unit">ans</span>
+            <span class="stat-l" data-i18n="stat_years_label">d'études supérieures en informatique</span>
           </div>
           <div class="stat">
             <span class="stat-n">5+</span>
-            <span class="stat-l">projets terminés, de zéro à livraison</span>
+            <span class="stat-l" data-i18n="stat_projects_label">projets terminés, de zéro à livraison</span>
           </div>
           <div class="stat">
             <span class="stat-n">Île-<br>de-France</span>
-            <span class="stat-l">disponible en présentiel et télétravail</span>
+            <span class="stat-l" data-i18n="stat_location_label">disponible en présentiel et télétravail</span>
           </div>
         </div>
       </div>
@@ -117,10 +138,10 @@ atout      : junior sans mauvaises habitudes</code></pre>
     <!-- ══ PROJETS ══ -->
     <section id="projects">
       <div class="section-label reveal">
-        <span>02</span> Projets
+        <span>02</span> <span data-i18n="nav_projects">Projets</span>
       </div>
 
-      <h2 class="section-title reveal">Ce que<br><em>j'ai construit.</em></h2>
+      <h2 class="section-title reveal" data-i18n="projects_title">Ce que<br><em>j'ai construit.</em></h2>
 
       <div class="projects-list">
 
@@ -129,35 +150,34 @@ atout      : junior sans mauvaises habitudes</code></pre>
           <div class="project-header">
             <div class="project-meta">
               <span class="project-index">01</span>
-              <span class="project-type">C · Interface terminal · Algorithme</span>
+              <span class="project-type">C · <span data-i18n="p1_type">Structures de données · Analyse</span></span>
             </div>
-            <h3 class="project-name">Boggle Game</h3>
+            <h3 class="project-name" data-i18n="p1_name">Comparaison de<br>Structures de Données</h3>
           </div>
           <div class="project-body">
             <div class="project-description">
-              <p>
-                Jeu de lettres complet en C avec interface ncurses.
-                Grille 4×4 générée aléatoirement, dictionnaire trié par 
-                recherche dichotomique, validation des mots en temps réel.
-                Architecture en 12 fichiers C séparés par responsabilité.
+              <p data-i18n="p1_desc">
+                Étude comparative en C de plusieurs structures de données : tableaux statiques,
+                tableaux dynamiques et listes chaînées. Implémentation complète de chaque structure,
+                mesure expérimentale des performances, et analyse des compromis selon les cas d'usage.
               </p>
               <div class="project-detail-grid">
                 <div class="detail-col">
-                  <h4>Ce que j'ai fait</h4>
-                  <p>Structure de données dictionnaire en tableau trié + recherche binaire O(log n). Gestion des entrées clavier via ncurses. Séparation claire des modules.</p>
+                  <h4 data-i18n="col_did">Ce que j'ai fait</h4>
+                  <p data-i18n="p1_did">Implémentation rigoureuse des trois structures. Protocole de benchmark reproductible. Comparaison des coûts d'insertion, suppression et accès selon la taille des données.</p>
                 </div>
                 <div class="detail-col">
-                  <h4>Limites honnêtes</h4>
-                  <p>Pas de score persistant. Pas d'IA adverse. Site statique uniquement.</p>
+                  <h4 data-i18n="col_limits">Limites honnêtes</h4>
+                  <p data-i18n="p1_limits">Tests limités à des jeux de données synthétiques. Pas de benchmarks multi-threadés.</p>
                 </div>
                 <div class="detail-col">
-                  <h4>Ce que j'ajouterais</h4>
-                  <p>Mode multijoueur réseau avec sockets. Sauvegarde en base de données.</p>
+                  <h4 data-i18n="col_would">Ce que j'ajouterais</h4>
+                  <p data-i18n="p1_would">Intégration d'arbres et de tables de hachage pour un panorama plus complet. Visualisation des résultats via matplotlib.</p>
                 </div>
               </div>
             </div>
             <div class="project-tags">
-              <span>C</span><span>ncurses</span><span>Makefile</span><span>Recherche binaire</span><span>Gestion mémoire</span>
+              <span>C</span><span data-i18n="tag_dynarray">Tableaux dynamiques</span><span data-i18n="tag_linkedlist">Listes chaînées</span><span data-i18n="tag_memory">Gestion mémoire</span><span>Benchmarking</span>
             </div>
           </div>
         </article>
@@ -169,27 +189,27 @@ atout      : junior sans mauvaises habitudes</code></pre>
               <span class="project-index">02</span>
               <span class="project-type">Web · HTML/CSS/JS · Design</span>
             </div>
-            <h3 class="project-name">Portfolio Web</h3>
+            <h3 class="project-name" data-i18n="p2_name">Portfolio Web</h3>
           </div>
           <div class="project-body">
             <div class="project-description">
-              <p>
+              <p data-i18n="p2_desc">
                 Portfolio web entièrement conçu et développé de zéro.
                 Galerie dynamique avec filtres, dark mode, traduction FR/EN,
                 animations CSS avancées et design responsive mobile-first.
               </p>
               <div class="project-detail-grid">
                 <div class="detail-col">
-                  <h4>Ce que j'ai fait</h4>
-                  <p>Architecture modulaire (6 fichiers). Filtres dynamiques avec rendu conditionnel. IntersectionObserver pour les animations. Persistance localStorage.</p>
+                  <h4 data-i18n="col_did">Ce que j'ai fait</h4>
+                  <p data-i18n="p2_did">Architecture modulaire (6 fichiers). Filtres dynamiques avec rendu conditionnel. IntersectionObserver pour les animations. Persistance localStorage.</p>
                 </div>
                 <div class="detail-col">
-                  <h4>Limites honnêtes</h4>
-                  <p>Pas de framework JS. Pas de backend. Pas de CI/CD automatisé.</p>
+                  <h4 data-i18n="col_limits">Limites honnêtes</h4>
+                  <p data-i18n="p2_limits">Pas de framework JS. Pas de backend. Pas de CI/CD automatisé.</p>
                 </div>
                 <div class="detail-col">
-                  <h4>Ce que j'ajouterais</h4>
-                  <p>Migration React. Backend Node.js pour les données. Pipeline de déploiement.</p>
+                  <h4 data-i18n="col_would">Ce que j'ajouterais</h4>
+                  <p data-i18n="p2_would">Migration React. Backend Node.js pour les données. Pipeline de déploiement.</p>
                 </div>
               </div>
             </div>
@@ -204,41 +224,83 @@ atout      : junior sans mauvaises habitudes</code></pre>
           <div class="project-header">
             <div class="project-meta">
               <span class="project-index">03</span>
-              <span class="project-type">Algorithmique · C · Python · Analyse</span>
+              <span class="project-type">Web · Flask · PostgreSQL · <span data-i18n="p3_type">Base de données</span></span>
             </div>
-            <h3 class="project-name">Arbres Binaires<br>de Recherche</h3>
+            <h3 class="project-name" data-i18n="p3_name">Application Web<br>SPA — Refuges</h3>
           </div>
           <div class="project-body">
             <div class="project-description">
-              <p>
-                Projet allant au-delà de l'implémentation : vérification et génération d'ABR,
-                analyse de complexité formelle, benchmarking sur 10 000 arbres générés,
-                visualisations matplotlib et rapport complet avec preuves algorithmiques.
+              <p data-i18n="p3_desc">
+                Conception et développement complet d'une application web pour la gestion des refuges
+                de la SPA. Du schéma entité-association jusqu'au site fonctionnel : modélisation,
+                implémentation PostgreSQL, et interface Flask permettant aux employés de gérer
+                les animaux, les soins et les transferts entre refuges.
               </p>
               <div class="project-detail-grid">
                 <div class="detail-col">
-                  <h4>Ce que j'ai fait</h4>
-                  <p>Implémentation C de la vérification ABR en O(n). Scripts Python de génération et benchmarking. Figures matplotlib automatisées.</p>
+                  <h4 data-i18n="col_did">Ce que j'ai fait</h4>
+                  <p data-i18n="p3_did">Modélisation relationnelle complète sous PostgreSQL. Interface employé sécurisée (login/mot de passe). Fonctionnalités CRUD : ajout de pensionnaires, saisie de soins, transferts. Suivi des vaccins avec génération de listes de rappel.</p>
                 </div>
                 <div class="detail-col">
-                  <h4>Ce qui m'a rendu fier</h4>
-                  <p>Passer de « ça marche » à « je prouve pourquoi ça marche en O(n) et pas O(n²) ».</p>
+                  <h4 data-i18n="col_learned">Ce qui m'a appris le plus</h4>
+                  <p data-i18n="p3_learned">Garantir l'intégrité des données au niveau de la base (contraintes, clés étrangères) et non seulement au niveau applicatif. Dissocier la logique métier des vues Flask.</p>
                 </div>
               </div>
-
-              <!-- Snippet de code — discret, élégant -->
               <div class="code-snippet">
-                <div class="code-snippet-label">vérification ABR — O(n)</div>
+                <div class="code-snippet-label" data-i18n="p3_snippet_label">vaccins à rappeler — requête SQL</div>
+<pre><code>SELECT a.nom, a.espece, s.date_soin, s.type_soin
+FROM animal a
+JOIN soin s ON a.id_animal = s.id_animal
+WHERE s.type_soin = 'vaccin'
+  AND s.date_soin &lt; NOW() - INTERVAL '1 year'
+ORDER BY s.date_soin ASC;</code></pre>
+              </div>
+            </div>
+            <div class="project-tags">
+              <span>Python</span><span>Flask</span><span>PostgreSQL</span><span>psycopg2</span><span>SQL</span><span data-i18n="tag_db">Modélisation BDD</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- PROJET D -->
+        <article class="project-item reveal">
+          <div class="project-header">
+            <div class="project-meta">
+              <span class="project-index">04</span>
+              <span class="project-type">Algorithmique · C · Python · <span data-i18n="p4_type">Analyse</span></span>
+            </div>
+            <h3 class="project-name" data-i18n="p4_name">Arbres Binaires<br>de Recherche</h3>
+          </div>
+          <div class="project-body">
+            <div class="project-description">
+              <p data-i18n="p4_desc">
+                Projet allant au-delà de l'implémentation : vérification et génération d'ABR,
+                analyse de complexité formelle, benchmarking sur des milliers d'arbres générés
+                (presque complets, filiformes, quelconques), visualisations matplotlib
+                et rapport complet avec preuves algorithmiques.
+              </p>
+              <div class="project-detail-grid">
+                <div class="detail-col">
+                  <h4 data-i18n="col_did">Ce que j'ai fait</h4>
+                  <p data-i18n="p4_did">Trois méthodes de vérification en C (naïve, définition optimisée, parcours infixe). Génération aléatoire d'arbres selon leur morphologie. Scripts Python de benchmarking et figures matplotlib automatisées.</p>
+                </div>
+                <div class="detail-col">
+                  <h4 data-i18n="col_proud">Ce qui m'a rendu fier</h4>
+                  <p data-i18n="p4_proud">Passer de « ça marche » à « je prouve pourquoi ça marche en O(n) et pas O(n²) », et confronter les complexités théoriques aux mesures expérimentales.</p>
+                </div>
+              </div>
+              <div class="code-snippet">
+                <div class="code-snippet-label" data-i18n="p4_snippet_label">vérification ABR — O(n)</div>
 <pre><code>bool is_bst(Node *n, int min, int max) {
     if (!n) return true;
-    return n->val > min && n->val < max
-        && is_bst(n->left,  min,    n->val)
-        && is_bst(n->right, n->val, max);
+    return n->val &gt; min &amp;&amp; n->val &lt; max
+        &amp;&amp; is_bst(n->left,  min,    n->val)
+        &amp;&amp; is_bst(n->right, n->val, max);
 }</code></pre>
               </div>
             </div>
             <div class="project-tags">
-              <span>C</span><span>Python</span><span>Matplotlib</span><span>Complexité O(n)</span><span>Induction structurelle</span>
+              <span>C</span><span>Python</span><span>Matplotlib</span><span>Complexité O(n)</span><span data-i18n="tag_induction">Induction structurelle</span>
             </div>
           </div>
         </article>
@@ -249,14 +311,14 @@ atout      : junior sans mauvaises habitudes</code></pre>
     <!-- ══ COMPÉTENCES ══ -->
     <section id="skills">
       <div class="section-label reveal">
-        <span>03</span> Compétences
+        <span>03</span> <span data-i18n="nav_skills">Compétences</span>
       </div>
 
-      <h2 class="section-title reveal">Ce que<br><em>je maîtrise.</em></h2>
+      <h2 class="section-title reveal" data-i18n="skills_title">Ce que<br><em>je maîtrise.</em></h2>
 
       <div class="skills-layout">
         <div class="skills-col reveal">
-          <h3>Langages</h3>
+          <h3 data-i18n="skills_languages">Langages</h3>
           <ul class="skill-list">
             <li><span class="skill-name">Python</span><span class="skill-bar"><span style="--w:75%"></span></span></li>
             <li><span class="skill-name">C</span><span class="skill-bar"><span style="--w:65%"></span></span></li>
@@ -266,21 +328,28 @@ atout      : junior sans mauvaises habitudes</code></pre>
           </ul>
         </div>
         <div class="skills-col reveal" style="transition-delay:.1s">
-          <h3>Théorie & Algorithmique</h3>
+          <h3 data-i18n="skills_theory">Théorie &amp; Algorithmique</h3>
           <ul class="skill-list">
-            <li><span class="skill-name">Structures de données</span><span class="skill-bar"><span style="--w:80%"></span></span></li>
-            <li><span class="skill-name">Complexité algorithmique</span><span class="skill-bar"><span style="--w:70%"></span></span></li>
-            <li><span class="skill-name">Automates & Langages</span><span class="skill-bar"><span style="--w:65%"></span></span></li>
-            <li><span class="skill-name">Induction structurelle</span><span class="skill-bar"><span style="--w:60%"></span></span></li>
+            <li><span class="skill-name" data-i18n="sk_ds">Structures de données</span><span class="skill-bar"><span style="--w:80%"></span></span></li>
+            <li><span class="skill-name" data-i18n="sk_complexity">Complexité algorithmique</span><span class="skill-bar"><span style="--w:70%"></span></span></li>
+            <li><span class="skill-name" data-i18n="sk_automata">Automates &amp; Langages</span><span class="skill-bar"><span style="--w:65%"></span></span></li>
+            <li><span class="skill-name" data-i18n="sk_induction">Induction structurelle</span><span class="skill-bar"><span style="--w:60%"></span></span></li>
           </ul>
         </div>
         <div class="skills-col reveal" style="transition-delay:.2s">
-          <h3>Outils & Pratiques</h3>
+          <h3 data-i18n="skills_tools">Outils &amp; Pratiques</h3>
           <ul class="skill-list">
             <li><span class="skill-name">Git / GitHub</span><span class="skill-bar"><span style="--w:65%"></span></span></li>
             <li><span class="skill-name">Linux / Terminal</span><span class="skill-bar"><span style="--w:60%"></span></span></li>
             <li><span class="skill-name">Matplotlib</span><span class="skill-bar"><span style="--w:50%"></span></span></li>
             <li><span class="skill-name">Makefile / GCC</span><span class="skill-bar"><span style="--w:55%"></span></span></li>
+          </ul>
+        </div>
+        <div class="skills-col reveal" style="transition-delay:.3s">
+          <h3 data-i18n="skills_lang_spoken">Langues</h3>
+          <ul class="skill-list">
+            <li><span class="skill-name" data-i18n="sk_english">Anglais</span><span class="skill-bar"><span style="--w:80%"></span></span></li>
+            <li><span class="skill-name" data-i18n="sk_spanish">Espagnol</span><span class="skill-bar"><span style="--w:35%"></span></span></li>
           </ul>
         </div>
       </div>
@@ -289,58 +358,56 @@ atout      : junior sans mauvaises habitudes</code></pre>
     <!-- ══ GALERIE ══ -->
     <section id="gallery">
       <div class="section-label reveal">
-        <span>04</span> Ailleurs
+        <span>04</span> <span data-i18n="gallery_label">Ailleurs</span>
       </div>
 
       <div class="gallery-intro">
-        <h2 class="reveal">Au-delà<br><em>du code.</em></h2>
-        <p class="reveal">
-          La cuisine apprend la précision. La photographie apprend à cadrer. 
-          Le piano apprend la patience. Ces pratiques forment la même logique 
+        <h2 class="reveal" data-i18n="gallery_title">Au-delà<br><em>du code.</em></h2>
+        <p class="reveal" data-i18n="gallery_desc">
+          La cuisine apprend la précision. Prendre des photos apprend à cadrer.
+          Le piano apprend la patience. Ces pratiques forment la même logique
           que le développement — et je les emmène au travail.
         </p>
       </div>
 
-      <!-- Carrousel défilant -->
       <div class="gallery-ribbon-wrap reveal">
-        <div class="gallery-ribbon" id="gallery-ribbon">
-          <!-- Les items sont injectés par JS pour la boucle infinie -->
-        </div>
+        <div class="gallery-ribbon" id="gallery-ribbon"></div>
       </div>
     </section>
 
     <!-- ══ CONTACT ══ -->
     <section id="contact">
       <div class="section-label reveal">
-        <span>05</span> Contact
+        <span>05</span> <span data-i18n="nav_contact">Contact</span>
       </div>
 
       <div class="contact-layout">
         <div class="contact-left">
-          <h2 class="reveal">Travaillons<br><em>ensemble.</em></h2>
-          <p class="reveal">
-            Je cherche une alternance à partir de septembre 2025.
-            Motivé, curieux, et je lis les documentations en entier.
+          <h2 class="reveal" data-i18n="contact_title">Travaillons<br><em>ensemble.</em></h2>
+          <p class="reveal" data-i18n="contact_desc">
+            Je cherche une alternance à partir de septembre 2026.
+            Quelqu'un qui comprend vite, pose les bonnes questions,
+            et ne lâche pas un problème avant de l'avoir résolu.
           </p>
         </div>
 
         <div class="contact-right">
           <div class="contact-item reveal">
-            <span class="contact-lbl">Email</span>
+            <span class="contact-lbl" data-i18n="contact_email_label">Email</span>
             <a href="mailto:armand.mulier.pro@icloud.com" class="contact-val">
               armand.mulier.pro@icloud.com
             </a>
           </div>
           <div class="contact-item reveal" style="transition-delay:.08s">
-            <span class="contact-lbl">Téléphone</span>
+            <span class="contact-lbl" data-i18n="contact_phone_label">Téléphone</span>
             <a href="tel:+33633595499" class="contact-val">+33 6 33 59 54 99</a>
           </div>
           <div class="contact-item reveal" style="transition-delay:.16s">
-            <span class="contact-lbl">Localisation</span>
+            <span class="contact-lbl" data-i18n="contact_location_label">Localisation</span>
             <span class="contact-val muted">Île-de-France</span>
           </div>
           <div class="reveal" style="transition-delay:.24s; margin-top:2.5rem;">
-            <a href="mailto:armand.mulier.pro@icloud.com" class="btn-primary">
+            <a href="mailto:armand.mulier.pro@icloud.com" class="btn-primary" data-i18n="contact_btn">
               Envoyer un message
             </a>
           </div>
@@ -352,9 +419,8 @@ atout      : junior sans mauvaises habitudes</code></pre>
 
   <!-- ══ FOOTER ══ -->
   <footer>
-    <span>© 2025 Armand Mulier</span>
-    <span>Disponible en alternance — Île-de-France</span>
-    <span>Conçu & développé à la main</span>
+    <span>© 2026 Armand Mulier</span>
+    <span data-i18n="footer_avail">Disponible en alternance — Île-de-France</span>
   </footer>
 
   <script src="script.js"></script>
