@@ -8,28 +8,11 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
-  <style>
-    /* ── Bouton langue ── */
-    #lang-toggle {
-      background: none;
-      border: 1px solid currentColor;
-      border-radius: 4px;
-      padding: 0.25rem 0.6rem;
-      font-family: inherit;
-      font-size: 0.78rem;
-      font-weight: 500;
-      letter-spacing: 0.06em;
-      cursor: pointer;
-      color: inherit;
-      opacity: 0.65;
-      transition: opacity .2s;
-      margin-left: 0.75rem;
-      flex-shrink: 0;
-    }
-    #lang-toggle:hover { opacity: 1; }
-  </style>
 </head>
 <body>
+
+  <!-- Curseur personnalisé (caché sur touch via CSS) -->
+  <div id="cursor" aria-hidden="true"></div>
 
   <!-- Barre de progression lecture -->
   <div id="progress" aria-hidden="true"></div>
@@ -38,13 +21,16 @@
   <header id="site-header">
     <div class="header-inner">
       <a href="#" class="wordmark">Armand Mulier</a>
+
       <nav>
         <a href="#about"    data-i18n="nav_about">Profil</a>
         <a href="#projects" data-i18n="nav_projects">Projets</a>
         <a href="#skills"   data-i18n="nav_skills">Compétences</a>
         <a href="#contact"  data-i18n="nav_contact">Contact</a>
       </nav>
-      <div style="display:flex;align-items:center;gap:.5rem">
+
+      <!-- Groupe droite : CTA (caché sur mobile) + bouton langue -->
+      <div class="header-right">
         <a href="#contact" class="header-cta" data-i18n="header_cta">Alternance Septembre 2026</a>
         <button id="lang-toggle" aria-label="Switch language">EN</button>
       </div>
@@ -145,7 +131,7 @@ atout      : junior sans mauvaises habitudes</code></pre>
 
       <div class="projects-list">
 
-        <!-- PROJET A -->
+        <!-- PROJET 01 -->
         <article class="project-item reveal">
           <div class="project-header">
             <div class="project-meta">
@@ -177,12 +163,16 @@ atout      : junior sans mauvaises habitudes</code></pre>
               </div>
             </div>
             <div class="project-tags">
-              <span>C</span><span data-i18n="tag_dynarray">Tableaux dynamiques</span><span data-i18n="tag_linkedlist">Listes chaînées</span><span data-i18n="tag_memory">Gestion mémoire</span><span>Benchmarking</span>
+              <span>C</span>
+              <span data-i18n="tag_dynarray">Tableaux dynamiques</span>
+              <span data-i18n="tag_linkedlist">Listes chaînées</span>
+              <span data-i18n="tag_memory">Gestion mémoire</span>
+              <span>Benchmarking</span>
             </div>
           </div>
         </article>
 
-        <!-- PROJET B -->
+        <!-- PROJET 02 -->
         <article class="project-item reveal">
           <div class="project-header">
             <div class="project-meta">
@@ -219,8 +209,8 @@ atout      : junior sans mauvaises habitudes</code></pre>
           </div>
         </article>
 
-        <!-- PROJET C — mis en valeur -->
-        <article class="project-item project-featured reveal">
+        <!-- PROJET 03 -->
+        <article class="project-item reveal">
           <div class="project-header">
             <div class="project-meta">
               <span class="project-index">03</span>
@@ -257,12 +247,13 @@ ORDER BY s.date_soin ASC;</code></pre>
               </div>
             </div>
             <div class="project-tags">
-              <span>Python</span><span>Flask</span><span>PostgreSQL</span><span>psycopg2</span><span>SQL</span><span data-i18n="tag_db">Modélisation BDD</span>
+              <span>Python</span><span>Flask</span><span>PostgreSQL</span><span>psycopg2</span><span>SQL</span>
+              <span data-i18n="tag_db">Modélisation BDD</span>
             </div>
           </div>
         </article>
 
-        <!-- PROJET D -->
+        <!-- PROJET 04 -->
         <article class="project-item reveal">
           <div class="project-header">
             <div class="project-meta">
@@ -300,7 +291,8 @@ ORDER BY s.date_soin ASC;</code></pre>
               </div>
             </div>
             <div class="project-tags">
-              <span>C</span><span>Python</span><span>Matplotlib</span><span>Complexité O(n)</span><span data-i18n="tag_induction">Induction structurelle</span>
+              <span>C</span><span>Python</span><span>Matplotlib</span><span>Complexité O(n)</span>
+              <span data-i18n="tag_induction">Induction structurelle</span>
             </div>
           </div>
         </article>
