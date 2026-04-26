@@ -296,6 +296,57 @@ ORDER BY s.date_soin ASC;</code></pre>
             </div>
           </div>
         </article>
+        
+        <article class="project-item reveal">
+          <div class="project-header">
+            <div class="project-meta">
+              <span class="project-index">05</span>
+              <span class="project-type">Web · React · API REST · <span data-i18n="p5_type">Data Visualization</span></span>
+            </div>
+            <h3 class="project-name" data-i18n="p5_name">Dashboard<br>Crypto-Explorer</h3>
+          </div>
+          <div class="project-body">
+            <div class="project-description">
+              <p data-i18n="p5_desc">
+                Application front-end de visualisation de données financières en temps réel.
+                Consommation de l'API REST publique CoinGecko pour le suivi de dizaines d'actifs, 
+                gestion des états asynchrones et affichage de graphiques interactifs (historiques de prix et volumes).
+              </p>
+              <div class="project-detail-grid">
+                <div class="detail-col">
+                  <h4 data-i18n="col_did">Ce que j'ai fait</h4>
+                  <p data-i18n="p5_did">Développement de l'interface dynamique (SPA) mobile-first avec Tailwind CSS. Gestion de l'état et de l'asynchronisme via les Hooks React. Intégration de la librairie Chart.js pour le rendu visuel des données.</p>
+                </div>
+                <div class="detail-col">
+                  <h4 data-i18n="col_learned">Ce qui m'a appris le plus</h4>
+                  <p data-i18n="p5_learned">Comprendre le cycle de vie des composants pour éviter les re-rendus inutiles et gérer proprement les appels asynchrones face aux limites de requêtes (Rate Limits) d'une API.</p>
+                </div>
+              </div>
+              
+              <div class="code-snippet">
+                <div class="code-snippet-label" data-i18n="p5_snippet_label">actualisation asynchrone — react hook</div>
+<pre><code>useEffect(() => {
+    const fetchCryptoData = async () => {
+        try {
+            const response = await axios.get(API_URL);
+            setCryptoList(response.data);
+        } catch (error) {
+            console.error("Erreur API:", error);
+        }
+    };
+    
+    fetchCryptoData();
+    const interval = setInterval(fetchCryptoData, 60000); // maj auto
+    return () => clearInterval(interval);
+}, []);</code></pre>
+              </div>
+            </div>
+            <div class="project-tags">
+              <span>React</span><span>JavaScript</span><span>Tailwind CSS</span><span>Axios</span><span>Chart.js</span>
+              <span data-i18n="tag_api">API REST</span>
+            </div>
+          </div>
+        </article>
 
       </div>
     </section>
