@@ -1,330 +1,378 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" class="no-js">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Armand Mulier — Apprenti Ingénieur</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0A1518">
+  <title>Armand Mulier | Apprenti Ingénieur</title>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..700&family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..800;1,6..96,400..800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+
+  <!-- Décide avant le premier rendu : intro complète, courte, ou aucune -->
+  <script>
+    (function () {
+      var d = document.documentElement;
+      d.classList.remove('no-js'); d.classList.add('js');
+      var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (reduce) { d.classList.add('reduced'); return; }
+      if (location.hash || window.scrollY > 40) return;
+      var mode = 'full';
+      try {
+        var seen = +localStorage.getItem('am-intro-v3');
+        if (seen && Date.now() - seen < 1000 * 60 * 20) mode = 'short';
+      } catch (e) {}
+      d.classList.add('intro-pending');
+      d.dataset.intro = mode;
+      // filet de sécurité si le script principal ne démarre pas
+      setTimeout(function () { if (!window.__amIntro) d.classList.remove('intro-pending'); }, 3500);
+    })();
+  </script>
 </head>
 <body>
 
-  <!-- Curseur personnalisé (caché sur touch via CSS) -->
-  <div id="cursor" aria-hidden="true"></div>
+  <a class="skip-link" href="#about" data-i18n="skip_content">Aller au contenu</a>
 
-  <!-- Barre de progression lecture -->
-  <div id="progress" aria-hidden="true"></div>
+  <!-- Curseur : un point de lumière -->
+  <div id="cursor" aria-hidden="true"><span class="c-ring-w"><span class="c-ring"></span></span><span class="c-dot"></span></div>
 
-  <!-- ══ NAVIGATION ══ -->
-  <header id="site-header">
-    <div class="header-inner">
-      <a href="#" class="wordmark">Armand Mulier</a>
-
-      <nav>
-        <a href="#about"    data-i18n="nav_about">Profil</a>
-        <a href="#projects" data-i18n="nav_projects">Projets</a>
-        <a href="#skills"   data-i18n="nav_skills">Compétences</a>
-        <a href="#contact"  data-i18n="nav_contact">Contact</a>
-      </nav>
-
-      <!-- Groupe droite : CTA (caché sur mobile) + bouton langue -->
-      <div class="header-right">
-        <a href="#contact" class="header-cta" data-i18n="header_cta">Alternance Septembre 2026</a>
-        <button id="lang-toggle" aria-label="Switch language">EN</button>
+  <!-- L'objet : une seule couche fixe, traversée par tout le site -->
+  <div id="rig" aria-hidden="true">
+    <div class="rig-wash"></div>
+    <div class="rig-glow"></div>
+    <div class="platter">
+      <svg class="platter-draw" viewBox="0 0 200 200"><circle cx="100" cy="100" r="99" pathLength="100"/></svg>
+      <div class="platter-metal"></div>
+      <div class="platter-sheen"></div>
+      <svg class="orbit" viewBox="0 0 200 200">
+        <defs><path id="orbit-path" d="M100,100 m-88,0 a88,88 0 1,1 176,0 a88,88 0 1,1 -176,0"/></defs>
+        <text><textPath href="#orbit-path" class="orbit-text"></textPath></text>
+      </svg>
+    </div>
+    <div id="disc">
+      <div class="disc-shadow"></div>
+      <div class="disc-spin">
+        <div class="disc-grooves"></div>
+        <div class="disc-label">
+          <div class="label-core"></div>
+          <img class="label-img" data-ch="0" src="photos/fraisier.jpg" alt="" decoding="async">
+          <img class="label-img" data-ch="1" src="photos/portrait2.jpg" alt="" decoding="async">
+          <img class="label-img" data-ch="2" src="photos/mer.jpg" alt="" decoding="async">
+          <span class="label-hole"></span>
+        </div>
       </div>
+      <div class="disc-sheen"></div>
+      <div class="disc-iris"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+      <div class="disc-rim"></div>
+    </div>
+    <div class="arm">
+      <span class="arm-bar"></span>
+      <span class="arm-head"></span>
+      <span class="arm-pivot"></span>
+    </div>
+    <span class="rig-point"></span>
+    <div class="rig-wipe"></div>
+  </div>
+
+  <!-- Séquence d'ouverture : un point, deux cercles, puis l'objet -->
+  <div id="intro" aria-hidden="true">
+    <svg class="intro-rings" viewBox="0 0 200 200">
+      <circle class="ir ir-1" cx="100" cy="100" r="60" pathLength="100"/>
+      <circle class="ir ir-2" cx="100" cy="100" r="78" pathLength="100"/>
+      <circle class="ir ir-3" cx="100" cy="100" r="96" pathLength="100"/>
+    </svg>
+    <span class="intro-point"></span>
+    <span class="intro-sweep"></span>
+    <button class="intro-skip" type="button" data-i18n="intro_skip">Passer</button>
+  </div>
+
+  <!-- ══ EN-TÊTE ══ -->
+  <header id="site-header" data-tone="dark">
+    <a href="#top" class="wordmark">Armand Mulier</a>
+
+    <nav class="nav" aria-label="Sections">
+      <a href="#about"     data-sec="about"><span data-i18n="nav_about">Profil</span></a>
+      <a href="#projects"  data-sec="projects"><span data-i18n="nav_projects">Projets</span></a>
+      <a href="#skills"    data-sec="skills"><span data-i18n="nav_skills">Compétences</span></a>
+      <a href="#interests" data-sec="interests"><span data-i18n="gallery_label">Ailleurs</span></a>
+      <a href="#contact"   data-sec="contact"><span data-i18n="nav_contact">Contact</span></a>
+    </nav>
+
+    <div class="header-right">
+      <a href="#contact" class="header-cta" data-i18n="header_cta">Alternance Septembre 2026</a>
+      <button id="lang-toggle" class="switch" type="button" aria-label="Changer de langue / Switch language">
+        <span class="sw-opt" data-l="fr">FR</span><span class="sw-opt" data-l="en">EN</span><i class="sw-knob"></i>
+      </button>
+      <button id="menu-toggle" class="menu-btn" type="button" aria-expanded="false" aria-controls="menu">
+        <span data-i18n="menu">Menu</span>
+      </button>
     </div>
   </header>
+
+  <!-- Menu mobile -->
+  <div id="menu" class="menu" hidden>
+    <ol>
+      <li><a href="#about"><span class="m-i">01</span><span data-i18n="nav_about">Profil</span></a></li>
+      <li><a href="#projects"><span class="m-i">02</span><span data-i18n="nav_projects">Projets</span></a></li>
+      <li><a href="#skills"><span class="m-i">03</span><span data-i18n="nav_skills">Compétences</span></a></li>
+      <li><a href="#interests"><span class="m-i">04</span><span data-i18n="gallery_label">Ailleurs</span></a></li>
+      <li><a href="#contact"><span class="m-i">05</span><span data-i18n="nav_contact">Contact</span></a></li>
+    </ol>
+    <a href="#contact" class="menu-cta" data-i18n="header_cta">Alternance Septembre 2026</a>
+  </div>
 
   <main>
 
     <!-- ══ HERO ══ -->
-    <section id="hero">
-      <div class="hero-eyebrow reveal">
-        <span class="dot"></span>
-        <span data-i18n="hero_eyebrow">Apprenti Ingénieur ESIEE PARIS · Disponible en alternance</span>
-      </div>
+    <section id="top" class="hero" data-tone="dark">
+      <p class="hero-eyebrow">
+        <i class="led" aria-hidden="true"></i>
+        <span data-i18n="hero_eyebrow">Apprenti Ingénieur ESIEE PARIS / Disponible en alternance</span>
+      </p>
 
-      <h1 class="hero-title">
-        <span class="line reveal" data-delay="0">Armand</span>
-        <span class="line italic reveal" data-delay="1">Mulier.</span>
+      <h1 class="hero-title" aria-label="Armand Mulier">
+        <span class="hl hl-1" aria-hidden="true"><span class="ch">A</span><span class="ch">r</span><span class="ch">m</span><span class="ch">a</span><span class="ch">n</span><span class="ch">d</span></span>
+        <span class="hl hl-2" aria-hidden="true"><span class="ch">M</span><span class="ch">u</span><span class="ch">l</span><span class="ch">i</span><span class="ch">e</span><span class="ch">r</span><span class="ch ch-dot">.</span></span>
       </h1>
 
-      <div class="hero-bottom">
-        <p class="hero-desc reveal" data-delay="2" data-i18n="hero_desc">
+      <div class="hero-foot">
+        <p class="hero-desc" data-i18n="hero_desc">
           L2 Informatique &amp; Applications, Université Gustave Eiffel.<br>
           Je construis des choses qui fonctionnent vraiment.
         </p>
-        <div class="hero-actions reveal" data-delay="3">
-          <a href="#projects" class="btn-primary" data-i18n="hero_btn_projects">Voir les projets</a>
-          <a href="photos/CVAM2026F.pdf" download class="btn-ghost" data-i18n="hero_btn_cv">Télécharger le CV</a>
+        <div class="hero-actions">
+          <a href="#projects" class="btn btn-solid" data-i18n="hero_btn_projects">Voir les projets</a>
+          <a href="photos/CVAM2026F.pdf" download class="btn btn-line" data-i18n="hero_btn_cv">Télécharger le CV</a>
         </div>
       </div>
-
-      <div class="hero-rule reveal" data-delay="4" aria-hidden="true"></div>
     </section>
 
-    <!-- ══ ABOUT ══ -->
-    <section id="about">
-      <div class="section-label reveal">
-        <span>01</span> <span data-i18n="nav_about">Profil</span>
+    <!-- ══ 01 PROFIL ══ -->
+    <section id="about" class="sec tone-light" data-tone="light">
+      <div class="curve" aria-hidden="true"><i></i></div>
+
+      <div class="sec-mark rv">
+        <span class="sec-idx">01</span>
+        <span class="sec-name" data-i18n="nav_about">Profil</span>
       </div>
 
-      <div class="about-layout">
-        <div class="about-headline">
-          <h2 class="reveal" data-i18n="about_headline">Je finis ce que<br><em>je commence.</em></h2>
-        </div>
+      <div class="about-grid">
+        <h2 class="about-headline display rv-t" data-i18n="about_headline">Je finis ce que<br><em>je commence.</em></h2>
 
-        <div class="about-body">
-          <p class="lead reveal" data-i18n="about_lead">
-            Bac général avec spécialités Mathématiques, NSI et Maths expertes.
-            Aujourd'hui en L2 Informatique &amp; Applications, je travaille sur des sujets allant
-            de la vérification d'arbres binaires en C à la théorie des automates.
-            Futur apprenti Ingénieur à l'ESIEE PARIS et en recherche d'alternance pour septembre 2026.
-          </p>
-          <p class="reveal" data-i18n="about_p2">
-            Quand je commence quelque chose, j'essaie d'aller jusqu'au bout —
-            même si ça prend du temps. J'aime comprendre comment les choses
-            fonctionnent, pas seulement les utiliser.
-          </p>
-          <p class="reveal" data-i18n="about_p3">
-            À côté du code : cuisine, piano, plaisir à prendre des photos, DJing.
-            Des pratiques qui demandent chacune leur forme de patience et d'attention —
-            et qui, sans que j'y pense forcément, influencent la façon dont j'aborde un projet.
-          </p>
+        <p class="about-lead lead rv" data-i18n="about_lead">
+          Bac général avec spécialités Mathématiques, NSI et Maths expertes.
+          Aujourd'hui en L2 Informatique &amp; Applications, je travaille sur des sujets allant
+          de la vérification d'arbres binaires en C à la théorie des automates.
+          Futur apprenti Ingénieur à l'ESIEE PARIS et en recherche d'alternance pour septembre 2026.
+        </p>
 
-          <div class="code-aside reveal">
-            <div class="code-aside-label" data-i18n="about_code_label">en bref</div>
+        <p class="about-p2 rv" data-i18n="about_p2">
+          Quand je commence quelque chose, j'essaie d'aller jusqu'au bout, même si ça prend du temps.
+          J'aime comprendre comment les choses fonctionnent, pas seulement les utiliser.
+        </p>
+        <p class="about-p3 rv" data-i18n="about_p3">
+          À côté du code : cuisine, piano, plaisir à prendre des photos, DJing.
+          Des pratiques qui demandent chacune leur forme de patience et d'attention,
+          et qui, sans que j'y pense forcément, influencent la façon dont j'aborde un projet.
+        </p>
+
+        <!-- Plaque signalétique : "en bref" + chiffres -->
+        <div class="plate rv">
+          <div class="plate-spec">
+            <div class="plate-label" data-i18n="about_code_label">en bref</div>
 <pre><code data-i18n="about_code">formation  : L2 Informatique & Applications, Gustave Eiffel
-objectif   : Alternance — septembre 2026
+objectif   : Alternance, septembre 2026
 apprend    : vite, seul, en profondeur
 atout      : junior sans mauvaises habitudes</code></pre>
           </div>
-        </div>
-
-        <div class="about-stats reveal">
-          <div class="stat">
-            <span class="stat-n">2</span>
-            <span class="stat-u" data-i18n="stat_years_unit">ans</span>
-            <span class="stat-l" data-i18n="stat_years_label">d'études supérieures en informatique</span>
-          </div>
-          <div class="stat">
-            <span class="stat-n">5+</span>
-            <span class="stat-l" data-i18n="stat_projects_label">projets terminés, de zéro à livraison</span>
-          </div>
-          <div class="stat">
-            <span class="stat-n">Île-<br>de-France</span>
-            <span class="stat-l" data-i18n="stat_location_label">disponible en présentiel et télétravail</span>
+          <div class="plate-stats">
+            <div class="stat">
+              <span class="stat-n"><span class="odo" data-to="2">2</span></span>
+              <span class="stat-u" data-i18n="stat_years_unit">ans</span>
+              <span class="stat-l" data-i18n="stat_years_label">d'études supérieures en informatique</span>
+            </div>
+            <div class="stat">
+              <span class="stat-n"><span class="odo" data-to="5">5</span>+</span>
+              <span class="stat-l" data-i18n="stat_projects_label">projets terminés, de zéro à livraison</span>
+            </div>
+            <div class="stat stat-place">
+              <span class="stat-n stat-n-text">Île-de-France</span>
+              <span class="stat-l" data-i18n="stat_location_label">disponible en présentiel et télétravail</span>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ══ PROJETS ══ -->
-    <section id="projects">
-      <div class="section-label reveal">
-        <span>02</span> <span data-i18n="nav_projects">Projets</span>
+
+    <!-- ══ 02 PROJETS ══ -->
+    <section id="projects" class="sec tone-light" data-tone="light">
+      <div class="sec-mark rv">
+        <span class="sec-idx">02</span>
+        <span class="sec-name" data-i18n="nav_projects">Projets</span>
       </div>
 
-      <h2 class="section-title reveal" data-i18n="projects_title">Ce que<br><em>j'ai construit.</em></h2>
+      <h2 class="projects-title display rv-t" data-i18n="projects_title">Ce que<br><em>j'ai construit.</em></h2>
 
-      <div class="projects-list">
+      <div class="tracks">
 
         <!-- PROJET 01 -->
-        <article class="project-item reveal">
-          <div class="project-header">
-            <div class="project-meta">
-              <span class="project-index">01</span>
-              <span class="project-type">C · <span data-i18n="p1_type">Structures de données · Analyse</span></span>
-            </div>
-            <h3 class="project-name" data-i18n="p1_name">Comparaison de<br>Structures de Données</h3>
-          </div>
-          <div class="project-body">
-            <div class="project-description">
-              <p data-i18n="p1_desc">
+        <article class="track rv">
+                    <h3 class="track-h">
+            <button class="track-btn" type="button" aria-expanded="false" aria-controls="p1-panel" id="p1-btn">
+              <span class="track-idx">01</span>
+              <span class="track-name" data-i18n="p1_name">Comparaison de<br>Structures de Données</span>
+              <span class="track-type">C / <span data-i18n="p1_type">Structures de données / Analyse</span></span>
+              <span class="knob" aria-hidden="true"><i></i></span>
+            </button>
+          </h3>
+          <div class="track-panel" id="p1-panel" role="region" aria-labelledby="p1-btn">
+            <div class="track-inner">
+              <p class="track-desc lead" data-i18n="p1_desc">
                 Étude comparative en C de plusieurs structures de données : tableaux statiques,
                 tableaux dynamiques et listes chaînées. Implémentation complète de chaque structure,
                 mesure expérimentale des performances, et analyse des compromis selon les cas d'usage.
               </p>
-              <div class="project-detail-grid">
-                <div class="detail-col">
-                  <h4 data-i18n="col_did">Ce que j'ai fait</h4>
-                  <p data-i18n="p1_did">Implémentation rigoureuse des trois structures. Protocole de benchmark reproductible. Comparaison des coûts d'insertion, suppression et accès selon la taille des données.</p>
-                </div>
-                <div class="detail-col">
-                  <h4 data-i18n="col_limits">Limites honnêtes</h4>
-                  <p data-i18n="p1_limits">Tests limités à des jeux de données synthétiques. Pas de benchmarks multi-threadés.</p>
-                </div>
-                <div class="detail-col">
-                  <h4 data-i18n="col_would">Ce que j'ajouterais</h4>
-                  <p data-i18n="p1_would">Intégration d'arbres et de tables de hachage pour un panorama plus complet. Visualisation des résultats via matplotlib.</p>
-                </div>
+              <div class="track-cols">
+                <div class="col"><h4 data-i18n="col_did">Ce que j'ai fait</h4><p data-i18n="p1_did">Implémentation rigoureuse des trois structures. Protocole de benchmark reproductible. Comparaison des coûts d'insertion, suppression et accès selon la taille des données.</p></div>
+                <div class="col"><h4 data-i18n="col_limits">Limites honnêtes</h4><p data-i18n="p1_limits">Tests limités à des jeux de données synthétiques. Pas de benchmarks multi-threadés.</p></div>
+                <div class="col"><h4 data-i18n="col_would">Ce que j'ajouterais</h4><p data-i18n="p1_would">Intégration d'arbres et de tables de hachage pour un panorama plus complet. Visualisation des résultats via matplotlib.</p></div>
               </div>
-            </div>
-            <div class="project-tags">
-              <span>C</span>
-              <span data-i18n="tag_dynarray">Tableaux dynamiques</span>
-              <span data-i18n="tag_linkedlist">Listes chaînées</span>
-              <span data-i18n="tag_memory">Gestion mémoire</span>
-              <span>Benchmarking</span>
+              <ul class="tags">
+                <li>C</li>
+                <li data-i18n="tag_dynarray">Tableaux dynamiques</li>
+                <li data-i18n="tag_linkedlist">Listes chaînées</li>
+                <li data-i18n="tag_memory">Gestion mémoire</li>
+                <li>Benchmarking</li>
+              </ul>
             </div>
           </div>
         </article>
 
         <!-- PROJET 02 -->
-        <article class="project-item reveal">
-          <div class="project-header">
-            <div class="project-meta">
-              <span class="project-index">02</span>
-              <span class="project-type">Web · HTML/CSS/JS · Design</span>
-            </div>
-            <h3 class="project-name" data-i18n="p2_name">Portfolio Web</h3>
-          </div>
-          <div class="project-body">
-            <div class="project-description">
-              <p data-i18n="p2_desc">
+        <article class="track rv">
+                    <h3 class="track-h">
+            <button class="track-btn" type="button" aria-expanded="false" aria-controls="p2-panel" id="p2-btn">
+              <span class="track-idx">02</span>
+              <span class="track-name" data-i18n="p2_name">Portfolio Web</span>
+              <span class="track-type">Web / HTML/CSS/JS / Design</span>
+              <span class="knob" aria-hidden="true"><i></i></span>
+            </button>
+          </h3>
+          <div class="track-panel" id="p2-panel" role="region" aria-labelledby="p2-btn">
+            <div class="track-inner">
+              <p class="track-desc lead" data-i18n="p2_desc">
                 Portfolio web entièrement conçu et développé de zéro.
                 Galerie dynamique avec filtres, dark mode, traduction FR/EN,
                 animations CSS avancées et design responsive mobile-first.
               </p>
-              <div class="project-detail-grid">
-                <div class="detail-col">
-                  <h4 data-i18n="col_did">Ce que j'ai fait</h4>
-                  <p data-i18n="p2_did">Architecture modulaire (6 fichiers). Filtres dynamiques avec rendu conditionnel. IntersectionObserver pour les animations. Persistance localStorage.</p>
-                </div>
-                <div class="detail-col">
-                  <h4 data-i18n="col_limits">Limites honnêtes</h4>
-                  <p data-i18n="p2_limits">Pas de framework JS. Pas de backend. Pas de CI/CD automatisé.</p>
-                </div>
-                <div class="detail-col">
-                  <h4 data-i18n="col_would">Ce que j'ajouterais</h4>
-                  <p data-i18n="p2_would">Migration React. Backend Node.js pour les données. Pipeline de déploiement.</p>
-                </div>
+              <div class="track-cols">
+                <div class="col"><h4 data-i18n="col_did">Ce que j'ai fait</h4><p data-i18n="p2_did">Architecture modulaire (6 fichiers). Filtres dynamiques avec rendu conditionnel. IntersectionObserver pour les animations. Persistance localStorage.</p></div>
+                <div class="col"><h4 data-i18n="col_limits">Limites honnêtes</h4><p data-i18n="p2_limits">Pas de framework JS. Pas de backend. Pas de CI/CD automatisé.</p></div>
+                <div class="col"><h4 data-i18n="col_would">Ce que j'ajouterais</h4><p data-i18n="p2_would">Migration React. Backend Node.js pour les données. Pipeline de déploiement.</p></div>
               </div>
-            </div>
-            <div class="project-tags">
-              <span>HTML</span><span>CSS</span><span>JavaScript</span><span>DOM API</span><span>localStorage</span>
+              <ul class="tags"><li>HTML</li><li>CSS</li><li>JavaScript</li><li>DOM API</li><li>localStorage</li></ul>
             </div>
           </div>
         </article>
 
         <!-- PROJET 03 -->
-        <article class="project-item reveal">
-          <div class="project-header">
-            <div class="project-meta">
-              <span class="project-index">03</span>
-              <span class="project-type">Web · Flask · PostgreSQL · <span data-i18n="p3_type">Base de données</span></span>
-            </div>
-            <h3 class="project-name" data-i18n="p3_name">Application Web<br>SPA — Refuges</h3>
-          </div>
-          <div class="project-body">
-            <div class="project-description">
-              <p data-i18n="p3_desc">
+        <article class="track rv">
+                    <h3 class="track-h">
+            <button class="track-btn" type="button" aria-expanded="false" aria-controls="p3-panel" id="p3-btn">
+              <span class="track-idx">03</span>
+              <span class="track-name" data-i18n="p3_name">Application Web<br>SPA / Refuges</span>
+              <span class="track-type">Web / Flask / PostgreSQL / <span data-i18n="p3_type">Base de données</span></span>
+              <span class="knob" aria-hidden="true"><i></i></span>
+            </button>
+          </h3>
+          <div class="track-panel" id="p3-panel" role="region" aria-labelledby="p3-btn">
+            <div class="track-inner">
+              <p class="track-desc lead" data-i18n="p3_desc">
                 Conception et développement complet d'une application web pour la gestion des refuges
                 de la SPA. Du schéma entité-association jusqu'au site fonctionnel : modélisation,
                 implémentation PostgreSQL, et interface Flask permettant aux employés de gérer
                 les animaux, les soins et les transferts entre refuges.
               </p>
-              <div class="project-detail-grid">
-                <div class="detail-col">
-                  <h4 data-i18n="col_did">Ce que j'ai fait</h4>
-                  <p data-i18n="p3_did">Modélisation relationnelle complète sous PostgreSQL. Interface employé sécurisée (login/mot de passe). Fonctionnalités CRUD : ajout de pensionnaires, saisie de soins, transferts. Suivi des vaccins avec génération de listes de rappel.</p>
-                </div>
-                <div class="detail-col">
-                  <h4 data-i18n="col_learned">Ce qui m'a appris le plus</h4>
-                  <p data-i18n="p3_learned">Garantir l'intégrité des données au niveau de la base (contraintes, clés étrangères) et non seulement au niveau applicatif. Dissocier la logique métier des vues Flask.</p>
-                </div>
+              <div class="track-cols">
+                <div class="col"><h4 data-i18n="col_did">Ce que j'ai fait</h4><p data-i18n="p3_did">Modélisation relationnelle complète sous PostgreSQL. Interface employé sécurisée (login/mot de passe). Fonctionnalités CRUD : ajout de pensionnaires, saisie de soins, transferts. Suivi des vaccins avec génération de listes de rappel.</p></div>
+                <div class="col"><h4 data-i18n="col_learned">Ce qui m'a appris le plus</h4><p data-i18n="p3_learned">Garantir l'intégrité des données au niveau de la base (contraintes, clés étrangères) et non seulement au niveau applicatif. Dissocier la logique métier des vues Flask.</p></div>
               </div>
-              <div class="code-snippet">
-                <div class="code-snippet-label" data-i18n="p3_snippet_label">vaccins à rappeler — requête SQL</div>
+              <figure class="snippet">
+                <figcaption data-i18n="p3_snippet_label">vaccins à rappeler / requête SQL</figcaption>
 <pre><code>SELECT a.nom, a.espece, s.date_soin, s.type_soin
 FROM animal a
 JOIN soin s ON a.id_animal = s.id_animal
 WHERE s.type_soin = 'vaccin'
   AND s.date_soin &lt; NOW() - INTERVAL '1 year'
 ORDER BY s.date_soin ASC;</code></pre>
-              </div>
-            </div>
-            <div class="project-tags">
-              <span>Python</span><span>Flask</span><span>PostgreSQL</span><span>psycopg2</span><span>SQL</span>
-              <span data-i18n="tag_db">Modélisation BDD</span>
+              </figure>
+              <ul class="tags"><li>Python</li><li>Flask</li><li>PostgreSQL</li><li>psycopg2</li><li>SQL</li><li data-i18n="tag_db">Modélisation BDD</li></ul>
             </div>
           </div>
         </article>
 
         <!-- PROJET 04 -->
-        <article class="project-item reveal">
-          <div class="project-header">
-            <div class="project-meta">
-              <span class="project-index">04</span>
-              <span class="project-type">Algorithmique · C · Python · <span data-i18n="p4_type">Analyse</span></span>
-            </div>
-            <h3 class="project-name" data-i18n="p4_name">Arbres Binaires<br>de Recherche</h3>
-          </div>
-          <div class="project-body">
-            <div class="project-description">
-              <p data-i18n="p4_desc">
+        <article class="track rv">
+                    <h3 class="track-h">
+            <button class="track-btn" type="button" aria-expanded="false" aria-controls="p4-panel" id="p4-btn">
+              <span class="track-idx">04</span>
+              <span class="track-name" data-i18n="p4_name">Arbres Binaires<br>de Recherche</span>
+              <span class="track-type">Algorithmique / C / Python / <span data-i18n="p4_type">Analyse</span></span>
+              <span class="knob" aria-hidden="true"><i></i></span>
+            </button>
+          </h3>
+          <div class="track-panel" id="p4-panel" role="region" aria-labelledby="p4-btn">
+            <div class="track-inner">
+              <p class="track-desc lead" data-i18n="p4_desc">
                 Projet allant au-delà de l'implémentation : vérification et génération d'ABR,
                 analyse de complexité formelle, benchmarking sur des milliers d'arbres générés
                 (presque complets, filiformes, quelconques), visualisations matplotlib
                 et rapport complet avec preuves algorithmiques.
               </p>
-              <div class="project-detail-grid">
-                <div class="detail-col">
-                  <h4 data-i18n="col_did">Ce que j'ai fait</h4>
-                  <p data-i18n="p4_did">Trois méthodes de vérification en C (naïve, définition optimisée, parcours infixe). Génération aléatoire d'arbres selon leur morphologie. Scripts Python de benchmarking et figures matplotlib automatisées.</p>
-                </div>
-                <div class="detail-col">
-                  <h4 data-i18n="col_proud">Ce qui m'a rendu fier</h4>
-                  <p data-i18n="p4_proud">Passer de « ça marche » à « je prouve pourquoi ça marche en O(n) et pas O(n²) », et confronter les complexités théoriques aux mesures expérimentales.</p>
-                </div>
+              <div class="track-cols">
+                <div class="col"><h4 data-i18n="col_did">Ce que j'ai fait</h4><p data-i18n="p4_did">Trois méthodes de vérification en C (naïve, définition optimisée, parcours infixe). Génération aléatoire d'arbres selon leur morphologie. Scripts Python de benchmarking et figures matplotlib automatisées.</p></div>
+                <div class="col"><h4 data-i18n="col_proud">Ce qui m'a rendu fier</h4><p data-i18n="p4_proud">Passer de « ça marche » à « je prouve pourquoi ça marche en O(n) et pas O(n²) », et confronter les complexités théoriques aux mesures expérimentales.</p></div>
               </div>
-              <div class="code-snippet">
-                <div class="code-snippet-label" data-i18n="p4_snippet_label">vérification ABR — O(n)</div>
+              <figure class="snippet">
+                <figcaption data-i18n="p4_snippet_label">vérification ABR / O(n)</figcaption>
 <pre><code>bool is_bst(Node *n, int min, int max) {
     if (!n) return true;
     return n->val &gt; min &amp;&amp; n->val &lt; max
         &amp;&amp; is_bst(n->left,  min,    n->val)
         &amp;&amp; is_bst(n->right, n->val, max);
 }</code></pre>
-              </div>
-            </div>
-            <div class="project-tags">
-              <span>C</span><span>Python</span><span>Matplotlib</span><span>Complexité O(n)</span>
-              <span data-i18n="tag_induction">Induction structurelle</span>
+              </figure>
+              <ul class="tags"><li>C</li><li>Python</li><li>Matplotlib</li><li>Complexité O(n)</li><li data-i18n="tag_induction">Induction structurelle</li></ul>
             </div>
           </div>
         </article>
-        
-        <article class="project-item reveal">
-          <div class="project-header">
-            <div class="project-meta">
-              <span class="project-index">05</span>
-              <span class="project-type">Web · React · API REST · <span data-i18n="p5_type">Data Visualization</span></span>
-            </div>
-            <h3 class="project-name" data-i18n="p5_name">Dashboard<br>Crypto-Explorer</h3>
-          </div>
-          <div class="project-body">
-            <div class="project-description">
-              <p data-i18n="p5_desc">
+
+        <!-- PROJET 05 -->
+        <article class="track rv">
+                    <h3 class="track-h">
+            <button class="track-btn" type="button" aria-expanded="false" aria-controls="p5-panel" id="p5-btn">
+              <span class="track-idx">05</span>
+              <span class="track-name" data-i18n="p5_name">Dashboard<br>Crypto-Explorer</span>
+              <span class="track-type">Web / React / API REST / <span data-i18n="p5_type">Data Visualization</span></span>
+              <span class="knob" aria-hidden="true"><i></i></span>
+            </button>
+          </h3>
+          <div class="track-panel" id="p5-panel" role="region" aria-labelledby="p5-btn">
+            <div class="track-inner">
+              <p class="track-desc lead" data-i18n="p5_desc">
                 Application front-end de visualisation de données financières en temps réel.
-                Consommation de l'API REST publique CoinGecko pour le suivi de dizaines d'actifs, 
+                Consommation de l'API REST publique CoinGecko pour le suivi de dizaines d'actifs,
                 gestion des états asynchrones et affichage de graphiques interactifs (historiques de prix et volumes).
               </p>
-              <div class="project-detail-grid">
-                <div class="detail-col">
-                  <h4 data-i18n="col_did">Ce que j'ai fait</h4>
-                  <p data-i18n="p5_did">Développement de l'interface dynamique (SPA) mobile-first avec Tailwind CSS. Gestion de l'état et de l'asynchronisme via les Hooks React. Intégration de la librairie Chart.js pour le rendu visuel des données.</p>
-                </div>
-                <div class="detail-col">
-                  <h4 data-i18n="col_learned">Ce qui m'a appris le plus</h4>
-                  <p data-i18n="p5_learned">Comprendre le cycle de vie des composants pour éviter les re-rendus inutiles et gérer proprement les appels asynchrones face aux limites de requêtes (Rate Limits) d'une API.</p>
-                </div>
+              <div class="track-cols">
+                <div class="col"><h4 data-i18n="col_did">Ce que j'ai fait</h4><p data-i18n="p5_did">Développement de l'interface dynamique (SPA) mobile-first avec Tailwind CSS. Gestion de l'état et de l'asynchronisme via les Hooks React. Intégration de la librairie Chart.js pour le rendu visuel des données.</p></div>
+                <div class="col"><h4 data-i18n="col_learned">Ce qui m'a appris le plus</h4><p data-i18n="p5_learned">Comprendre le cycle de vie des composants pour éviter les re-rendus inutiles et gérer proprement les appels asynchrones face aux limites de requêtes (Rate Limits) d'une API.</p></div>
               </div>
-              
-              <div class="code-snippet">
-                <div class="code-snippet-label" data-i18n="p5_snippet_label">actualisation asynchrone — react hook</div>
+              <figure class="snippet">
+                <figcaption data-i18n="p5_snippet_label">actualisation asynchrone / react hook</figcaption>
 <pre><code>useEffect(() => {
     const fetchCryptoData = async () => {
         try {
@@ -334,16 +382,13 @@ ORDER BY s.date_soin ASC;</code></pre>
             console.error("Erreur API:", error);
         }
     };
-    
+
     fetchCryptoData();
     const interval = setInterval(fetchCryptoData, 60000); // maj auto
     return () => clearInterval(interval);
 }, []);</code></pre>
-              </div>
-            </div>
-            <div class="project-tags">
-              <span>React</span><span>JavaScript</span><span>Tailwind CSS</span><span>Axios</span><span>Chart.js</span>
-              <span data-i18n="tag_api">API REST</span>
+              </figure>
+              <ul class="tags"><li>React</li><li>JavaScript</li><li>Tailwind CSS</li><li>Axios</li><li>Chart.js</li><li data-i18n="tag_api">API REST</li></ul>
             </div>
           </div>
         </article>
@@ -351,120 +396,159 @@ ORDER BY s.date_soin ASC;</code></pre>
       </div>
     </section>
 
-    <!-- ══ COMPÉTENCES ══ -->
-    <section id="skills">
-      <div class="section-label reveal">
-        <span>03</span> <span data-i18n="nav_skills">Compétences</span>
+
+    <!-- ══ 03 COMPÉTENCES : des cadrans ══ -->
+    <section id="skills" class="sec tone-dark" data-tone="dark">
+      <div class="curve" aria-hidden="true"><i></i></div>
+
+      <div class="sec-mark rv">
+        <span class="sec-idx">03</span>
+        <span class="sec-name" data-i18n="nav_skills">Compétences</span>
       </div>
 
-      <h2 class="section-title reveal" data-i18n="skills_title">Ce que<br><em>je maîtrise.</em></h2>
+      <h2 class="skills-title display rv-t" data-i18n="skills_title">Ce que<br><em>je maîtrise.</em></h2>
 
-      <div class="skills-layout">
-        <div class="skills-col reveal">
-          <h3 data-i18n="skills_languages">Langages</h3>
-          <ul class="skill-list">
-            <li><span class="skill-name">Python</span><span class="skill-bar"><span style="--w:75%"></span></span></li>
-            <li><span class="skill-name">C</span><span class="skill-bar"><span style="--w:65%"></span></span></li>
-            <li><span class="skill-name">JavaScript</span><span class="skill-bar"><span style="--w:55%"></span></span></li>
-            <li><span class="skill-name">SQL</span><span class="skill-bar"><span style="--w:50%"></span></span></li>
-            <li><span class="skill-name">HTML / CSS</span><span class="skill-bar"><span style="--w:75%"></span></span></li>
+      <div class="banks">
+        <div class="bank rv">
+          <h3 class="bank-name" data-i18n="skills_languages">Langages</h3>
+          <ul class="dials">
+            <li class="dial" style="--v:.75"><svg class="dial-g" viewBox="0 0 44 44" aria-hidden="true"><circle class="dial-bg" cx="22" cy="22" r="18"/><circle class="dial-fg" cx="22" cy="22" r="18" pathLength="100"/><circle class="dial-dot" cx="40" cy="22" r="2"/></svg><span class="dial-name">Python</span></li>
+            <li class="dial" style="--v:.65"><svg class="dial-g" viewBox="0 0 44 44" aria-hidden="true"><circle class="dial-bg" cx="22" cy="22" r="18"/><circle class="dial-fg" cx="22" cy="22" r="18" pathLength="100"/><circle class="dial-dot" cx="40" cy="22" r="2"/></svg><span class="dial-name">C</span></li>
+            <li class="dial" style="--v:.55"><svg class="dial-g" viewBox="0 0 44 44" aria-hidden="true"><circle class="dial-bg" cx="22" cy="22" r="18"/><circle class="dial-fg" cx="22" cy="22" r="18" pathLength="100"/><circle class="dial-dot" cx="40" cy="22" r="2"/></svg><span class="dial-name">JavaScript</span></li>
+            <li class="dial" style="--v:.50"><svg class="dial-g" viewBox="0 0 44 44" aria-hidden="true"><circle class="dial-bg" cx="22" cy="22" r="18"/><circle class="dial-fg" cx="22" cy="22" r="18" pathLength="100"/><circle class="dial-dot" cx="40" cy="22" r="2"/></svg><span class="dial-name">SQL</span></li>
+            <li class="dial" style="--v:.75"><svg class="dial-g" viewBox="0 0 44 44" aria-hidden="true"><circle class="dial-bg" cx="22" cy="22" r="18"/><circle class="dial-fg" cx="22" cy="22" r="18" pathLength="100"/><circle class="dial-dot" cx="40" cy="22" r="2"/></svg><span class="dial-name">HTML / CSS</span></li>
           </ul>
         </div>
-        <div class="skills-col reveal" style="transition-delay:.1s">
-          <h3 data-i18n="skills_theory">Théorie &amp; Algorithmique</h3>
-          <ul class="skill-list">
-            <li><span class="skill-name" data-i18n="sk_ds">Structures de données</span><span class="skill-bar"><span style="--w:80%"></span></span></li>
-            <li><span class="skill-name" data-i18n="sk_complexity">Complexité algorithmique</span><span class="skill-bar"><span style="--w:70%"></span></span></li>
-            <li><span class="skill-name" data-i18n="sk_automata">Automates &amp; Langages</span><span class="skill-bar"><span style="--w:65%"></span></span></li>
-            <li><span class="skill-name" data-i18n="sk_induction">Induction structurelle</span><span class="skill-bar"><span style="--w:60%"></span></span></li>
+        <div class="bank rv">
+          <h3 class="bank-name" data-i18n="skills_theory">Théorie &amp; Algorithmique</h3>
+          <ul class="dials">
+            <li class="dial" style="--v:.80"><svg class="dial-g" viewBox="0 0 44 44" aria-hidden="true"><circle class="dial-bg" cx="22" cy="22" r="18"/><circle class="dial-fg" cx="22" cy="22" r="18" pathLength="100"/><circle class="dial-dot" cx="40" cy="22" r="2"/></svg><span class="dial-name" data-i18n="sk_ds">Structures de données</span></li>
+            <li class="dial" style="--v:.70"><svg class="dial-g" viewBox="0 0 44 44" aria-hidden="true"><circle class="dial-bg" cx="22" cy="22" r="18"/><circle class="dial-fg" cx="22" cy="22" r="18" pathLength="100"/><circle class="dial-dot" cx="40" cy="22" r="2"/></svg><span class="dial-name" data-i18n="sk_complexity">Complexité algorithmique</span></li>
+            <li class="dial" style="--v:.65"><svg class="dial-g" viewBox="0 0 44 44" aria-hidden="true"><circle class="dial-bg" cx="22" cy="22" r="18"/><circle class="dial-fg" cx="22" cy="22" r="18" pathLength="100"/><circle class="dial-dot" cx="40" cy="22" r="2"/></svg><span class="dial-name" data-i18n="sk_automata">Automates &amp; Langages</span></li>
+            <li class="dial" style="--v:.60"><svg class="dial-g" viewBox="0 0 44 44" aria-hidden="true"><circle class="dial-bg" cx="22" cy="22" r="18"/><circle class="dial-fg" cx="22" cy="22" r="18" pathLength="100"/><circle class="dial-dot" cx="40" cy="22" r="2"/></svg><span class="dial-name" data-i18n="sk_induction">Induction structurelle</span></li>
           </ul>
         </div>
-        <div class="skills-col reveal" style="transition-delay:.2s">
-          <h3 data-i18n="skills_tools">Outils &amp; Pratiques</h3>
-          <ul class="skill-list">
-            <li><span class="skill-name">Git / GitHub</span><span class="skill-bar"><span style="--w:65%"></span></span></li>
-            <li><span class="skill-name">Linux / Terminal</span><span class="skill-bar"><span style="--w:60%"></span></span></li>
-            <li><span class="skill-name">Matplotlib</span><span class="skill-bar"><span style="--w:50%"></span></span></li>
-            <li><span class="skill-name">Makefile / GCC</span><span class="skill-bar"><span style="--w:55%"></span></span></li>
+        <div class="bank rv">
+          <h3 class="bank-name" data-i18n="skills_tools">Outils &amp; Pratiques</h3>
+          <ul class="dials">
+            <li class="dial" style="--v:.65"><svg class="dial-g" viewBox="0 0 44 44" aria-hidden="true"><circle class="dial-bg" cx="22" cy="22" r="18"/><circle class="dial-fg" cx="22" cy="22" r="18" pathLength="100"/><circle class="dial-dot" cx="40" cy="22" r="2"/></svg><span class="dial-name">Git / GitHub</span></li>
+            <li class="dial" style="--v:.60"><svg class="dial-g" viewBox="0 0 44 44" aria-hidden="true"><circle class="dial-bg" cx="22" cy="22" r="18"/><circle class="dial-fg" cx="22" cy="22" r="18" pathLength="100"/><circle class="dial-dot" cx="40" cy="22" r="2"/></svg><span class="dial-name">Linux / Terminal</span></li>
+            <li class="dial" style="--v:.50"><svg class="dial-g" viewBox="0 0 44 44" aria-hidden="true"><circle class="dial-bg" cx="22" cy="22" r="18"/><circle class="dial-fg" cx="22" cy="22" r="18" pathLength="100"/><circle class="dial-dot" cx="40" cy="22" r="2"/></svg><span class="dial-name">Matplotlib</span></li>
+            <li class="dial" style="--v:.55"><svg class="dial-g" viewBox="0 0 44 44" aria-hidden="true"><circle class="dial-bg" cx="22" cy="22" r="18"/><circle class="dial-fg" cx="22" cy="22" r="18" pathLength="100"/><circle class="dial-dot" cx="40" cy="22" r="2"/></svg><span class="dial-name">Makefile / GCC</span></li>
           </ul>
         </div>
-        <div class="skills-col reveal" style="transition-delay:.3s">
-          <h3 data-i18n="skills_lang_spoken">Langues</h3>
-          <ul class="skill-list">
-            <li><span class="skill-name" data-i18n="sk_english">Anglais</span><span class="skill-bar"><span style="--w:80%"></span></span></li>
-            <li><span class="skill-name" data-i18n="sk_spanish">Espagnol</span><span class="skill-bar"><span style="--w:35%"></span></span></li>
+        <div class="bank rv">
+          <h3 class="bank-name" data-i18n="skills_lang_spoken">Langues</h3>
+          <ul class="dials">
+            <li class="dial" style="--v:.80"><svg class="dial-g" viewBox="0 0 44 44" aria-hidden="true"><circle class="dial-bg" cx="22" cy="22" r="18"/><circle class="dial-fg" cx="22" cy="22" r="18" pathLength="100"/><circle class="dial-dot" cx="40" cy="22" r="2"/></svg><span class="dial-name" data-i18n="sk_english">Anglais</span></li>
+            <li class="dial" style="--v:.35"><svg class="dial-g" viewBox="0 0 44 44" aria-hidden="true"><circle class="dial-bg" cx="22" cy="22" r="18"/><circle class="dial-fg" cx="22" cy="22" r="18" pathLength="100"/><circle class="dial-dot" cx="40" cy="22" r="2"/></svg><span class="dial-name" data-i18n="sk_spanish">Espagnol</span></li>
           </ul>
         </div>
       </div>
     </section>
 
-    <!-- ══ GALERIE ══ -->
-    <section id="gallery">
-      <div class="section-label reveal">
-        <span>04</span> <span data-i18n="gallery_label">Ailleurs</span>
+    <!-- ══ 04 AILLEURS : la séquence signature, le scroll comme télécommande ══ -->
+    <section id="interests" class="sig" data-tone="dark">
+      <div class="sig-stage">
+        <div class="sec-mark sig-mark">
+          <span class="sec-idx">04</span>
+          <span class="sec-name" data-i18n="gallery_label">Ailleurs</span>
+        </div>
+
+        <div class="drum" aria-hidden="true">
+          <div class="drum-names">
+            <span class="drum-n" data-i18n="row_cuisine">Cuisine</span>
+            <span class="drum-n" data-i18n="row_piano">Piano</span>
+            <span class="drum-n" data-i18n="row_photo">Photo</span>
+            <span class="drum-n" data-i18n="row_dj">DJing</span>
+          </div>
+          <div class="drum-lines">
+            <p class="drum-l" data-i18n="sig_cuisine">La cuisine apprend la précision.</p>
+            <p class="drum-l" data-i18n="sig_piano">Le piano apprend la patience.</p>
+            <p class="drum-l" data-i18n="sig_photo">Prendre des photos apprend à cadrer.</p>
+            <p class="drum-l"></p>
+          </div>
+          <div class="drum-count"><span class="drum-i">1</span><span class="drum-of">/ 4</span></div>
+        </div>
+
+        <div class="sig-text">
+          <h2 class="display" data-i18n="gallery_title">Au-delà<br><em>du code.</em></h2>
+          <p class="sig-outro" aria-hidden="true" data-i18n="sig_outro">Ces pratiques forment la même logique que le développement, et je les emmène au travail.</p>
+          <p class="sr-only" data-i18n="gallery_desc">La cuisine apprend la précision. Prendre des photos apprend à cadrer. Le piano apprend la patience. Ces pratiques forment la même logique que le développement, et je les emmène au travail.</p>
+        </div>
+
+        <p class="sig-hint" aria-hidden="true" data-i18n="sig_hint">Continuez à faire défiler</p>
+      </div>
+    </section>
+
+    <!-- Galerie : deux lignes en contrepoint -->
+    <section id="gallery" class="gal tone-light" data-tone="light" aria-label="Galerie">
+      <div class="gal-stage">
+        <div class="gal-track" data-cat="Cuisine">
+          <span class="gal-track-name" data-i18n="gal_cuisine">Cuisine</span>
+          <div class="gal-clips"></div>
+        </div>
+        <div class="gal-track" data-cat="Photo">
+          <span class="gal-track-name" data-i18n="gal_photo">Photo</span>
+          <div class="gal-clips"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ 05 CONTACT ══ -->
+    <section id="contact" class="sec tone-dark" data-tone="dark">
+      <div class="curve" aria-hidden="true"><i></i></div>
+
+      <div class="sec-mark rv">
+        <span class="sec-idx">05</span>
+        <span class="sec-name" data-i18n="nav_contact">Contact</span>
       </div>
 
-      <div class="gallery-intro">
-        <h2 class="reveal" data-i18n="gallery_title">Au-delà<br><em>du code.</em></h2>
-        <p class="reveal" data-i18n="gallery_desc">
-          La cuisine apprend la précision. Prendre des photos apprend à cadrer.
-          Le piano apprend la patience. Ces pratiques forment la même logique
-          que le développement — et je les emmène au travail.
+      <div class="contact-grid">
+        <div class="contact-head">
+          <svg class="halo" viewBox="0 0 200 200" aria-hidden="true"><circle cx="100" cy="100" r="98" pathLength="100"/></svg>
+          <span class="halo-point" aria-hidden="true"></span>
+          <h2 class="contact-title display rv-t" data-i18n="contact_title">Travaillons<br><em>ensemble.</em></h2>
+        </div>
+        <p class="contact-desc lead rv" data-i18n="contact_desc">
+          Je cherche une alternance à partir de septembre 2026.
+          Quelqu'un qui comprend vite, pose les bonnes questions,
+          et ne lâche pas un problème avant de l'avoir résolu.
         </p>
-      </div>
 
-      <div class="gallery-ribbon-wrap reveal">
-        <div class="gallery-ribbon" id="gallery-ribbon"></div>
-      </div>
-    </section>
+        <dl class="contact-list rv">
+          <div class="c-row">
+            <dt data-i18n="contact_email_label">Email</dt>
+            <dd><a href="mailto:armand.mulier.pro@icloud.com" class="c-mail">armand.mulier.pro@icloud.com</a></dd>
+          </div>
+          <div class="c-row">
+            <dt data-i18n="contact_phone_label">Téléphone</dt>
+            <dd><a href="tel:+33633595499" class="c-link">+33 6 33 59 54 99</a></dd>
+          </div>
+          <div class="c-row">
+            <dt data-i18n="contact_location_label">Localisation</dt>
+            <dd><span class="c-muted">Île-de-France</span></dd>
+          </div>
+        </dl>
 
-    <!-- ══ CONTACT ══ -->
-    <section id="contact">
-      <div class="section-label reveal">
-        <span>05</span> <span data-i18n="nav_contact">Contact</span>
-      </div>
-
-      <div class="contact-layout">
-        <div class="contact-left">
-          <h2 class="reveal" data-i18n="contact_title">Travaillons<br><em>ensemble.</em></h2>
-          <p class="reveal" data-i18n="contact_desc">
-            Je cherche une alternance à partir de septembre 2026.
-            Quelqu'un qui comprend vite, pose les bonnes questions,
-            et ne lâche pas un problème avant de l'avoir résolu.
-          </p>
-        </div>
-
-        <div class="contact-right">
-          <div class="contact-item reveal">
-            <span class="contact-lbl" data-i18n="contact_email_label">Email</span>
-            <a href="mailto:armand.mulier.pro@icloud.com" class="contact-val">
-              armand.mulier.pro@icloud.com
-            </a>
-          </div>
-          <div class="contact-item reveal" style="transition-delay:.08s">
-            <span class="contact-lbl" data-i18n="contact_phone_label">Téléphone</span>
-            <a href="tel:+33633595499" class="contact-val">+33 6 33 59 54 99</a>
-          </div>
-          <div class="contact-item reveal" style="transition-delay:.16s">
-            <span class="contact-lbl" data-i18n="contact_location_label">Localisation</span>
-            <span class="contact-val muted">Île-de-France</span>
-          </div>
-          <div class="reveal" style="transition-delay:.24s; margin-top:2.5rem;">
-            <a href="mailto:armand.mulier.pro@icloud.com" class="btn-primary" data-i18n="contact_btn">
-              Envoyer un message
-            </a>
-          </div>
+        <div class="contact-cta rv">
+          <a href="mailto:armand.mulier.pro@icloud.com" class="btn btn-solid" data-i18n="contact_btn">Envoyer un message</a>
         </div>
       </div>
+
+      <footer class="footer">
+        <span>© 2026 Armand Mulier</span>
+        <span data-i18n="footer_avail">Disponible en alternance, Île-de-France</span>
+      </footer>
     </section>
 
   </main>
 
-  <!-- ══ FOOTER ══ -->
-  <footer>
-    <span>© 2026 Armand Mulier</span>
-    <span data-i18n="footer_avail">Disponible en alternance — Île-de-France</span>
-  </footer>
+  <!-- Progression : un anneau qui se referme -->
+  <div class="progress" aria-hidden="true"><svg viewBox="0 0 40 40"><circle class="pg-bg" cx="20" cy="20" r="16"/><circle class="pg-fg" cx="20" cy="20" r="16" pathLength="100"/></svg></div>
+  <button class="sound" type="button" aria-pressed="false" aria-label="Son / Sound">
+    <i class="led"></i><span data-i18n="sound">Son</span>
+  </button>
 
   <script src="script.js"></script>
 </body>
