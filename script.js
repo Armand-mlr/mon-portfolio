@@ -67,6 +67,17 @@
   /* ═══════════════ 1. i18n ═══════════════ */
   const translations = {
     fr: {
+      p2_type: "Anglais / Application personnelle / IA",
+      p2_role_label: "Ma démarche",
+      p2_features_label: "Dans l’application",
+      p2_features: "Vocabulaire, leçons, révisions espacées et suivi des erreurs. Les données restent dans le navigateur ; l’IA est facultative, via Ollama en local ou une API compatible.",
+      p2_video_label: "Fluency · Présentation en motion design",
+      p2_video_fallback: "La présentation vidéo sera bientôt disponible. Le projet est à découvrir sur GitHub.",
+      p5_stage_label: "Avancement actuel · A4",
+      p5_next_label: "La suite",
+      p5_next: "Stabiliser le schéma et les premières migrations, puis poursuivre le projet par étapes. La base de données est en cours de construction ; le projet n’est pas terminé.",
+      repo_link: "Voir le dépôt GitHub ↗",
+      project_in_progress: "Projet en cours",
       skip_content:        'Aller au contenu',
       intro_skip:          'Passer',
       menu:                'Menu',
@@ -77,25 +88,25 @@
       nav_projects:        'Projets',
       nav_skills:          'Compétences',
       nav_contact:         'Contact',
-      header_cta:          'Alternance Septembre 2026',
+      header_cta: "À la recherche d’une alternance",
 
-      hero_eyebrow:        'Apprenti Ingénieur ESIEE PARIS / Disponible en alternance',
-      hero_desc:           'L2 Informatique &amp; Applications, Université Gustave Eiffel.<br>Je construis des choses qui fonctionnent vraiment.',
+      hero_eyebrow: "Élève ingénieur ESIEE Paris / Disponible en alternance",
+      hero_desc: "Cycle ingénieur ESIEE Paris · 2026–2029.<br>Informatique, données et projets qui répondent à un besoin.",
       hero_btn_projects:   'Voir les projets',
       hero_btn_cv:         'Télécharger le CV',
 
       about_headline:      'Je finis ce que<br><em>je commence.</em>',
-      about_lead:          'Bac général avec spécialités Mathématiques, NSI et Maths expertes. Aujourd\'hui en L2 Informatique &amp; Applications, je travaille sur des sujets allant de la vérification d\'arbres binaires en C à la théorie des automates. Futur apprenti Ingénieur à l\'ESIEE PARIS et en recherche d\'alternance pour septembre 2026.',
+      about_lead: "Après un parcours en Informatique &amp; Applications à l’Université Gustave Eiffel, je poursuis mes études en cycle ingénieur à l’ESIEE Paris (2026–2029). Je recherche une alternance en Île-de-France, en développement logiciel, données ou IA. Mes projets relient les bases apprises en C à des applications issues de besoins personnels.",
       about_p2:            'Quand je commence quelque chose, j\'essaie d\'aller jusqu\'au bout, même si ça prend du temps. J\'aime comprendre comment les choses fonctionnent, pas seulement les utiliser.',
       about_p3:            'À côté du code : cuisine, piano, plaisir à prendre des photos, DJing. Des pratiques qui demandent chacune leur forme de patience et d\'attention, et qui, sans que j\'y pense forcément, influencent la façon dont j\'aborde un projet.',
       about_code_label:    'en bref',
-      about_code:          'formation  : L2 Informatique &amp; Applications, Gustave Eiffel\nobjectif   : Alternance, septembre 2026\napprend    : vite, seul, en profondeur\natout      : junior sans mauvaises habitudes',
+      about_code: "formation  : Cycle ingénieur, ESIEE Paris · 2026–2029\nobjectif   : Alternance en informatique, Île-de-France\npratique   : Python, C, SQL, web\nintérêt    : comprendre, expérimenter, progresser",
       stat_years_unit:     'ans',
       stat_years_label:    'd\'études supérieures en informatique',
-      stat_projects_label: 'projets terminés, de zéro à livraison',
+      stat_projects_label: "projets présentés, personnels et universitaires",
       stat_location_label: 'disponible en présentiel et télétravail',
 
-      projects_title:      'Ce que<br><em>j\'ai construit.</em>',
+      projects_title: "Des idées<br><em>aux projets.</em>",
       col_did:             'Ce que j\'ai fait',
       col_limits:          'Limites honnêtes',
       col_would:           'Ce que j\'ajouterais',
@@ -112,11 +123,9 @@
       tag_linkedlist:      'Listes chaînées',
       tag_memory:          'Gestion mémoire',
 
-      p2_name:             'Portfolio Web',
-      p2_desc:             'Portfolio web entièrement conçu et développé de zéro. Galerie dynamique avec filtres, dark mode, traduction FR/EN, animations CSS avancées et design responsive mobile-first.',
-      p2_did:              'Architecture modulaire (6 fichiers). Filtres dynamiques avec rendu conditionnel. IntersectionObserver pour les animations. Persistance localStorage.',
-      p2_limits:           'Pas de framework JS. Pas de backend. Pas de CI/CD automatisé.',
-      p2_would:            'Migration React. Backend Node.js pour les données. Pipeline de déploiement.',
+      p2_name: "Fluency",
+      p2_desc: "Progresser en anglais était devenu un vrai besoin pour mes études et la suite. Les solutions qui m’intéressaient étaient payantes : de là est née Fluency, une application personnelle pour apprendre à mon rythme, sur mon ordinateur.",
+      p2_did: "Partir de mon besoin, définir l’expérience souhaitée et faire évoluer l’application avec l’aide d’outils d’IA pour le développement. Un projet personnel guidé par l’usage, avec un code réalisé avec assistance IA.",
 
       p3_type:             'Base de données',
       p3_name:             'Application Web<br>SPA / Refuges',
@@ -134,15 +143,13 @@
       p4_snippet_label:    'vérification ABR / O(n)',
       tag_induction:       'Induction structurelle',
 
-      p5_type:             'Data Visualization',
-      p5_name:             'Dashboard<br>Crypto-Explorer',
-      p5_desc:             'Application front-end de visualisation de données financières en temps réel. Consommation de l\'API REST publique CoinGecko pour le suivi de dizaines d\'actifs, gestion des états asynchrones et affichage de graphiques interactifs (historiques de prix et volumes).',
-      p5_did:              'Développement de l\'interface dynamique (SPA) mobile-first avec Tailwind CSS. Gestion de l\'état et de l\'asynchronisme via les Hooks React. Intégration de la librairie Chart.js pour le rendu visuel des données.',
-      p5_learned:          'Comprendre le cycle de vie des composants pour éviter les re-rendus inutiles et gérer proprement les appels asynchrones face aux limites de requêtes (Rate Limits) d\'une API.',
-      p5_snippet_label:    'actualisation asynchrone / react hook',
+      p5_type: "Données / PostgreSQL / En cours",
+      p5_name: "TrackCurator",
+      p5_desc: "Un projet personnel en cours, que je construis progressivement pour approfondir le travail sur les données et le backend. Le chantier actuel porte sur les fondations : organiser les données avant de développer la suite.",
+      p5_did: "Début de la mise en place de la base PostgreSQL. Travail en cours sur le modèle de données, l’ORM — qui relie les objets du code aux tables — et les migrations, pour faire évoluer le schéma de la base.",
       tag_api:             'API REST',
 
-      skills_title:        'Ce que<br><em>je maîtrise.</em>',
+      skills_title: "Ce que<br><em>je pratique.</em>",
       skills_languages:    'Langages',
       skills_theory:       'Théorie &amp; Algorithmique',
       skills_tools:        'Outils &amp; Pratiques',
@@ -171,7 +178,7 @@
       intro_words:         'code|cuisine|piano|photo|DJing',
 
       contact_title:       'Travaillons<br><em>ensemble.</em>',
-      contact_desc:        'Je cherche une alternance à partir de septembre 2026. Quelqu\'un qui comprend vite, pose les bonnes questions, et ne lâche pas un problème avant de l\'avoir résolu.',
+      contact_desc: "Je recherche une alternance en Île-de-France pour mon cycle ingénieur à l’ESIEE Paris (2026–2029), en développement logiciel, données ou IA. Je souhaite rejoindre une équipe, contribuer à des projets concrets et progresser au contact de ses pratiques.",
       contact_email_label: 'Email',
       contact_phone_label: 'Téléphone',
       contact_location_label: 'Localisation',
@@ -181,6 +188,17 @@
     },
 
     en: {
+      p2_type: "English / Personal application / AI",
+      p2_role_label: "My approach",
+      p2_features_label: "Inside the application",
+      p2_features: "Vocabulary, lessons, spaced repetition and mistake tracking. Data stays in the browser; AI is optional, through local Ollama or a compatible API.",
+      p2_video_label: "Fluency · Motion design presentation",
+      p2_video_fallback: "The video presentation will be available soon. Explore the project on GitHub.",
+      p5_stage_label: "Current stage · A4",
+      p5_next_label: "Next steps",
+      p5_next: "Stabilise the schema and initial migrations, then continue step by step. The database is under construction and the project is not finished.",
+      repo_link: "View GitHub repository ↗",
+      project_in_progress: "Project in progress",
       skip_content:        'Skip to content',
       intro_skip:          'Skip',
       menu:                'Menu',
@@ -191,25 +209,25 @@
       nav_projects:        'Projects',
       nav_skills:          'Skills',
       nav_contact:         'Contact',
-      header_cta:          'Work-Study, September 2026',
+      header_cta: "Seeking a work-study placement",
 
-      hero_eyebrow:        'Engineering Apprentice ESIEE PARIS / Open to work-study',
-      hero_desc:           'BSc Computer Science &amp; Applications, Université Gustave Eiffel.<br>I build things that actually work.',
+      hero_eyebrow: "Engineering student at ESIEE Paris / Open to work-study",
+      hero_desc: "Engineering programme at ESIEE Paris · 2026–2029.<br>Software, data and projects driven by real needs.",
       hero_btn_projects:   'See my projects',
       hero_btn_cv:         'Download CV',
 
       about_headline:      'I finish what<br><em>I start.</em>',
-      about_lead:          'High school diploma with majors in Mathematics, Computer Science and Advanced Maths. Currently in my second year of BSc Computer Science &amp; Applications, working on topics ranging from binary tree verification in C to automata theory. Future engineering apprentice at ESIEE PARIS, seeking a work-study placement from September 2026.',
+      about_lead: "After studying Computer Science &amp; Applications at Université Gustave Eiffel, I am continuing in the engineering programme at ESIEE Paris (2026–2029). I am seeking a work-study placement in the Paris region in software development, data or AI. My projects connect the fundamentals I practised in C with applications inspired by personal needs.",
       about_p2:            'When I start something, I try to see it through, even when it takes time. I like understanding how things work, not just using them.',
       about_p3:            'Outside of code: cooking, piano, photography, DJing. Each of these takes its own form of patience and attention, and, without always thinking about it, they shape the way I approach a project.',
       about_code_label:    'in short',
-      about_code:          'degree     : BSc Computer Science &amp; Applications, Gustave Eiffel\ngoal       : Work-study, September 2026\nlearns     : fast, independently, in depth\nstrength   : junior with no bad habits',
+      about_code: "education  : Engineering programme, ESIEE Paris · 2026–2029\ngoal       : Software work-study, Paris region\npractice   : Python, C, SQL, web\ninterests  : understanding, experimenting, improving",
       stat_years_unit:     'yrs',
       stat_years_label:    'of higher education in computer science',
-      stat_projects_label: 'projects completed, from scratch to delivery',
+      stat_projects_label: "featured personal and university projects",
       stat_location_label: 'available on-site and remote',
 
-      projects_title:      'What I\'ve<br><em>built.</em>',
+      projects_title: "From ideas<br><em>to projects.</em>",
       col_did:             'What I did',
       col_limits:          'Honest limitations',
       col_would:           'What I\'d add',
@@ -226,11 +244,9 @@
       tag_linkedlist:      'Linked lists',
       tag_memory:          'Memory management',
 
-      p2_name:             'Web Portfolio',
-      p2_desc:             'Portfolio website fully designed and built from scratch. Dynamic gallery with filters, dark mode, FR/EN translation, advanced CSS animations, and mobile-first responsive design.',
-      p2_did:              'Modular architecture (6 files). Dynamic filters with conditional rendering. IntersectionObserver for animations. localStorage persistence.',
-      p2_limits:           'No JS framework. No backend. No automated CI/CD.',
-      p2_would:            'Migrate to React. Add a Node.js backend. Set up a deployment pipeline.',
+      p2_name: "Fluency",
+      p2_desc: "Improving my English had become a real need for my studies and future plans. The tools I was interested in required payment: that led to Fluency, a personal application for learning at my own pace, on my own computer.",
+      p2_did: "Start with my own needs, define the learning experience and refine the application with AI development tools. A personal project guided by everyday use, with AI-assisted code.",
 
       p3_type:             'Database',
       p3_name:             'Web App<br>SPA / Animal Shelters',
@@ -248,15 +264,13 @@
       p4_snippet_label:    'BST verification / O(n)',
       tag_induction:       'Structural induction',
 
-      p5_type:             'Data Visualization',
-      p5_name:             'Crypto-Explorer<br>Dashboard',
-      p5_desc:             'Front-end application for visualising real-time financial data. Consumes the public CoinGecko REST API to track dozens of assets, handles asynchronous state, and renders interactive charts (price and volume history).',
-      p5_did:              'Built the dynamic mobile-first interface (SPA) with Tailwind CSS. State and async management with React Hooks. Integrated the Chart.js library to render the data.',
-      p5_learned:          'Understanding the component lifecycle to avoid unnecessary re-renders, and handling async calls cleanly within an API\'s rate limits.',
-      p5_snippet_label:    'async refresh / react hook',
+      p5_type: "Data / PostgreSQL / In progress",
+      p5_name: "TrackCurator",
+      p5_desc: "A personal project in progress, built step by step to explore data and backend development. The current focus is on the foundations: organising the data before developing the next stages.",
+      p5_did: "Starting to set up the PostgreSQL database. Work is underway on the data model, the ORM — which connects code objects to database tables — and migrations to evolve the database schema.",
       tag_api:             'REST API',
 
-      skills_title:        'What I<br><em>know.</em>',
+      skills_title: "What I<br><em>practise.</em>",
       skills_languages:    'Languages',
       skills_theory:       'Theory &amp; Algorithms',
       skills_tools:        'Tools &amp; Practices',
@@ -285,7 +299,7 @@
       intro_words:         'code|cooking|piano|photo|DJing',
 
       contact_title:       'Let\'s work<br><em>together.</em>',
-      contact_desc:        'Looking for a work-study placement from September 2026. Someone who picks things up fast, asks the right questions, and doesn\'t drop a problem until it\'s solved.',
+      contact_desc: "I am seeking a work-study placement in the Paris region for my engineering programme at ESIEE Paris (2026–2029), in software development, data or AI. I want to join a team, contribute to real projects and learn from its working practices.",
       contact_email_label: 'Email',
       contact_phone_label: 'Phone',
       contact_location_label: 'Location',
@@ -860,6 +874,24 @@
         const open = btn.getAttribute('aria-expanded') !== 'true';
         btn.setAttribute('aria-expanded', open);
         tk.classList.toggle('is-open', open);
+        const video = $('video', tk);
+        if (video) {
+          if (open && !video.dataset.loaded) {
+            video.dataset.loaded = 'true';
+            const note = $('.video-note', tk);
+            const source = $('source', video);
+            const unavailable = () => { video.hidden = true; note.hidden = false; queueMeasure(); };
+            source.addEventListener('error', unavailable);
+            video.addEventListener('error', unavailable);
+            video.addEventListener('loadedmetadata', () => {
+              video.hidden = false; note.hidden = true; queueMeasure();
+            });
+            source.src = source.dataset.src;
+            video.preload = 'metadata';
+            video.load();
+          }
+          if (!open) video.pause();
+        }
         Sound.tick(open ? 3 : 1);
         setTimeout(queueMeasure, 950);
       });

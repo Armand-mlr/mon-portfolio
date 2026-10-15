@@ -995,3 +995,9 @@ html[data-tone="light"] .sound:hover { color: var(--ink); }
   .js .rv, .js .rv-t { opacity: 1; filter: none; clip-path: none; font-variation-settings: 'opsz' 96; letter-spacing: -.022em; }
 }
 #rig.is-static { position: absolute; z-index: 1; }
+
+/* Project media and links, using the existing Nocturne palette. */
+.project-links { margin-top: 2rem; }
+.project-video video { display: block; width: 100%; height: auto; max-height: 70vh; margin-top: 1rem; background: var(--night); }
+.project-video [hidden] { display: none; }
+.video-note { padding: 1rem 1.6rem 1.6rem; font-size: .9rem; line-height: 1.6; }
