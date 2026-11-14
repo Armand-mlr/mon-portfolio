@@ -3,517 +3,514 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="theme-color" content="#0A1518">
+  <meta name="theme-color" content="#1726B5">
   <title>Armand Mulier | Élève ingénieur ESIEE Paris</title>
   <meta name="description" content="Élève ingénieur à l’ESIEE Paris, à la recherche d’une alternance en informatique en Île-de-France. Projets : Fluency, TrackCurator et algorithmique en C.">
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..700&family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..800;1,6..96,400..800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <meta property="og:title" content="Armand Mulier | Élève ingénieur ESIEE Paris">
+  <meta property="og:description" content="Portfolio : projets, compétences et contact. À la recherche d’une alternance en informatique en Île-de-France.">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="photos/favicon.ico" sizes="16x16 32x32 48x48">
+  <link rel="icon" type="image/png" sizes="16x16" href="photos/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="photos/favicon-32x32.png">
+  <link rel="icon" type="image/svg+xml" sizes="any" href="photos/favicon.svg">
+  <link rel="apple-touch-icon" sizes="180x180" href="photos/apple-touch-icon.png">
+  <link rel="manifest" href="photos/site.webmanifest">
   <link rel="stylesheet" href="styles.css">
-
-  <!-- Décide avant le premier rendu : intro complète, courte, ou aucune -->
-  <script>
-    (function () {
-      var d = document.documentElement;
-      d.classList.remove('no-js'); d.classList.add('js');
-      var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      if (reduce) { d.classList.add('reduced'); return; }
-      if (location.hash || window.scrollY > 40) return;
-      var mode = 'full';
-      try {
-        var seen = +localStorage.getItem('am-intro-v3');
-        if (seen && Date.now() - seen < 1000 * 60 * 20) mode = 'short';
-      } catch (e) {}
-      d.classList.add('intro-pending');
-      d.dataset.intro = mode;
-      // filet de sécurité si le script principal ne démarre pas
-      setTimeout(function () { if (!window.__amIntro) d.classList.remove('intro-pending'); }, 3500);
-    })();
-  </script>
+  <script>document.documentElement.className = 'js' + (matchMedia('(prefers-reduced-motion: reduce)').matches ? ' reduced' : '');</script>
 </head>
-<body>
+<body data-tone="blue">
 
-  <a class="skip-link" href="#about" data-i18n="skip_content">Aller au contenu</a>
+  <a class="skip" href="#main" data-i18n="skip_content">Aller au contenu</a>
+  <div id="cur" aria-hidden="true"><i><svg class="c-link" viewBox="0 0 24 24"><path d="M8.2 15.8l7.6-7.6M9.6 8.2h6.2v6.2"/></svg><svg class="c-plus" viewBox="0 0 24 24"><path d="M12 7v10M7 12h10"/></svg><svg class="c-drag" viewBox="0 0 30 30"><path d="M7 15h16M10.5 11.5L7 15l3.5 3.5M19.5 11.5L23 15l-3.5 3.5"/></svg><b class="c-dot"></b></i></div>
 
-  <!-- Curseur : un point de lumière -->
-  <div id="cursor" aria-hidden="true"><span class="c-ring-w"><span class="c-ring"></span></span><span class="c-dot"></span></div>
-
-  <!-- L'objet : une seule couche fixe, traversée par tout le site -->
-  <div id="rig" aria-hidden="true">
-    <div class="rig-wash"></div>
-    <div class="rig-glow"></div>
-    <div class="platter">
-      <svg class="platter-draw" viewBox="0 0 200 200"><circle cx="100" cy="100" r="99" pathLength="100"/></svg>
-      <div class="platter-metal"></div>
-      <div class="platter-sheen"></div>
-      <svg class="orbit" viewBox="0 0 200 200">
-        <defs><path id="orbit-path" d="M100,100 m-88,0 a88,88 0 1,1 176,0 a88,88 0 1,1 -176,0"/></defs>
-        <text><textPath href="#orbit-path" class="orbit-text"></textPath></text>
-      </svg>
-    </div>
-    <div id="disc">
-      <div class="disc-shadow"></div>
-      <div class="disc-spin">
-        <div class="disc-grooves"></div>
-        <div class="disc-label">
-          <div class="label-core"></div>
-          <img class="label-img" data-ch="0" src="photos/fraisier.jpg" alt="" decoding="async">
-          <img class="label-img" data-ch="1" src="photos/portrait2.jpg" alt="" decoding="async">
-          <img class="label-img" data-ch="2" src="photos/mer.jpg" alt="" decoding="async">
-          <span class="label-hole"></span>
-        </div>
-      </div>
-      <div class="disc-sheen"></div>
-      <div class="disc-iris"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
-      <div class="disc-rim"></div>
-    </div>
-    <div class="arm">
-      <span class="arm-bar"></span>
-      <span class="arm-head"></span>
-      <span class="arm-pivot"></span>
-    </div>
-    <span class="rig-point"></span>
-    <div class="rig-wipe"></div>
-  </div>
-
-  <!-- Séquence d'ouverture : un point, deux cercles, puis l'objet -->
-  <div id="intro" aria-hidden="true">
-    <svg class="intro-rings" viewBox="0 0 200 200">
-      <circle class="ir ir-1" cx="100" cy="100" r="60" pathLength="100"/>
-      <circle class="ir ir-2" cx="100" cy="100" r="78" pathLength="100"/>
-      <circle class="ir ir-3" cx="100" cy="100" r="96" pathLength="100"/>
-    </svg>
-    <span class="intro-point"></span>
-    <span class="intro-sweep"></span>
-    <button class="intro-skip" type="button" data-i18n="intro_skip">Passer</button>
-  </div>
-
-  <!-- ══ EN-TÊTE ══ -->
-  <header id="site-header" data-tone="dark">
-    <a href="#top" class="wordmark">Armand Mulier</a>
-
+  <header id="hd">
+    <a href="#top" class="am" aria-label="Armand Mulier, Accueil" data-i18n-attr="aria-label:nav_home" data-alt-head="Armand Mulier, ">AM</a>
     <nav class="nav" aria-label="Sections">
-      <a href="#about"     data-sec="about"><span data-i18n="nav_about">Profil</span></a>
-      <a href="#projects"  data-sec="projects"><span data-i18n="nav_projects">Projets</span></a>
-      <a href="#skills"    data-sec="skills"><span data-i18n="nav_skills">Compétences</span></a>
-      <a href="#interests" data-sec="interests"><span data-i18n="gallery_label">Ailleurs</span></a>
-      <a href="#contact"   data-sec="contact"><span data-i18n="nav_contact">Contact</span></a>
+      <a href="#projects" data-nav="projects" data-i18n="nav_projects">Projets</a>
+      <a href="#about" data-nav="about" data-i18n="nav_path">Parcours</a>
+      <a href="#contact" data-nav="contact" data-i18n="nav_contact">Contact</a>
     </nav>
-
-    <div class="header-right">
-      <a href="#contact" class="header-cta" data-i18n="header_cta">À la recherche d’une alternance</a>
-      <button id="lang-toggle" class="switch" type="button" aria-label="Changer de langue / Switch language">
-        <span class="sw-opt" data-l="fr">FR</span><span class="sw-opt" data-l="en">EN</span><i class="sw-knob"></i>
-      </button>
-      <button id="menu-toggle" class="menu-btn" type="button" aria-expanded="false" aria-controls="menu">
-        <span data-i18n="menu">Menu</span>
-      </button>
-    </div>
+    <button type="button" class="lang" data-lang aria-label="Français / English"><span data-l="fr">FR</span><i>/</i><span data-l="en">EN</span></button>
+    <button type="button" id="menu-btn" class="menu-btn" aria-expanded="false" aria-controls="menu"><span data-i18n="menu">Menu</span><i aria-hidden="true"></i></button>
   </header>
 
-  <!-- Menu mobile -->
-  <div id="menu" class="menu" hidden>
-    <ol>
-      <li><a href="#about"><span class="m-i">01</span><span data-i18n="nav_about">Profil</span></a></li>
-      <li><a href="#projects"><span class="m-i">02</span><span data-i18n="nav_projects">Projets</span></a></li>
-      <li><a href="#skills"><span class="m-i">03</span><span data-i18n="nav_skills">Compétences</span></a></li>
-      <li><a href="#interests"><span class="m-i">04</span><span data-i18n="gallery_label">Ailleurs</span></a></li>
-      <li><a href="#contact"><span class="m-i">05</span><span data-i18n="nav_contact">Contact</span></a></li>
-    </ol>
-    <a href="#contact" class="menu-cta" data-i18n="header_cta">À la recherche d’une alternance</a>
+  <div id="menu" inert>
+    <div class="menu-in">
+      <div class="menu-head"><p class="h-xl" data-i18n="menu">Menu</p><button type="button" class="menu-close"><span data-i18n="close">Fermer</span> ×</button></div>
+      <ol class="menu-list">
+        <li><a href="#top" data-menu="top"><span data-i18n="nav_home">Accueil</span><i aria-hidden="true">→</i></a></li>
+        <li><a href="#about" data-menu="about"><span data-i18n="nav_path">Parcours</span><i aria-hidden="true">→</i></a></li>
+        <li><a href="#projects" data-menu="projects"><span data-i18n="nav_projects">Projets</span><i aria-hidden="true">→</i></a></li>
+        <li><a href="#skills" data-menu="skills"><span data-i18n="nav_skills">Compétences</span><i aria-hidden="true">→</i></a></li>
+        <li><a href="#interests" data-menu="interests"><span data-i18n="gallery_label">Ailleurs</span><i aria-hidden="true">→</i></a></li>
+        <li><a href="#cv" data-menu="cv"><span data-i18n="nav_cv">CV</span><i aria-hidden="true">→</i></a></li>
+        <li><a href="#contact" data-menu="contact"><span data-i18n="nav_contact">Contact</span><i aria-hidden="true">→</i></a></li>
+      </ol>
+      <div class="menu-side">
+        <div class="menu-stack" aria-hidden="true"><img src="collection/04-arbres-pochette-640.webp" width="640" height="640" alt="" loading="lazy" decoding="async"><img src="collection/02-trackcurator-pochette-640.webp" width="640" height="640" alt="" loading="lazy" decoding="async"><img src="collection/03-sillage-pochette-640.webp" width="640" height="640" alt="" loading="lazy" decoding="async"></div>
+        <p class="menu-links"><a class="lk" href="#galerie/cuisine"><span><span data-i18n="gal_c_title">Galerie cuisine</span></span><i aria-hidden="true">→</i></a><a class="lk" href="#galerie/photo"><span><span data-i18n="gal_p_title">Galerie photo</span></span><i aria-hidden="true">→</i></a></p>
+        <button type="button" class="lang lang-menu" data-lang aria-label="Français / English"><span data-l="fr">FR</span><i>/</i><span data-l="en">EN</span></button>
+      </div>
+    </div>
   </div>
 
-  <main>
+  <main id="main">
 
-    <!-- ══ HERO ══ -->
-    <section id="top" class="hero" data-tone="dark">
-      <p class="hero-eyebrow">
-        <i class="led" aria-hidden="true"></i>
-        <span data-i18n="hero_eyebrow">Élève ingénieur ESIEE Paris / Disponible en alternance</span>
-      </p>
+    <!-- ══ ACCUEIL ══ -->
+    <section class="view v-home active" id="top" data-view="home">
+      <div class="home-intro">
+        <h1 class="name">Armand<br>Mulier</h1>
+        <p class="role" data-i18n="hero_eyebrow">Élève ingénieur ESIEE Paris / Disponible en alternance</p>
+        <p class="sub" data-i18n="hero_desc">Cycle ingénieur ESIEE Paris · 2026–2029.<br>Informatique, données et projets qui répondent à un besoin.</p>
+      </div>
+      <div class="home-pick">
+        <h2 class="pick-t" id="pick-t" data-i18n="home_pick_title">Sélection de projets</h2>
+        <div class="pick" role="group" aria-labelledby="pick-t">
+          <button type="button" data-pick="sillage" aria-pressed="true">Sillage</button><button type="button" data-pick="fluency" aria-pressed="false">Fluency</button><button type="button" data-pick="trackcurator" aria-pressed="false">TrackCurator</button>
+        </div>
+      </div>
+      <div class="home-obj">
+        <div class="stage" id="home-stage"><span class="obj" data-slug="sillage" style="--f:0.08"><span class="disc"><img src="collection/03-sillage-vinyle-640.webp" srcset="collection/03-sillage-vinyle-640.webp 640w, collection/03-sillage-vinyle.webp 1254w" sizes="(max-width: 860px) 62vw, 36vw" width="1254" height="1254" draggable="false" decoding="async" fetchpriority="high" alt=""></span><span class="cv"><img src="collection/03-sillage-pochette-640.webp" srcset="collection/03-sillage-pochette-640.webp 640w, collection/03-sillage-pochette.webp 1254w" sizes="(max-width: 860px) 62vw, 36vw" width="1254" height="1254" draggable="false" decoding="async" fetchpriority="high" alt="Pochette de l’édition AM–03, Sillage" data-i18n-attr="alt:alt_cover" data-alt-tail=" AM–03, Sillage"></span></span></div>
+        <p class="home-cap" id="home-cap" data-i18n="home_cap_sillage">Convertir une vidéo en audio pour préparer un set.</p>
+        <p class="home-open"><a class="lk" id="home-open" href="#projet/sillage"><span>Ouvrir le projet Sillage</span><i aria-hidden="true">→</i></a></p>
+      </div>
+      <p class="home-links"><a class="lk" href="#projects"><span><span data-i18n="see_all6">Voir les 6 projets</span></span><i aria-hidden="true">→</i></a><a class="lk" href="#cv"><span><span data-i18n="see_cv">Voir mon CV</span></span><i aria-hidden="true">→</i></a></p>
+    </section>
 
-      <h1 class="hero-title" aria-label="Armand Mulier">
-        <span class="hl hl-1" aria-hidden="true"><span class="ch">A</span><span class="ch">r</span><span class="ch">m</span><span class="ch">a</span><span class="ch">n</span><span class="ch">d</span></span>
-        <span class="hl hl-2" aria-hidden="true"><span class="ch">M</span><span class="ch">u</span><span class="ch">l</span><span class="ch">i</span><span class="ch">e</span><span class="ch">r</span><span class="ch ch-dot">.</span></span>
-      </h1>
+    <!-- ══ COLLECTION ══ -->
+    <section class="view v-coll" id="projects" data-view="projects">
+      <div class="pg-head"><h1 class="h-xl" data-i18n="collection_title">La collection</h1><p class="count" data-i18n="collection_meta">Six projets&ensp;/&ensp;Six éditions</p></div>
+      <ul class="grid">
+        <li><a class="tile" href="#projet/fluency" data-slug="fluency"><span class="obj" data-slug="fluency" style="--f:0.44"><span class="disc"><img src="collection/01-fluency-vinyle-640.webp" srcset="collection/01-fluency-vinyle-640.webp 640w, collection/01-fluency-vinyle.webp 1254w" sizes="(max-width: 700px) 40vw, 18vw" width="1254" height="1254" draggable="false" decoding="async" loading="lazy" alt=""></span><span class="cv"><img src="collection/01-fluency-pochette-640.webp" srcset="collection/01-fluency-pochette-640.webp 640w, collection/01-fluency-pochette.webp 1254w" sizes="(max-width: 700px) 40vw, 18vw" width="1254" height="1254" draggable="false" decoding="async" loading="lazy" alt="Pochette de l’édition AM–01, Fluency" data-i18n-attr="alt:alt_cover" data-alt-tail=" AM–01, Fluency"></span></span>
+          <span class="t-cap"><span class="t-code">AM–01</span><span class="t-name">Fluency</span></span>
+          <span class="t-cat"><span data-i18n="p2_type">Anglais / Application personnelle / IA</span></span></a></li>
+        <li><a class="tile" href="#projet/trackcurator" data-slug="trackcurator"><span class="obj" data-slug="trackcurator" style="--f:0.44"><span class="disc"><img src="collection/02-trackcurator-vinyle-640.webp" srcset="collection/02-trackcurator-vinyle-640.webp 640w, collection/02-trackcurator-vinyle.webp 1254w" sizes="(max-width: 700px) 40vw, 18vw" width="1254" height="1254" draggable="false" decoding="async" loading="lazy" alt=""></span><span class="cv"><img src="collection/02-trackcurator-pochette-640.webp" srcset="collection/02-trackcurator-pochette-640.webp 640w, collection/02-trackcurator-pochette.webp 1254w" sizes="(max-width: 700px) 40vw, 18vw" width="1254" height="1254" draggable="false" decoding="async" loading="lazy" alt="Pochette de l’édition AM–02, TrackCurator" data-i18n-attr="alt:alt_cover" data-alt-tail=" AM–02, TrackCurator"></span></span>
+          <span class="t-cap"><span class="t-code">AM–02</span><span class="t-name">TrackCurator</span></span>
+          <span class="t-cat"><span data-i18n="p5_type">Données / PostgreSQL / En cours</span></span></a></li>
+        <li><a class="tile" href="#projet/sillage" data-slug="sillage"><span class="obj" data-slug="sillage" style="--f:0.44"><span class="disc"><img src="collection/03-sillage-vinyle-640.webp" srcset="collection/03-sillage-vinyle-640.webp 640w, collection/03-sillage-vinyle.webp 1254w" sizes="(max-width: 700px) 40vw, 18vw" width="1254" height="1254" draggable="false" decoding="async" loading="lazy" alt=""></span><span class="cv"><img src="collection/03-sillage-pochette-640.webp" srcset="collection/03-sillage-pochette-640.webp 640w, collection/03-sillage-pochette.webp 1254w" sizes="(max-width: 700px) 40vw, 18vw" width="1254" height="1254" draggable="false" decoding="async" loading="lazy" alt="Pochette de l’édition AM–03, Sillage" data-i18n-attr="alt:alt_cover" data-alt-tail=" AM–03, Sillage"></span></span>
+          <span class="t-cap"><span class="t-code">AM–03</span><span class="t-name">Sillage</span></span>
+          <span class="t-cat"><span data-i18n="p6_type">Audio / Application de bureau / macOS et Windows</span></span></a></li>
+        <li><a class="tile" href="#projet/arbres" data-slug="arbres"><span class="obj" data-slug="arbres" style="--f:0.44"><span class="disc"><img src="collection/04-arbres-vinyle-640.webp" srcset="collection/04-arbres-vinyle-640.webp 640w, collection/04-arbres-vinyle.webp 1254w" sizes="(max-width: 700px) 40vw, 18vw" width="1254" height="1254" draggable="false" decoding="async" loading="lazy" alt=""></span><span class="cv"><img src="collection/04-arbres-pochette-640.webp" srcset="collection/04-arbres-pochette-640.webp 640w, collection/04-arbres-pochette.webp 1254w" sizes="(max-width: 700px) 40vw, 18vw" width="1254" height="1254" draggable="false" decoding="async" loading="lazy" alt="Pochette de l’édition AM–04, Arbres binaires" data-i18n-attr="alt:alt_cover" data-alt-tail=" AM–04, Arbres binaires"></span></span>
+          <span class="t-cap"><span class="t-code">AM–04</span><span class="t-name">Arbres binaires</span></span>
+          <span class="t-cat">Algorithmique / C / Python / <span data-i18n="p4_type">Analyse</span></span><span class="sr-only" data-i18n="p4_name">Arbres Binaires de Recherche</span></a></li>
+        <li><a class="tile" href="#projet/structures" data-slug="structures"><span class="obj" data-slug="structures" style="--f:0.44"><span class="disc"><img src="collection/05-structures-vinyle-640.webp" srcset="collection/05-structures-vinyle-640.webp 640w, collection/05-structures-vinyle.webp 1254w" sizes="(max-width: 700px) 40vw, 18vw" width="1254" height="1254" draggable="false" decoding="async" loading="lazy" alt=""></span><span class="cv"><img src="collection/05-structures-pochette-640.webp" srcset="collection/05-structures-pochette-640.webp 640w, collection/05-structures-pochette.webp 1254w" sizes="(max-width: 700px) 40vw, 18vw" width="1254" height="1254" draggable="false" decoding="async" loading="lazy" alt="Pochette de l’édition AM–05, Structures" data-i18n-attr="alt:alt_cover" data-alt-tail=" AM–05, Structures"></span></span>
+          <span class="t-cap"><span class="t-code">AM–05</span><span class="t-name">Structures</span></span>
+          <span class="t-cat">C / <span data-i18n="p1_type">Structures de données / Analyse</span></span><span class="sr-only" data-i18n="p1_name">Comparaison de Structures de Données</span></a></li>
+        <li><a class="tile" href="#projet/refuges" data-slug="refuges"><span class="obj" data-slug="refuges" style="--f:0.44"><span class="disc"><img src="collection/06-refuges-vinyle-640.webp" srcset="collection/06-refuges-vinyle-640.webp 640w, collection/06-refuges-vinyle.webp 1254w" sizes="(max-width: 700px) 40vw, 18vw" width="1254" height="1254" draggable="false" decoding="async" loading="lazy" alt=""></span><span class="cv"><img src="collection/06-refuges-pochette-640.webp" srcset="collection/06-refuges-pochette-640.webp 640w, collection/06-refuges-pochette.webp 1254w" sizes="(max-width: 700px) 40vw, 18vw" width="1254" height="1254" draggable="false" decoding="async" loading="lazy" alt="Pochette de l’édition AM–06, Refuges" data-i18n-attr="alt:alt_cover" data-alt-tail=" AM–06, Refuges"></span></span>
+          <span class="t-cap"><span class="t-code">AM–06</span><span class="t-name">Refuges</span></span>
+          <span class="t-cat">Web / Flask / PostgreSQL / <span data-i18n="p3_type">Base de données</span></span><span class="sr-only" data-i18n="p3_name">Application Web SPA / Refuges</span></a></li>
+      </ul>
+    </section>
 
-      <div class="hero-foot">
-        <p class="hero-desc" data-i18n="hero_desc">Cycle ingénieur ESIEE Paris · 2026–2029.<br>Informatique, données et projets qui répondent à un besoin.</p>
-        <div class="hero-actions">
-          <a href="#projects" class="btn btn-solid" data-i18n="hero_btn_projects">Voir les projets</a>
-          <a href="photos/CVAM2026F.pdf" download class="btn btn-line" data-i18n="hero_btn_cv">Télécharger le CV</a>
+    <!-- ══ LES SIX ÉDITIONS ══ -->
+    <article class="view v-project" id="projet/fluency" data-view="project" data-slug="fluency">
+      <div class="p-bar"><a class="back" href="#projects"><i aria-hidden="true">←</i><span>Collection</span></a><p class="crumb">AM–01&ensp;/&ensp;<span class="in-ed" data-i18n="edition">L’édition</span><span class="in-bk" data-i18n="booklet">Livret</span></p></div>
+      <div class="ed">
+        <div class="ed-text">
+          <p class="code">AM–01&ensp;/&ensp;<span data-i18n="p2_type">Anglais / Application personnelle / IA</span></p>
+          <h1 class="h-lg" data-i18n="p2_name">Fluency</h1>
+          <p class="concept" data-i18n="e1_concept">Le mot et sa réponse</p>
+          <p class="art" data-i18n="e1_art">Deux guillemets se répondent sur un papier ivoire. Le disque rouge reprend leur encre.</p>
+          <p class="ed-actions"><a class="lk" href="#projet/fluency/livret" data-open><span><span data-i18n="open_booklet">Ouvrir le livret</span></span><i aria-hidden="true">→</i></a><button type="button" class="lk pull" aria-pressed="false"><span data-i18n="pull_out">Sortir le disque</span></button></p>
+        </div>
+        <div class="stage"><span class="obj" data-slug="fluency" style="--f:0.52"><span class="disc"><img src="collection/01-fluency-vinyle-640.webp" srcset="collection/01-fluency-vinyle-640.webp 640w, collection/01-fluency-vinyle.webp 1254w" sizes="(max-width: 860px) 62vw, 36vw" width="1254" height="1254" draggable="false" decoding="async" loading="lazy" alt=""></span><span class="cv"><img src="collection/01-fluency-pochette-640.webp" srcset="collection/01-fluency-pochette-640.webp 640w, collection/01-fluency-pochette.webp 1254w" sizes="(max-width: 860px) 62vw, 36vw" width="1254" height="1254" draggable="false" decoding="async" loading="lazy" alt="Pochette de l’édition AM–01, Fluency" data-i18n-attr="alt:alt_cover" data-alt-tail=" AM–01, Fluency"></span></span></div>
+        <p class="pn"><a href="#projet/refuges" data-dir="-1" data-i18n="prev">Précédent</a>&ensp;/&ensp;<a href="#projet/trackcurator" data-dir="1" data-i18n="next">Suivant</a></p>
+      </div>
+      <div class="bk">
+        <div class="bk-head"><h2 class="h-lg" data-i18n="p2_name">Fluency</h2><p class="cat"><span data-i18n="p2_type">Anglais / Application personnelle / IA</span></p></div>
+        <div class="bk-grid">
+          <div class="bk-insert"><p class="demo-l" data-i18n="demo">Démonstration pédagogique</p><figure class="insert d-flash" data-demo="flash">
+      <div class="pg "><p class="pg-l" data-i18n="d1_en">Anglais</p><p class="d-word d-blue" lang="en">shelf</p><p class="pg-f" data-i18n="d1_card">Carte de révision</p></div>
+      <div class="pg "><p class="pg-l" data-i18n="d1_fr">Français</p><p class="d-word d-ans" lang="fr"><span>étagère</span></p><button type="button" class="d-btn pg-f" aria-pressed="false"><span data-i18n="d1_flip">Retourner</span><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 8a5.5 5.5 0 0 1 9.6-3.6M13.5 8a5.5 5.5 0 0 1-9.6 3.6M12.4 1.6v3h-3M3.6 14.4v-3h3" fill="none" stroke="currentColor" stroke-width="1.4"/></svg></button><p class="sr-only d-status" role="status" data-i18n="d1_hidden">Réponse masquée.</p></div>
+    </figure></div>
+          <div class="bk-text">
+            <p class="bk-lead" data-i18n="p2_desc">Progresser en anglais était devenu un vrai besoin pour mes études et la suite. Les solutions qui m’intéressaient étaient payantes : de là est née Fluency, une application personnelle pour apprendre à mon rythme, sur mon ordinateur.</p>
+            <ul class="tags"><li>Next.js</li><li>React</li><li>TypeScript</li><li>IndexedDB</li><li>Ollama</li></ul>
+            <p class="bk-links"><a class="lk" href="https://github.com/Armand-mlr/fluency" target="_blank" rel="noopener noreferrer"><span><span data-i18n="repo_link">Voir le dépôt GitHub</span></span><i aria-hidden="true">→</i></a><a class="lk rev" href="#projet/fluency"><i aria-hidden="true">←</i><span data-i18n="back_edition">Revenir à l’édition</span></a></p>
+          </div>
+        </div>
+      </div>
+      <section class="bk-paper tone-paper">
+        <h2 class="h-md"><span data-i18n="p2_name">Fluency</span><span data-i18n="making_of">, côté fabrication.</span></h2>
+        <div class="mk has-media"><figure class="media"><figcaption id="p2-cap" data-i18n="p2_video_label">Fluency · Présentation en motion design</figcaption>
+            <video controls playsinline preload="none" aria-labelledby="p2-cap" hidden data-src="photos/Fluency%20Pr%C3%A9sentation.mp4"></video>
+            <p class="video-note" data-i18n="p2_video_fallback">La présentation vidéo sera bientôt disponible. Le projet est à découvrir sur GitHub.</p></figure>
+          <div class="mk-cols"><div><h3 data-i18n="p2_role_label">Ma démarche</h3><p data-i18n="p2_did">Partir de mon besoin, définir l’expérience souhaitée et faire évoluer l’application avec l’aide d’outils d’IA pour le développement. Un projet personnel guidé par l’usage, avec un code réalisé avec assistance IA.</p></div><div><h3 data-i18n="p2_features_label">Dans l’application</h3><p data-i18n="p2_features">Vocabulaire, leçons, révisions espacées et suivi des erreurs. Les données restent dans le navigateur ; l’IA est facultative, via Ollama en local ou une API compatible.</p></div></div>
+        </div>
+        <p class="mk-links"><a class="lk" href="https://github.com/Armand-mlr/fluency" target="_blank" rel="noopener noreferrer"><span><span data-i18n="repo_link">Voir le dépôt GitHub</span></span><i aria-hidden="true">→</i></a><a class="lk" href="#projects"><span><span>Collection</span></span><i aria-hidden="true">→</i></a></p>
+      </section>
+    </article>
+    <article class="view v-project" id="projet/trackcurator" data-view="project" data-slug="trackcurator">
+      <div class="p-bar"><a class="back" href="#projects"><i aria-hidden="true">←</i><span>Collection</span></a><p class="crumb">AM–02&ensp;/&ensp;<span class="in-ed" data-i18n="edition">L’édition</span><span class="in-bk" data-i18n="booklet">Livret</span></p></div>
+      <div class="ed">
+        <div class="ed-text">
+          <p class="code">AM–02&ensp;/&ensp;<span data-i18n="p5_type">Données / PostgreSQL / En cours</span></p>
+          <h1 class="h-lg" data-i18n="p5_name">TrackCurator</h1>
+          <p class="concept" data-i18n="e2_concept">Donner un ordre aux données</p>
+          <p class="art" data-i18n="e2_art">Des intercalaires en éventail évoquent la construction d’un catalogue. Le vert du pressage prolonge le bord des fiches.</p>
+          <p class="ed-actions"><a class="lk" href="#projet/trackcurator/livret" data-open><span><span data-i18n="open_booklet">Ouvrir le livret</span></span><i aria-hidden="true">→</i></a><button type="button" class="lk pull" aria-pressed="false"><span data-i18n="pull_out">Sortir le disque</span></button></p>
+        </div>
+        <div class="stage"><span class="obj" data-slug="trackcurator" style="--f:0.52"><span class="disc"><img src="collection/02-trackcurator-vinyle-640.webp" srcset="collection/02-trackcurator-vinyle-640.webp 640w, collection/02-trackcurator-vinyle.webp 1254w" sizes="(max-width: 860px) 62vw, 36vw" width="1254" height="1254" draggable="false" decoding="async" loading="lazy" alt=""></span><span class="cv"><img src="collection/02-trackcurator-pochette-640.webp" srcset="collection/02-trackcurator-pochette-640.webp 640w, collection/02-trackcurator-pochette.webp 1254w" sizes="(max-width: 860px) 62vw, 36vw" width="1254" height="1254" draggable="false" decoding="async" loading="lazy" alt="Pochette de l’édition AM–02, TrackCurator" data-i18n-attr="alt:alt_cover" data-alt-tail=" AM–02, TrackCurator"></span></span></div>
+        <p class="pn"><a href="#projet/fluency" data-dir="-1" data-i18n="prev">Précédent</a>&ensp;/&ensp;<a href="#projet/sillage" data-dir="1" data-i18n="next">Suivant</a></p>
+      </div>
+      <div class="bk">
+        <div class="bk-head"><h2 class="h-lg" data-i18n="p5_name">TrackCurator</h2><p class="cat"><span data-i18n="p5_type">Données / PostgreSQL / En cours</span></p></div>
+        <div class="bk-grid">
+          <div class="bk-insert"><p class="demo-l" data-i18n="demo">Démonstration pédagogique</p><figure class="insert d-steps" data-demo="steps">
+      <div class="pg "><p class="pg-l" data-i18n="d2_title">Fondations</p><div class="d-tabs"><button type="button" aria-pressed="true" data-i18n="d2_model">Modèle</button><button type="button" aria-pressed="false">ORM</button><button type="button" aria-pressed="false" data-i18n="d2_mig">Migrations</button></div></div>
+      <div class="pg"><p class="d-a4">A4</p><p class="d-step on" data-i18n="d2_t1">Le modèle de données : organiser les données avant de développer la suite.</p><p class="d-step" data-i18n="d2_t2">L’ORM relie les objets du code aux tables.</p><p class="d-step" data-i18n="d2_t3">Les migrations font évoluer le schéma de la base.</p><p class="pg-f" data-i18n="p5_stage_label">Avancement actuel · A4</p></div>
+    </figure></div>
+          <div class="bk-text">
+            <p class="bk-lead" data-i18n="p5_desc">Un projet personnel en cours, que je construis progressivement pour approfondir le travail sur les données et le backend. Le chantier actuel porte sur les fondations : organiser les données avant de développer la suite.</p>
+            <ul class="tags"><li data-i18n="project_in_progress">Projet en cours</li><li>PostgreSQL</li><li>ORM</li><li>Migrations</li></ul>
+            <p class="bk-links"><a class="lk" href="https://github.com/Armand-mlr/TrackCurator" target="_blank" rel="noopener noreferrer"><span><span data-i18n="repo_link">Voir le dépôt GitHub</span></span><i aria-hidden="true">→</i></a><a class="lk rev" href="#projet/trackcurator"><i aria-hidden="true">←</i><span data-i18n="back_edition">Revenir à l’édition</span></a></p>
+          </div>
+        </div>
+      </div>
+      <section class="bk-paper tone-paper">
+        <h2 class="h-md"><span data-i18n="p5_name">TrackCurator</span><span data-i18n="making_of">, côté fabrication.</span></h2>
+        <div class="mk">
+          <div class="mk-cols"><div><h3 data-i18n="p5_stage_label">Avancement actuel · A4</h3><p data-i18n="p5_did">Début de la mise en place de la base PostgreSQL. Travail en cours sur le modèle de données, l’ORM — qui relie les objets du code aux tables — et les migrations, pour faire évoluer le schéma de la base.</p></div><div><h3 data-i18n="p5_next_label">La suite</h3><p data-i18n="p5_next">Stabiliser le schéma et les premières migrations, puis poursuivre le projet par étapes. La base de données est en cours de construction ; le projet n’est pas terminé.</p></div></div>
+        </div>
+        <p class="mk-links"><a class="lk" href="https://github.com/Armand-mlr/TrackCurator" target="_blank" rel="noopener noreferrer"><span><span data-i18n="repo_link">Voir le dépôt GitHub</span></span><i aria-hidden="true">→</i></a><a class="lk" href="#projects"><span><span>Collection</span></span><i aria-hidden="true">→</i></a></p>
+      </section>
+    </article>
+    <article class="view v-project" id="projet/sillage" data-view="project" data-slug="sillage">
+      <div class="p-bar"><a class="back" href="#projects"><i aria-hidden="true">←</i><span>Collection</span></a><p class="crumb">AM–03&ensp;/&ensp;<span class="in-ed" data-i18n="edition">L’édition</span><span class="in-bk" data-i18n="booklet">Livret</span></p></div>
+      <div class="ed">
+        <div class="ed-text">
+          <p class="code">AM–03&ensp;/&ensp;<span data-i18n="p6_type">Audio / Application de bureau / macOS et Windows</span></p>
+          <h1 class="h-lg" data-i18n="p6_name">Sillage</h1>
+          <p class="concept" data-i18n="e3_concept">L’image devient son</p>
+          <p class="art" data-i18n="e3_art">Les perforations d’une pellicule se défont en un sillon argenté. Le vinyle fumé renvoie le même trait de lumière.</p>
+          <p class="ed-actions"><a class="lk" href="#projet/sillage/livret" data-open><span><span data-i18n="open_booklet">Ouvrir le livret</span></span><i aria-hidden="true">→</i></a><button type="button" class="lk pull" aria-pressed="false"><span data-i18n="pull_out">Sortir le disque</span></button></p>
+        </div>
+        <div class="stage"><span class="obj" data-slug="sillage" style="--f:0.52"><span class="disc"><img src="collection/03-sillage-vinyle-640.webp" srcset="collection/03-sillage-vinyle-640.webp 640w, collection/03-sillage-vinyle.webp 1254w" sizes="(max-width: 860px) 62vw, 36vw" width="1254" height="1254" draggable="false" decoding="async" loading="lazy" alt=""></span><span class="cv"><img src="collection/03-sillage-pochette-640.webp" srcset="collection/03-sillage-pochette-640.webp 640w, collection/03-sillage-pochette.webp 1254w" sizes="(max-width: 860px) 62vw, 36vw" width="1254" height="1254" draggable="false" decoding="async" loading="lazy" alt="Pochette de l’édition AM–03, Sillage" data-i18n-attr="alt:alt_cover" data-alt-tail=" AM–03, Sillage"></span></span></div>
+        <p class="pn"><a href="#projet/trackcurator" data-dir="-1" data-i18n="prev">Précédent</a>&ensp;/&ensp;<a href="#projet/arbres" data-dir="1" data-i18n="next">Suivant</a></p>
+      </div>
+      <div class="bk">
+        <div class="bk-head"><h2 class="h-lg" data-i18n="p6_name">Sillage</h2><p class="cat"><span data-i18n="p6_type">Audio / Application de bureau / macOS et Windows</span></p></div>
+        <div class="bk-grid">
+          <div class="bk-insert"><p class="demo-l" data-i18n="demo">Démonstration pédagogique</p><figure class="insert d-signal" data-demo="toggle" data-on="d3_reset" data-off="d3_btn">
+      <div class="pg "><p class="pg-l" data-i18n="d3_in">Entrée</p><div class="d-film" aria-hidden="true"><i></i><i></i><i></i></div><p class="pg-f pg-b" data-i18n="d3_video">Vidéo</p></div>
+      <div class="pg "><p class="pg-l" data-i18n="d3_out">Sortie</p><div class="d-wave" aria-hidden="true"><i style="--h:43%;--i:0"></i><i style="--h:63%;--i:1"></i><i style="--h:88%;--i:2"></i><i style="--h:70%;--i:3"></i><i style="--h:62%;--i:4"></i><i style="--h:71%;--i:5"></i><i style="--h:82%;--i:6"></i><i style="--h:48%;--i:7"></i><i style="--h:75%;--i:8"></i><i style="--h:77%;--i:9"></i><i style="--h:67%;--i:10"></i><i style="--h:69%;--i:11"></i><i style="--h:79%;--i:12"></i><i style="--h:72%;--i:13"></i><i style="--h:49%;--i:14"></i><i style="--h:84%;--i:15"></i><i style="--h:71%;--i:16"></i><i style="--h:59%;--i:17"></i><i style="--h:73%;--i:18"></i><i style="--h:89%;--i:19"></i><i style="--h:61%;--i:20"></i><i style="--h:45%;--i:21"></i><i style="--h:89%;--i:22"></i><i style="--h:82%;--i:23"></i><i style="--h:48%;--i:24"></i><i style="--h:71%;--i:25"></i><i style="--h:96%;--i:26"></i><i style="--h:64%;--i:27"></i><i style="--h:38%;--i:28"></i><i style="--h:90%;--i:29"></i><i style="--h:91%;--i:30"></i><i style="--h:38%;--i:31"></i><i style="--h:66%;--i:32"></i><i style="--h:99%;--i:33"></i></div><p class="pg-f pg-b">WAV / MP3</p></div>
+      <button type="button" class="d-btn d-cta" aria-pressed="false"><span data-i18n="d3_btn">Passer au son</span></button>
+    </figure></div>
+          <div class="bk-text">
+            <p class="bk-lead" data-i18n="p6_desc">Né d'un besoin concret pour le DJing : récupérer l'audio d'une vidéo YouTube en .wav ou .mp3 depuis une application de bureau simple, installable sur Mac comme sur Windows.</p>
+            <ul class="tags"><li>macOS</li><li>Windows</li><li>GitHub Actions</li><li>WAV / MP3</li></ul>
+            <p class="bk-links"><a class="lk" href="https://github.com/Armand-mlr/Sillage" target="_blank" rel="noopener noreferrer"><span><span data-i18n="repo_link">Voir le dépôt GitHub</span></span><i aria-hidden="true">→</i></a><a class="lk rev" href="#projet/sillage"><i aria-hidden="true">←</i><span data-i18n="back_edition">Revenir à l’édition</span></a></p>
+          </div>
+        </div>
+      </div>
+      <section class="bk-paper tone-paper">
+        <h2 class="h-md"><span data-i18n="p6_name">Sillage</span><span data-i18n="making_of">, côté fabrication.</span></h2>
+        <div class="mk has-media"><figure class="media sq"><figcaption id="p6-cap" data-i18n="p6_video_label">Sillage · Présentation en motion design</figcaption>
+            <video controls playsinline preload="none" aria-labelledby="p6-cap" src="photos/sillage-presentation.mp4" poster="photos/sillage-poster.webp" width="960" height="960"></video></figure>
+          <div class="mk-cols"><div><h3 data-i18n="p6_role_label">Ma démarche</h3><p data-i18n="p6_did">Définir le besoin, l'usage et le fonctionnement attendu, puis faire évoluer l'application avec des outils d'IA pour le développement. Je n'ai pas écrit le code moi-même : mon travail porte sur la conception, les tests et la mise à disposition.</p></div><div><h3 data-i18n="p6_dist_label">Distribution</h3><p data-i18n="p6_dist">Installeur .dmg pour macOS. Installeur Windows construit automatiquement avec GitHub Actions, en cours de test.</p></div></div>
+        </div>
+        <p class="mk-links"><button type="button" class="lk play"><span data-i18n="play_video">Lire la vidéo</span><i aria-hidden="true">→</i></button><a class="lk" href="https://github.com/Armand-mlr/Sillage" target="_blank" rel="noopener noreferrer"><span><span data-i18n="repo_link">Voir le dépôt GitHub</span></span><i aria-hidden="true">→</i></a><a class="lk" href="#projects"><span><span>Collection</span></span><i aria-hidden="true">→</i></a></p>
+      </section>
+    </article>
+    <article class="view v-project" id="projet/arbres" data-view="project" data-slug="arbres">
+      <div class="p-bar"><a class="back" href="#projects"><i aria-hidden="true">←</i><span>Collection</span></a><p class="crumb">AM–04&ensp;/&ensp;<span class="in-ed" data-i18n="edition">L’édition</span><span class="in-bk" data-i18n="booklet">Livret</span></p></div>
+      <div class="ed">
+        <div class="ed-text">
+          <p class="code">AM–04&ensp;/&ensp;Algorithmique / C / Python / <span data-i18n="p4_type">Analyse</span></p>
+          <h1 class="h-lg" data-i18n="p4_name">Arbres Binaires de Recherche</h1>
+          <p class="concept" data-i18n="e4_concept">Une décision à chaque fourche</p>
+          <p class="art" data-i18n="e4_art">Une ramure gravée évoque les bifurcations. Une seule branche claire isole un trajet. Le disque est couleur miel.</p>
+          <p class="ed-actions"><a class="lk" href="#projet/arbres/livret" data-open><span><span data-i18n="open_booklet">Ouvrir le livret</span></span><i aria-hidden="true">→</i></a><button type="button" class="lk pull" aria-pressed="false"><span data-i18n="pull_out">Sortir le disque</span></button></p>
+        </div>
+        <div class="stage"><span class="obj" data-slug="arbres" style="--f:0.52"><span class="disc"><img src="collection/04-arbres-vinyle-640.webp" srcset="collection/04-arbres-vinyle-640.webp 640w, collection/04-arbres-vinyle.webp 1254w" sizes="(max-width: 860px) 62vw, 36vw" width="1254" height="1254" draggable="false" decoding="async" loading="lazy" alt=""></span><span class="cv"><img src="collection/04-arbres-pochette-640.webp" srcset="collection/04-arbres-pochette-640.webp 640w, collection/04-arbres-pochette.webp 1254w" sizes="(max-width: 860px) 62vw, 36vw" width="1254" height="1254" draggable="false" decoding="async" loading="lazy" alt="Pochette de l’édition AM–04, Arbres binaires" data-i18n-attr="alt:alt_cover" data-alt-tail=" AM–04, Arbres binaires"></span></span></div>
+        <p class="pn"><a href="#projet/sillage" data-dir="-1" data-i18n="prev">Précédent</a>&ensp;/&ensp;<a href="#projet/structures" data-dir="1" data-i18n="next">Suivant</a></p>
+      </div>
+      <div class="bk">
+        <div class="bk-head"><h2 class="h-lg" data-i18n="p4_name">Arbres Binaires de Recherche</h2><p class="cat">Algorithmique / C / Python / <span data-i18n="p4_type">Analyse</span></p></div>
+        <div class="bk-grid">
+          <div class="bk-insert"><p class="demo-l" data-i18n="demo">Démonstration pédagogique</p><figure class="insert d-bst" data-demo="bst">
+      <div class="pg"><button type="button" class="d-btn pg-l"><span data-i18n="d4_btn">Rechercher 6</span></button>
+        <svg class="d-tree" viewBox="0 0 300 165" role="img" aria-label="8 ; 4, 12 ; 2, 6, 10, 14"><path class="eg e84" d="M150 25L80 80"/><path class="eg e812" d="M150 25L220 80"/><path class="eg e42" d="M80 80L45 138"/><path class="eg e46" d="M80 80L115 138"/><path class="eg e1210" d="M220 80L185 138"/><path class="eg e1214" d="M220 80L255 138"/><g class="nd n8"><circle cx="150" cy="25" r="13"/><text x="150" y="29">8</text></g><g class="nd n4"><circle cx="80" cy="80" r="13"/><text x="80" y="84">4</text></g><g class="nd n12"><circle cx="220" cy="80" r="13"/><text x="220" y="84">12</text></g><g class="nd n2"><circle cx="45" cy="138" r="13"/><text x="45" y="142">2</text></g><g class="nd n6"><circle cx="115" cy="138" r="13"/><text x="115" y="142">6</text></g><g class="nd n10"><circle cx="185" cy="138" r="13"/><text x="185" y="142">10</text></g><g class="nd n14"><circle cx="255" cy="138" r="13"/><text x="255" y="142">14</text></g></svg></div>
+      <div class="pg "><p class="pg-l" data-i18n="d4_path">Chemin</p><p class="d-path" aria-hidden="true"><b>8</b><b>4</b><b>6</b></p><p class="sr-only d-status" role="status"></p><p class="pg-f" data-i18n="d4_cap">Exemple de recherche dans un ABR. Le projet, lui, porte sur trois algorithmes de vérification.</p></div>
+    </figure></div>
+          <div class="bk-text">
+            <p class="bk-lead" data-i18n="p4_desc">Projet allant au-delà de l'implémentation : vérification et génération d'ABR, analyse de complexité formelle, benchmarking sur des milliers d'arbres générés (presque complets, filiformes, quelconques), visualisations matplotlib et rapport complet avec preuves algorithmiques.</p>
+            <ul class="tags"><li>C</li><li>Python</li><li>Matplotlib</li><li>Complexité O(n)</li><li data-i18n="tag_induction">Induction structurelle</li></ul>
+            <p class="bk-links"><a class="lk rev" href="#projet/arbres"><i aria-hidden="true">←</i><span data-i18n="back_edition">Revenir à l’édition</span></a></p>
+          </div>
+        </div>
+      </div>
+      <section class="bk-paper tone-paper">
+        <h2 class="h-md"><span data-i18n="p4_name">Arbres Binaires de Recherche</span><span data-i18n="making_of">, côté fabrication.</span></h2>
+        <div class="mk has-media"><figure class="media code"><figcaption data-i18n="p4_snippet_label">vérification ABR / O(n)</figcaption><pre><code><span class="k">bool</span> <span class="f">is_bst</span>(Node *n, <span class="k">int</span> min, <span class="k">int</span> max) {
+    <span class="k">if</span> (!n) <span class="k">return</span> <span class="k">true</span>;
+    <span class="k">return</span> n-&gt;val &gt; min &amp;&amp; n-&gt;val &lt; max
+        &amp;&amp; <span class="f">is_bst</span>(n-&gt;left,  min,    n-&gt;val)
+        &amp;&amp; <span class="f">is_bst</span>(n-&gt;right, n-&gt;val, max);
+}</code></pre></figure>
+          <div class="mk-cols"><div><h3 data-i18n="col_did">Ce que j'ai fait</h3><p data-i18n="p4_did">Trois méthodes de vérification en C (naïve, définition optimisée, parcours infixe). Génération aléatoire d'arbres selon leur morphologie. Scripts Python de benchmarking et figures matplotlib automatisées.</p></div><div><h3 data-i18n="col_proud">Ce qui m'a rendu fier</h3><p data-i18n="p4_proud">Passer de « ça marche » à « je prouve pourquoi ça marche en O(n) et pas O(n²) », et confronter les complexités théoriques aux mesures expérimentales.</p></div></div>
+        </div>
+        <p class="mk-links"><a class="lk" href="#projects"><span><span>Collection</span></span><i aria-hidden="true">→</i></a></p>
+      </section>
+    </article>
+    <article class="view v-project" id="projet/structures" data-view="project" data-slug="structures">
+      <div class="p-bar"><a class="back" href="#projects"><i aria-hidden="true">←</i><span>Collection</span></a><p class="crumb">AM–05&ensp;/&ensp;<span class="in-ed" data-i18n="edition">L’édition</span><span class="in-bk" data-i18n="booklet">Livret</span></p></div>
+      <div class="ed">
+        <div class="ed-text">
+          <p class="code">AM–05&ensp;/&ensp;C / <span data-i18n="p1_type">Structures de données / Analyse</span></p>
+          <h1 class="h-lg" data-i18n="p1_name">Comparaison de Structures de Données</h1>
+          <p class="concept" data-i18n="e5_concept">Trois façons de ranger</p>
+          <p class="art" data-i18n="e5_art">Trois rythmes juxtaposent cases contiguës, bande extensible et maillons. Le vinyle bicolore met en vis-à-vis deux organisations.</p>
+          <p class="ed-actions"><a class="lk" href="#projet/structures/livret" data-open><span><span data-i18n="open_booklet">Ouvrir le livret</span></span><i aria-hidden="true">→</i></a><button type="button" class="lk pull" aria-pressed="false"><span data-i18n="pull_out">Sortir le disque</span></button></p>
+        </div>
+        <div class="stage"><span class="obj" data-slug="structures" style="--f:0.52"><span class="disc"><img src="collection/05-structures-vinyle-640.webp" srcset="collection/05-structures-vinyle-640.webp 640w, collection/05-structures-vinyle.webp 1254w" sizes="(max-width: 860px) 62vw, 36vw" width="1254" height="1254" draggable="false" decoding="async" loading="lazy" alt=""></span><span class="cv"><img src="collection/05-structures-pochette-640.webp" srcset="collection/05-structures-pochette-640.webp 640w, collection/05-structures-pochette.webp 1254w" sizes="(max-width: 860px) 62vw, 36vw" width="1254" height="1254" draggable="false" decoding="async" loading="lazy" alt="Pochette de l’édition AM–05, Structures" data-i18n-attr="alt:alt_cover" data-alt-tail=" AM–05, Structures"></span></span></div>
+        <p class="pn"><a href="#projet/arbres" data-dir="-1" data-i18n="prev">Précédent</a>&ensp;/&ensp;<a href="#projet/refuges" data-dir="1" data-i18n="next">Suivant</a></p>
+      </div>
+      <div class="bk">
+        <div class="bk-head"><h2 class="h-lg" data-i18n="p1_name">Comparaison de Structures de Données</h2><p class="cat">C / <span data-i18n="p1_type">Structures de données / Analyse</span></p></div>
+        <div class="bk-grid">
+          <div class="bk-insert"><p class="demo-l" data-i18n="demo">Démonstration pédagogique</p><figure class="insert d-ins" data-demo="toggle" data-on="d5_reset" data-off="d5_btn">
+      <div class="pg "><p class="pg-l" data-i18n="d5_array">Tableau</p><div class="d-cells"><i>2</i><i>4</i><i class="new">6</i><i>8</i></div><p class="pg-c" data-i18n="d5_c1">Décaler les cases pour insérer 6.</p><p class="pg-l d-l2" data-i18n="d5_dyn">Tableau dynamique</p><div class="d-cells d-dyn"><i>2</i><i>4</i><i class="new">6</i><i>8</i><i class="void"></i></div><p class="pg-c" data-i18n="d5_c3">Capacité 4 : pleine après l’insertion, le prochain ajout demande une réallocation.</p></div>
+      <div class="pg "><p class="pg-l" data-i18n="d5_list">Liste chaînée</p><div class="d-chain"><i>2</i><b>→</b><i>4</i><b>→</b><span class="new"><i>6</i><b>→</b></span><i>8</i></div><p class="pg-c" data-i18n="d5_c2">Relier les maillons autour de 6.</p></div>
+      <button type="button" class="d-btn d-cta" aria-pressed="false"><span data-i18n="d5_btn">Insérer 6</span></button>
+    </figure></div>
+          <div class="bk-text">
+            <p class="bk-lead" data-i18n="p1_desc">Étude comparative en C de plusieurs structures de données : tableaux statiques, tableaux dynamiques et listes chaînées. Implémentation complète de chaque structure, mesure expérimentale des performances, et analyse des compromis selon les cas d'usage.</p>
+            <ul class="tags"><li>C</li><li data-i18n="tag_dynarray">Tableaux dynamiques</li><li data-i18n="tag_linkedlist">Listes chaînées</li><li data-i18n="tag_memory">Gestion mémoire</li><li>Benchmarking</li></ul>
+            <p class="bk-links"><a class="lk rev" href="#projet/structures"><i aria-hidden="true">←</i><span data-i18n="back_edition">Revenir à l’édition</span></a></p>
+          </div>
+        </div>
+      </div>
+      <section class="bk-paper tone-paper">
+        <h2 class="h-md"><span data-i18n="p1_name">Comparaison de Structures de Données</span><span data-i18n="making_of">, côté fabrication.</span></h2>
+        <div class="mk">
+          <div class="mk-cols"><div><h3 data-i18n="col_did">Ce que j'ai fait</h3><p data-i18n="p1_did">Implémentation rigoureuse des trois structures. Protocole de benchmark reproductible. Comparaison des coûts d'insertion, suppression et accès selon la taille des données.</p></div><div><h3 data-i18n="col_limits">Limites honnêtes</h3><p data-i18n="p1_limits">Tests limités à des jeux de données synthétiques. Pas de benchmarks multi-threadés.</p></div><div><h3 data-i18n="col_would">Ce que j'ajouterais</h3><p data-i18n="p1_would">Intégration d'arbres et de tables de hachage pour un panorama plus complet. Visualisation des résultats via matplotlib.</p></div></div>
+        </div>
+        <p class="mk-links"><a class="lk" href="#projects"><span><span>Collection</span></span><i aria-hidden="true">→</i></a></p>
+      </section>
+    </article>
+    <article class="view v-project" id="projet/refuges" data-view="project" data-slug="refuges">
+      <div class="p-bar"><a class="back" href="#projects"><i aria-hidden="true">←</i><span>Collection</span></a><p class="crumb">AM–06&ensp;/&ensp;<span class="in-ed" data-i18n="edition">L’édition</span><span class="in-bk" data-i18n="booklet">Livret</span></p></div>
+      <div class="ed">
+        <div class="ed-text">
+          <p class="code">AM–06&ensp;/&ensp;Web / Flask / PostgreSQL / <span data-i18n="p3_type">Base de données</span></p>
+          <h1 class="h-lg" data-i18n="p3_name">Application Web SPA / Refuges</h1>
+          <p class="concept" data-i18n="e6_concept">Un dossier qui accompagne l’animal</p>
+          <p class="art" data-i18n="e6_art">Deux silhouettes partagent un abri. Le fil imprimé évoque la continuité du suivi entre refuges. La pastille reprend l’arche.</p>
+          <p class="ed-actions"><a class="lk" href="#projet/refuges/livret" data-open><span><span data-i18n="open_booklet">Ouvrir le livret</span></span><i aria-hidden="true">→</i></a><button type="button" class="lk pull" aria-pressed="false"><span data-i18n="pull_out">Sortir le disque</span></button></p>
+        </div>
+        <div class="stage"><span class="obj" data-slug="refuges" style="--f:0.52"><span class="disc"><img src="collection/06-refuges-vinyle-640.webp" srcset="collection/06-refuges-vinyle-640.webp 640w, collection/06-refuges-vinyle.webp 1254w" sizes="(max-width: 860px) 62vw, 36vw" width="1254" height="1254" draggable="false" decoding="async" loading="lazy" alt=""></span><span class="cv"><img src="collection/06-refuges-pochette-640.webp" srcset="collection/06-refuges-pochette-640.webp 640w, collection/06-refuges-pochette.webp 1254w" sizes="(max-width: 860px) 62vw, 36vw" width="1254" height="1254" draggable="false" decoding="async" loading="lazy" alt="Pochette de l’édition AM–06, Refuges" data-i18n-attr="alt:alt_cover" data-alt-tail=" AM–06, Refuges"></span></span></div>
+        <p class="pn"><a href="#projet/structures" data-dir="-1" data-i18n="prev">Précédent</a>&ensp;/&ensp;<a href="#projet/fluency" data-dir="1" data-i18n="next">Suivant</a></p>
+      </div>
+      <div class="bk">
+        <div class="bk-head"><h2 class="h-lg" data-i18n="p3_name">Application Web SPA / Refuges</h2><p class="cat">Web / Flask / PostgreSQL / <span data-i18n="p3_type">Base de données</span></p></div>
+        <div class="bk-grid">
+          <div class="bk-insert"><p class="demo-l" data-i18n="demo">Démonstration pédagogique</p><figure class="insert d-thread" data-demo="toggle" data-on="d4_reset" data-off="d6_btn">
+      <div class="pg "><p class="pg-l" data-i18n="d6_file">Dossier animal</p><p class="pg-f" data-i18n="d6_cap">Schéma explicatif</p></div>
+      <div class="pg "><p class="pg-l" data-i18n="d6_care">Suivi des soins</p></div>
+      <div class="d-line"><svg viewBox="0 0 600 40" preserveAspectRatio="none" aria-hidden="true"><path class="base" d="M40 20H560"/><path class="run" pathLength="1" d="M40 20H560"/></svg>
+        <span class="dot" style="--x:6.66%;--d:0s"><b data-i18n="d6_a">Animal</b></span><span class="dot" style="--x:50%;--d:.45s"><b data-i18n="d6_s">Soin</b></span><span class="dot" style="--x:93.33%;--d:.9s"><b data-i18n="d6_r">Rappel</b></span></div>
+      <button type="button" class="d-btn d-cta" aria-pressed="false"><span data-i18n="d6_btn">Suivre le fil</span></button>
+    </figure></div>
+          <div class="bk-text">
+            <p class="bk-lead" data-i18n="p3_desc">Conception et développement complet d'une application web pour la gestion des refuges de la SPA. Du schéma entité-association jusqu'au site fonctionnel : modélisation, implémentation PostgreSQL, et interface Flask permettant aux employés de gérer les animaux, les soins et les transferts entre refuges.</p>
+            <ul class="tags"><li>Python</li><li>Flask</li><li>PostgreSQL</li><li>psycopg2</li><li>SQL</li><li data-i18n="tag_db">Modélisation BDD</li></ul>
+            <p class="bk-links"><a class="lk rev" href="#projet/refuges"><i aria-hidden="true">←</i><span data-i18n="back_edition">Revenir à l’édition</span></a></p>
+          </div>
+        </div>
+      </div>
+      <section class="bk-paper tone-paper">
+        <h2 class="h-md"><span data-i18n="p3_name">Application Web SPA / Refuges</span><span data-i18n="making_of">, côté fabrication.</span></h2>
+        <div class="mk has-media"><figure class="media code"><figcaption data-i18n="p3_snippet_label">vaccins à rappeler / requête SQL</figcaption><pre><code><span class="k">SELECT</span> a.nom, a.espece, s.date_soin, s.type_soin
+<span class="k">FROM</span> animal a
+<span class="k">JOIN</span> soin s <span class="k">ON</span> a.id_animal = s.id_animal
+<span class="k">WHERE</span> s.type_soin = <span class="s">'vaccin'</span>
+  <span class="k">AND</span> s.date_soin &lt; NOW() - <span class="k">INTERVAL</span> <span class="s">'1 year'</span>
+<span class="k">ORDER BY</span> s.date_soin <span class="k">ASC</span>;</code></pre></figure>
+          <div class="mk-cols"><div><h3 data-i18n="col_did">Ce que j'ai fait</h3><p data-i18n="p3_did">Modélisation relationnelle complète sous PostgreSQL. Interface employé sécurisée (login/mot de passe). Fonctionnalités CRUD : ajout de pensionnaires, saisie de soins, transferts. Suivi des vaccins avec génération de listes de rappel.</p></div><div><h3 data-i18n="col_learned">Ce qui m'a appris le plus</h3><p data-i18n="p3_learned">Garantir l'intégrité des données au niveau de la base (contraintes, clés étrangères) et non seulement au niveau applicatif. Dissocier la logique métier des vues Flask.</p></div></div>
+        </div>
+        <p class="mk-links"><a class="lk" href="#projects"><span><span>Collection</span></span><i aria-hidden="true">→</i></a></p>
+      </section>
+    </article>
+
+    <!-- ══ PARCOURS ══ -->
+    <section class="view v-about tone-paper" id="about" data-view="about">
+      <div class="about">
+        <div class="about-head">
+          <p class="kicker" data-i18n="nav_path">Parcours</p>
+          <h1 class="h-xl" data-i18n="about_headline">Je finis ce que<br>je commence.</h1>
+        </div>
+        <figure class="about-photo"><img src="photos/esiee.webp" width="956" height="1280" alt="Le campus de l’ESIEE Paris sous la neige" data-i18n-attr="alt:alt_esiee" loading="lazy" decoding="async"><figcaption data-i18n="esiee_caption">ESIEE Paris · photographie d’Armand Mulier</figcaption></figure>
+        <div class="about-body">
+          <p class="lead" data-i18n="about_lead">Après un parcours en Informatique &amp; Applications à l’Université Gustave Eiffel, je poursuis mes études en cycle ingénieur à l’ESIEE Paris (2026–2029). Je recherche une alternance en Île-de-France, en développement logiciel, données ou IA. Mes projets relient les bases apprises en C à des applications issues de besoins personnels.</p>
+          <details class="more"><summary><span data-i18n="about_more">Lire la suite du parcours</span></summary>
+            <p data-i18n="about_p2">Quand je commence quelque chose, j'essaie d'aller jusqu'au bout, même si ça prend du temps. J'aime comprendre comment les choses fonctionnent, pas seulement les utiliser.</p>
+            <p data-i18n="about_p3">À côté du code : cuisine, piano, photo, DJing et cours particuliers de maths. Des pratiques qui demandent chacune leur forme de patience et d'attention, et qui, sans que j'y pense forcément, influencent la façon dont j'aborde un projet.</p>
+          </details>
+          <p class="kicker k2" data-i18n="about_code_label">en bref</p>
+          <dl class="spec" data-spec="about_code"><div><dt>formation</dt><dd>Cycle ingénieur, ESIEE Paris · 2026–2029</dd></div><div><dt>objectif</dt><dd>Alternance en informatique, Île-de-France</dd></div><div><dt>pratique</dt><dd>Python, C, SQL, web</dd></div><div><dt>intérêt</dt><dd>comprendre, expérimenter, progresser</dd></div></dl>
+          <div class="stats">
+            <p><b>2 <span data-i18n="stat_years_unit">ans</span></b><span data-i18n="stat_years_label">d'études supérieures en informatique</span></p>
+            <p><b>6</b><span data-i18n="stat_projects_label">projets présentés, personnels et universitaires</span></p>
+            <p><b>Île-de-France</b><span data-i18n="stat_location_label">disponible en présentiel et télétravail</span></p>
+          </div>
+          <p class="pg-foot"><a class="lk" href="#skills"><span><span data-i18n="nav_skills">Compétences</span></span><i aria-hidden="true">→</i></a><a class="lk" href="#cv"><span><span data-i18n="see_cv">Voir mon CV</span></span><i aria-hidden="true">→</i></a></p>
         </div>
       </div>
     </section>
 
-    <!-- ══ 01 PROFIL ══ -->
-    <section id="about" class="sec tone-light" data-tone="light">
-      <div class="curve" aria-hidden="true"><i></i></div>
-
-      <div class="sec-mark rv">
-        <span class="sec-idx">01</span>
-        <span class="sec-name" data-i18n="nav_about">Profil</span>
-      </div>
-
-      <div class="about-grid">
-        <h2 class="about-headline display rv-t" data-i18n="about_headline">Je finis ce que<br><em>je commence.</em></h2>
-
-        <p class="about-lead lead rv" data-i18n="about_lead">Après un parcours en Informatique &amp; Applications à l’Université Gustave Eiffel, je poursuis mes études en cycle ingénieur à l’ESIEE Paris (2026–2029). Je recherche une alternance en Île-de-France, en développement logiciel, données ou IA. Mes projets relient les bases apprises en C à des applications issues de besoins personnels.</p>
-
-        <p class="about-p2 rv" data-i18n="about_p2">
-          Quand je commence quelque chose, j'essaie d'aller jusqu'au bout, même si ça prend du temps.
-          J'aime comprendre comment les choses fonctionnent, pas seulement les utiliser.
-        </p>
-        <p class="about-p3 rv" data-i18n="about_p3">
-          À côté du code : cuisine, piano, plaisir à prendre des photos, DJing.
-          Des pratiques qui demandent chacune leur forme de patience et d'attention,
-          et qui, sans que j'y pense forcément, influencent la façon dont j'aborde un projet.
-        </p>
-
-        <!-- Plaque signalétique : "en bref" + chiffres -->
-        <div class="plate rv">
-          <div class="plate-spec">
-            <div class="plate-label" data-i18n="about_code_label">en bref</div>
-<pre><code data-i18n="about_code">formation  : Cycle ingénieur, ESIEE Paris · 2026–2029
-objectif   : Alternance en informatique, Île-de-France
-pratique   : Python, C, SQL, web
-intérêt    : comprendre, expérimenter, progresser</code></pre>
-          </div>
-          <div class="plate-stats">
-            <div class="stat">
-              <span class="stat-n"><span class="odo" data-to="2">2</span></span>
-              <span class="stat-u" data-i18n="stat_years_unit">ans</span>
-              <span class="stat-l" data-i18n="stat_years_label">d'études supérieures en informatique</span>
-            </div>
-            <div class="stat">
-              <span class="stat-n"><span class="odo" data-to="5">5</span></span>
-              <span class="stat-l" data-i18n="stat_projects_label">projets présentés, personnels et universitaires</span>
-            </div>
-            <div class="stat stat-place">
-              <span class="stat-n stat-n-text">Île-de-France</span>
-              <span class="stat-l" data-i18n="stat_location_label">disponible en présentiel et télétravail</span>
-            </div>
-          </div>
+    <!-- ══ COMPÉTENCES ══ -->
+    <section class="view v-skills tone-paper" id="skills" data-view="skills">
+      <h1 class="h-xl" data-i18n="skills_title">Ce que je pratique.</h1>
+      <div class="sk">
+        <div class="sk-col"><h2 data-i18n="skills_languages">Langages</h2><ul><li><button type="button" class="sk-link" aria-expanded="false" aria-controls="skx" data-skill="python">Python</button></li><li><button type="button" class="sk-link" aria-expanded="false" aria-controls="skx" data-skill="c">C</button></li><li><button type="button" class="sk-link" aria-expanded="false" aria-controls="skx" data-skill="js">JavaScript</button></li><li><button type="button" class="sk-link" aria-expanded="false" aria-controls="skx" data-skill="sql">SQL</button></li><li><button type="button" class="sk-link" aria-expanded="false" aria-controls="skx" data-skill="html">HTML / CSS</button></li></ul></div>
+        <div class="sk-col"><h2 data-i18n="skills_theory">Théorie &amp; Algorithmique</h2><ul><li><button type="button" class="sk-link" aria-expanded="false" aria-controls="skx" data-skill="ds" data-i18n="sk_ds">Structures de données</button></li><li><button type="button" class="sk-link" aria-expanded="false" aria-controls="skx" data-skill="complexity" data-i18n="sk_complexity">Complexité algorithmique</button></li><li data-i18n="sk_automata">Automates &amp; Langages</li><li data-i18n="sk_induction">Induction structurelle</li></ul></div>
+        <div class="sk-col"><h2 data-i18n="skills_tools">Outils &amp; Pratiques</h2><ul><li>Git / GitHub</li><li>Linux / Terminal</li><li><button type="button" class="sk-link" aria-expanded="false" aria-controls="skx" data-skill="matplotlib">Matplotlib</button></li><li>Makefile / GCC</li></ul></div>
+        <div class="sk-col"><h2 data-i18n="skills_lang_spoken">Langues</h2><ul><li data-i18n="sk_english">Anglais</li><li data-i18n="sk_spanish">Espagnol</li></ul></div>
+        <div class="skx" id="skx" aria-live="polite">
+          <p class="sk-hint" data-i18n="sk_hint">Choisir une compétence pour voir ses projets</p>
+        <section class="skx-g" data-skill="python"><h3>Python</h3>
+          <ul><li><img src="collection/04-arbres-pochette-640.webp" width="640" height="640" alt="" loading="lazy" decoding="async"><p><b>Arbres binaires</b><span data-i18n="skx_py_arbres">Scripts de benchmark sur des arbres générés.</span></p><a class="lk" href="#projet/arbres"><span><span data-i18n="see_project">Voir le projet</span></span><i aria-hidden="true">→</i></a></li><li><img src="collection/06-refuges-pochette-640.webp" width="640" height="640" alt="" loading="lazy" decoding="async"><p><b>Refuges</b><span data-i18n="skx_py_refuges">Logique des vues Flask de l’application.</span></p><a class="lk" href="#projet/refuges"><span><span data-i18n="see_project">Voir le projet</span></span><i aria-hidden="true">→</i></a></li></ul></section>
+        <section class="skx-g" data-skill="c"><h3>C</h3>
+          <ul><li><img src="collection/04-arbres-pochette-640.webp" width="640" height="640" alt="" loading="lazy" decoding="async"><p><b>Arbres binaires</b><span data-i18n="skx_c_arbres">Méthodes de vérification d’un arbre binaire de recherche.</span></p><a class="lk" href="#projet/arbres"><span><span data-i18n="see_project">Voir le projet</span></span><i aria-hidden="true">→</i></a></li><li><img src="collection/05-structures-pochette-640.webp" width="640" height="640" alt="" loading="lazy" decoding="async"><p><b>Structures</b><span data-i18n="skx_c_structures">Implémentation des tableaux et des listes chaînées.</span></p><a class="lk" href="#projet/structures"><span><span data-i18n="see_project">Voir le projet</span></span><i aria-hidden="true">→</i></a></li></ul></section>
+        <section class="skx-g" data-skill="js"><h3>JavaScript</h3>
+          <ul><li><img src="collection/03-sillage-pochette-640.webp" width="640" height="640" alt="" loading="lazy" decoding="async"><p><b>Sillage</b><span data-i18n="skx_js_sillage">Interactions de l’interface. Code réalisé avec assistance IA : mon rôle est la conception des usages et les tests.</span></p><a class="lk" href="#projet/sillage"><span><span data-i18n="see_project">Voir le projet</span></span><i aria-hidden="true">→</i></a></li></ul></section>
+        <section class="skx-g" data-skill="sql"><h3>SQL</h3>
+          <ul><li><img src="collection/06-refuges-pochette-640.webp" width="640" height="640" alt="" loading="lazy" decoding="async"><p><b>Refuges</b><span data-i18n="skx_sql_refuges">Requêtes et modèle PostgreSQL.</span></p><a class="lk" href="#projet/refuges"><span><span data-i18n="see_project">Voir le projet</span></span><i aria-hidden="true">→</i></a></li><li><img src="collection/02-trackcurator-pochette-640.webp" width="640" height="640" alt="" loading="lazy" decoding="async"><p><b>TrackCurator</b><span data-i18n="skx_sql_track">Schéma PostgreSQL, en cours de construction.</span></p><a class="lk" href="#projet/trackcurator"><span><span data-i18n="see_project">Voir le projet</span></span><i aria-hidden="true">→</i></a></li></ul></section>
+        <section class="skx-g" data-skill="html"><h3>HTML / CSS</h3>
+          <ul><li><img src="collection/03-sillage-pochette-640.webp" width="640" height="640" alt="" loading="lazy" decoding="async"><p><b>Sillage</b><span data-i18n="skx_html_sillage">Présentation de l’interface. Code réalisé avec assistance IA : mon rôle est la conception des usages et les tests.</span></p><a class="lk" href="#projet/sillage"><span><span data-i18n="see_project">Voir le projet</span></span><i aria-hidden="true">→</i></a></li></ul></section>
+        <section class="skx-g" data-skill="ds"><h3 data-i18n="sk_ds">Structures de données</h3>
+          <ul><li><img src="collection/05-structures-pochette-640.webp" width="640" height="640" alt="" loading="lazy" decoding="async"><p><b>Structures</b><span data-i18n="skx_ds_structures">Comparaison des coûts des opérations.</span></p><a class="lk" href="#projet/structures"><span><span data-i18n="see_project">Voir le projet</span></span><i aria-hidden="true">→</i></a></li><li><img src="collection/04-arbres-pochette-640.webp" width="640" height="640" alt="" loading="lazy" decoding="async"><p><b>Arbres binaires</b><span data-i18n="skx_ds_arbres">Mesures reliées à l’analyse de complexité.</span></p><a class="lk" href="#projet/arbres"><span><span data-i18n="see_project">Voir le projet</span></span><i aria-hidden="true">→</i></a></li></ul></section>
+        <section class="skx-g" data-skill="complexity"><h3 data-i18n="sk_complexity">Complexité algorithmique</h3>
+          <ul><li><img src="collection/05-structures-pochette-640.webp" width="640" height="640" alt="" loading="lazy" decoding="async"><p><b>Structures</b><span data-i18n="skx_ds_structures">Comparaison des coûts des opérations.</span></p><a class="lk" href="#projet/structures"><span><span data-i18n="see_project">Voir le projet</span></span><i aria-hidden="true">→</i></a></li><li><img src="collection/04-arbres-pochette-640.webp" width="640" height="640" alt="" loading="lazy" decoding="async"><p><b>Arbres binaires</b><span data-i18n="skx_ds_arbres">Mesures reliées à l’analyse de complexité.</span></p><a class="lk" href="#projet/arbres"><span><span data-i18n="see_project">Voir le projet</span></span><i aria-hidden="true">→</i></a></li></ul></section>
+        <section class="skx-g" data-skill="matplotlib"><h3>Matplotlib</h3>
+          <ul><li><img src="collection/04-arbres-pochette-640.webp" width="640" height="640" alt="" loading="lazy" decoding="async"><p><b>Arbres binaires</b><span data-i18n="skx_mpl_arbres">Graphiques de benchmark.</span></p><a class="lk" href="#projet/arbres"><span><span data-i18n="see_project">Voir le projet</span></span><i aria-hidden="true">→</i></a></li></ul>
+          <p class="skx-note" data-i18n="skx_mpl_note">Dans Structures, la visualisation Matplotlib figure parmi les pistes futures.</p></section>
         </div>
+      </div>
+      <aside class="sk-learn"><h2 data-i18n="sk_learn_t">En cours d’apprentissage</h2><p data-i18n="sk_learn">J’explore comment intégrer un modèle dans une application. Dans Fluency, l’aide IA est facultative et peut passer par Ollama en local ou une API compatible.</p><a class="lk" href="#projet/fluency"><span><span data-i18n="see_project">Voir le projet</span></span><i aria-hidden="true">→</i></a></aside>
+    </section>
+
+    <!-- ══ AILLEURS ══ -->
+    <section class="view v-int tone-paper" id="interests" data-view="interests">
+      <h1 class="h-xl" data-i18n="gallery_title">Au-delà du code.</h1>
+      <div class="tabs" role="tablist" aria-label="Ailleurs" data-i18n-attr="aria-label:gallery_label">
+        <a role="tab" id="tab-cuisine" href="#interests/cuisine" aria-controls="pr-cuisine" aria-selected="true" data-i18n="row_cuisine">Cuisine</a>
+        <a role="tab" id="tab-piano" href="#interests/piano" aria-controls="pr-piano" aria-selected="false" data-i18n="row_piano">Piano</a>
+        <a role="tab" id="tab-photo" href="#interests/photo" aria-controls="pr-photo" aria-selected="false" data-i18n="row_photo">Photo</a>
+        <a role="tab" id="tab-dj" href="#interests/dj" aria-controls="pr-dj" aria-selected="false" data-i18n="row_dj">DJing</a>
+        <a role="tab" id="tab-maths" href="#interests/maths" aria-controls="pr-maths" aria-selected="false" data-i18n="row_maths">Maths</a>
+      </div>
+      <div class="pr on" id="pr-cuisine" role="tabpanel" aria-labelledby="tab-cuisine">
+        <div class="pr-text"><h2 class="h-lg" data-i18n="row_cuisine">Cuisine</h2><p class="pr-line" data-i18n="sig_cuisine">La cuisine apprend la précision.</p><a class="lk" href="#galerie/cuisine"><span><span data-i18n="see_dishes">Voir mes plats</span></span><i aria-hidden="true">→</i></a></div>
+        <span class="pv"><img src="photos/fraisier.webp" width="960" height="1280" alt="Fraisier maison" data-i18n-attr="alt:alt_fraisier" loading="lazy" decoding="async"></span>
+      </div>
+      <div class="pr" id="pr-piano" role="tabpanel" aria-labelledby="tab-piano">
+        <div class="pr-text"><h2 class="h-lg" data-i18n="row_piano">Piano</h2><p class="pr-line" data-i18n="sig_piano">Le piano apprend la patience.</p><a class="lk" href="#interests/photo"><span><span data-i18n="other_practices">Parcourir les autres pratiques</span></span><i aria-hidden="true">→</i></a></div>
+        <span class="pv pv-keys"><svg viewBox="0 0 460 232" role="img" aria-label="Dessin d’un clavier de piano" data-i18n-attr="aria-label:alt_keys"><rect class="fr" width="460" height="232"/><rect class="wk" x="8.0" y="12" width="30.5" height="206"/><rect class="wk" x="39.7" y="12" width="30.5" height="206"/><rect class="wk" x="71.4" y="12" width="30.5" height="206"/><rect class="wk" x="103.1" y="12" width="30.5" height="206"/><rect class="wk" x="134.9" y="12" width="30.5" height="206"/><rect class="wk" x="166.6" y="12" width="30.5" height="206"/><rect class="wk" x="198.3" y="12" width="30.5" height="206"/><rect class="wk" x="230.0" y="12" width="30.5" height="206"/><rect class="wk" x="261.7" y="12" width="30.5" height="206"/><rect class="wk" x="293.4" y="12" width="30.5" height="206"/><rect class="wk" x="325.1" y="12" width="30.5" height="206"/><rect class="wk" x="356.9" y="12" width="30.5" height="206"/><rect class="wk" x="388.6" y="12" width="30.5" height="206"/><rect class="wk" x="420.3" y="12" width="30.5" height="206"/><rect class="hit" x="103.1" y="204" width="30.5" height="14"/><rect class="bk" x="30.2" y="12" width="19" height="128"/><rect class="bk" x="61.9" y="12" width="19" height="128"/><rect class="bk" x="125.4" y="12" width="19" height="128"/><rect class="bk" x="157.1" y="12" width="19" height="128"/><rect class="bk" x="188.8" y="12" width="19" height="128"/><rect class="bk" x="252.2" y="12" width="19" height="128"/><rect class="bk" x="283.9" y="12" width="19" height="128"/><rect class="bk" x="347.4" y="12" width="19" height="128"/><rect class="bk" x="379.1" y="12" width="19" height="128"/><rect class="bk" x="410.8" y="12" width="19" height="128"/></svg></span>
+      </div>
+      <div class="pr" id="pr-photo" role="tabpanel" aria-labelledby="tab-photo">
+        <div class="pr-text"><h2 class="h-lg" data-i18n="row_photo">Photo</h2><p class="pr-line" data-i18n="sig_photo">Prendre des photos apprend à cadrer.</p><a class="lk" href="#galerie/photo"><span><span data-i18n="see_photos">Voir mes photographies</span></span><i aria-hidden="true">→</i></a></div>
+        <span class="pv"><img src="photos/mer.webp" width="1280" height="960" alt="Coucher de soleil sur la mer" data-i18n-attr="alt:alt_mer" loading="lazy" decoding="async"></span>
+      </div>
+      <div class="pr" id="pr-dj" role="tabpanel" aria-labelledby="tab-dj">
+        <div class="pr-text"><h2 class="h-lg" data-i18n="row_dj">DJing</h2><p class="pr-line" data-i18n="sig_dj">Le DJing apprend le rythme et les transitions.</p><a class="lk" href="#projet/sillage"><span><span data-i18n="discover_sillage">Découvrir Sillage</span></span><i aria-hidden="true">→</i></a></div>
+        <span class="pv pv-deck"><img src="collection/03-sillage-vinyle-640.webp" width="640" height="640" alt="Le disque Sillage sur une platine" data-i18n-attr="alt:alt_deck" loading="lazy" decoding="async"><svg viewBox="0 0 460 232" aria-hidden="true"><path d="M392 22L312 96l-16 4"/><circle cx="392" cy="22" r="8"/></svg></span>
+      </div>
+      <div class="pr" id="pr-maths" role="tabpanel" aria-labelledby="tab-maths">
+        <div class="pr-text"><h2 class="h-lg" data-i18n="row_maths">Maths</h2><p class="pr-line" data-i18n="sig_maths">Enseigner les maths apprend à expliquer simplement.</p><a class="lk" href="#about"><span><span data-i18n="see_path">Voir mon parcours</span></span><i aria-hidden="true">→</i></a></div>
+        <span class="pv pv-sine"><svg viewBox="0 0 460 232" role="img" aria-label="Courbe de la fonction sinus" data-i18n-attr="aria-label:alt_sine"><path class="ax" d="M14 122H450M24 30V214"/><path class="crv" d="M24.0 122.0L29.2 115.9L34.4 109.9L39.6 104.0L44.8 98.3L50.0 92.8L55.2 87.6L60.4 82.7L65.6 78.2L70.8 74.1L76.0 70.4L81.2 67.3L86.4 64.7L91.6 62.7L96.8 61.2L102.0 60.3L107.2 60.0L112.4 60.3L117.6 61.2L122.8 62.7L128.0 64.7L133.2 67.3L138.4 70.4L143.6 74.1L148.8 78.2L154.0 82.7L159.2 87.6L164.4 92.8L169.6 98.3L174.8 104.0L180.0 109.9L185.2 115.9L190.4 122.0L195.6 128.1L200.8 134.1L206.0 140.0L211.2 145.7L216.4 151.2L221.6 156.4L226.8 161.3L232.0 165.8L237.2 169.9L242.4 173.6L247.6 176.7L252.8 179.3L258.0 181.3L263.2 182.8L268.4 183.7L273.6 184.0L278.8 183.7L284.0 182.8L289.2 181.3L294.4 179.3L299.6 176.7L304.8 173.6L310.0 169.9L315.2 165.8L320.4 161.3L325.6 156.4L330.8 151.2L336.0 145.7L341.2 140.0L346.4 134.1L351.6 128.1L356.8 122.0L362.0 115.9L367.2 109.9L372.4 104.0L377.6 98.3L382.8 92.8L388.0 87.6L393.2 82.7L398.4 78.2L403.6 74.1L408.8 70.4L414.0 67.3L419.2 64.7L424.4 62.7L429.6 61.2L434.8 60.3L440.0 60.0"/><circle cx="107.2" cy="60" r="4.5"/><text x="18" y="24">f(x) = sin(x)</text></svg></span>
+      </div>
+      <p class="outro" data-i18n="sig_outro">Ces pratiques forment la même logique que le développement, et je les emmène au travail.</p>
+      <p class="pg-foot"><a class="lk" href="#galerie/cuisine"><span><span data-i18n="gal_c_title">Galerie cuisine</span></span><i aria-hidden="true">→</i></a><a class="lk" href="#galerie/photo"><span><span data-i18n="gal_p_title">Galerie photo</span></span><i aria-hidden="true">→</i></a></p>
+    </section>
+
+    <!-- ══ GALERIES ══ -->
+    <section class="view v-gal tone-paper" id="galerie/cuisine" data-view="galerie" data-g="cuisine">
+      <div class="pg-head"><h1 class="h-lg" data-i18n="gal_c_title">Galerie cuisine</h1><p class="count" data-i18n="gal_c_count">10 plats</p></div>
+      <ul class="shots shots-cuisine">
+        <li><a href="#galerie/cuisine/coteboeuf" data-img="coteboeuf"><span class="shot"><img src="photos/t/coteBoeuf.webp" width="960" height="1280" alt="Côte de Boeuf" loading="lazy" decoding="async"></span><span class="cap">Côte de Boeuf</span></a></li>
+        <li><a href="#galerie/cuisine/fraisier" data-img="fraisier"><span class="shot"><img src="photos/t/fraisier.webp" width="960" height="1280" alt="Fraisier" loading="lazy" decoding="async"></span><span class="cap">Fraisier</span></a></li>
+        <li><a href="#galerie/cuisine/carbonara" data-img="carbonara"><span class="shot"><img src="photos/t/carbonara.webp" width="960" height="1280" alt="Carbonara" loading="lazy" decoding="async"></span><span class="cap">Carbonara</span></a></li>
+        <li><a href="#galerie/cuisine/profiteroles" data-img="profiteroles"><span class="shot"><img src="photos/t/profiteroles1.webp" width="960" height="1280" alt="Profiteroles" loading="lazy" decoding="async"></span><span class="cap">Profiteroles</span></a></li>
+        <li><a href="#galerie/cuisine/canard-et-puree" data-img="canard-et-puree"><span class="shot"><img src="photos/t/canard-et-puree.webp" width="960" height="1280" alt="Tranches de canard sur une purée, entourée d’un cordon de jus." data-i18n-attr="alt:dish_duck_alt" loading="lazy" decoding="async"></span><span class="cap" data-i18n="dish_duck">Canard et purée</span></a></li>
+        <li><a href="#galerie/cuisine/salade-cesar" data-img="salade-cesar"><span class="shot"><img src="photos/t/saladeCesar.webp" width="960" height="1280" alt="Salade César" loading="lazy" decoding="async"></span><span class="cap">Salade César</span></a></li>
+        <li><a href="#galerie/cuisine/veau-marengo" data-img="veau-marengo"><span class="shot"><img src="photos/t/VeauMarengo.webp" width="960" height="1280" alt="Le veau Marengo" loading="lazy" decoding="async"></span><span class="cap">Le veau Marengo</span></a></li>
+        <li><a href="#galerie/cuisine/poulet-tomate" data-img="poulet-tomate"><span class="shot"><img src="photos/t/tomatoeChicken.webp" width="1280" height="1280" alt="Poulet tomate" loading="lazy" decoding="async"></span><span class="cap">Poulet tomate</span></a></li>
+        <li><a href="#galerie/cuisine/poulet-petits-pois" data-img="poulet-petits-pois"><span class="shot"><img src="photos/t/chicken-peas.webp" width="1280" height="1280" alt="Poulet petits pois" loading="lazy" decoding="async"></span><span class="cap">Poulet petits pois</span></a></li>
+        <li><a href="#galerie/cuisine/burger-v2" data-img="burger-v2"><span class="shot"><img src="photos/t/homemadeBurger.webp" width="960" height="1280" alt="Burger Maison v2" loading="lazy" decoding="async"></span><span class="cap">Burger Maison v2</span></a></li>
+      </ul>
+      <p class="pg-foot"><a class="lk" href="#interests"><span><span data-i18n="back_to">Retour à</span> <span data-i18n="gallery_label">Ailleurs</span></span><i aria-hidden="true">→</i></a><a class="lk" href="#galerie/photo"><span><span data-i18n="gal_p_title">Galerie photo</span></span><i aria-hidden="true">→</i></a></p>
+    </section>
+    <section class="view v-gal tone-paper" id="galerie/photo" data-view="galerie" data-g="photo">
+      <div class="pg-head"><h1 class="h-lg" data-i18n="gal_p_title">Galerie photo</h1><p class="count" data-i18n="gal_p_count">14 photographies</p></div>
+      <ul class="shots shots-photo">
+        <li><a href="#galerie/photo/escalier" data-img="escalier"><span class="shot"><img src="photos/t/escalier.webp" width="960" height="1280" alt="Cage d'escalier étoilé" loading="lazy" decoding="async"></span><span class="cap">Cage d'escalier étoilé</span></a></li>
+        <li><a href="#galerie/photo/porsche" data-img="porsche"><span class="shot"><img src="photos/t/porsche.webp" width="960" height="1280" alt="Porsche" loading="lazy" decoding="async"></span><span class="cap">Porsche</span></a></li>
+        <li><a href="#galerie/photo/horizon" data-img="horizon"><span class="shot"><img src="photos/t/mer.webp" width="1280" height="960" alt="L'Horizon" loading="lazy" decoding="async"></span><span class="cap">L'Horizon</span></a></li>
+        <li><a href="#galerie/photo/fete-foraine" data-img="fete-foraine"><span class="shot"><img src="photos/t/fete.webp" width="1280" height="960" alt="Fête Foraine" loading="lazy" decoding="async"></span><span class="cap">Fête Foraine</span></a></li>
+        <li><a href="#galerie/photo/piano" data-img="piano"><span class="shot"><img src="photos/t/portrait2.webp" width="960" height="1280" alt="Un ami au piano, photographié par Armand" data-i18n-attr="alt:alt_piano" loading="lazy" decoding="async"></span><span class="cap">Piano</span></a></li>
+        <li><a href="#galerie/photo/sapin" data-img="sapin"><span class="shot"><img src="photos/t/sapin.webp" width="960" height="1280" alt="Sapin de Noël" loading="lazy" decoding="async"></span><span class="cap">Sapin de Noël</span></a></li>
+        <li><a href="#galerie/photo/bateau" data-img="bateau"><span class="shot"><img src="photos/t/bateau.webp" width="960" height="1280" alt="Bateau sur l'eau" loading="lazy" decoding="async"></span><span class="cap">Bateau sur l'eau</span></a></li>
+        <li><a href="#galerie/photo/petrole" data-img="petrole"><span class="shot"><img src="photos/t/petrole.webp" width="960" height="1280" alt="Puit de pétrole" loading="lazy" decoding="async"></span><span class="cap">Puit de pétrole</span></a></li>
+        <li><a href="#galerie/photo/cinema" data-img="cinema"><span class="shot"><img src="photos/t/cinema.webp" width="960" height="1280" alt="Cinema à l'ancienne" loading="lazy" decoding="async"></span><span class="cap">Cinema à l'ancienne</span></a></li>
+        <li><a href="#galerie/photo/crique" data-img="crique"><span class="shot"><img src="photos/t/crique.webp" width="1280" height="1280" alt="La crique" loading="lazy" decoding="async"></span><span class="cap">La crique</span></a></li>
+        <li><a href="#galerie/photo/esiee" data-img="esiee"><span class="shot"><img src="photos/t/esiee.webp" width="956" height="1280" alt="ESIEE Paris" loading="lazy" decoding="async"></span><span class="cap">ESIEE Paris</span></a></li>
+        <li><a href="#galerie/photo/grotte" data-img="grotte"><span class="shot"><img src="photos/t/grotte.webp" width="1280" height="1280" alt="Grotte" loading="lazy" decoding="async"></span><span class="cap">Grotte</span></a></li>
+        <li><a href="#galerie/photo/fog-tower" data-img="fog-tower"><span class="shot"><img src="photos/t/fogtower.webp" width="960" height="1280" alt="Fog Tower" loading="lazy" decoding="async"></span><span class="cap">Fog Tower</span></a></li>
+        <li><a href="#galerie/photo/reflet" data-img="reflet"><span class="shot"><img src="photos/t/watermiror.webp" width="1280" height="1280" alt="Reflet sur l'eau" loading="lazy" decoding="async"></span><span class="cap">Reflet sur l'eau</span></a></li>
+      </ul>
+      <p class="pg-foot"><a class="lk" href="#interests"><span><span data-i18n="back_to">Retour à</span> <span data-i18n="gallery_label">Ailleurs</span></span><i aria-hidden="true">→</i></a><a class="lk" href="#galerie/cuisine"><span><span data-i18n="gal_c_title">Galerie cuisine</span></span><i aria-hidden="true">→</i></a></p>
+    </section>
+
+    <!-- ══ CV : choisir la langue du document ══ -->
+    <section class="view v-resume tone-paper" id="cv" data-view="cv">
+      <div class="resume">
+        <div class="resume-head">
+          <p class="kicker" data-i18n="cv_kicker">Curriculum vitæ</p>
+          <h1 class="resume-name">Armand<br>Mulier</h1>
+          <p class="resume-role" data-i18n="cv_role">Élève ingénieur à l’ESIEE Paris</p>
+          <p class="resume-line" data-i18n="cv_l1">Cycle ingénieur, ESIEE Paris · 2026–2029</p>
+          <p class="resume-line" data-i18n="cv_l2">Alternance en informatique, Île-de-France</p>
+        </div>
+        <figure class="resume-por"><img src="photos/avatar-armand.webp" width="1254" height="1254" alt="Portrait d’Armand Mulier, de profil" data-i18n-attr="alt:alt_avatar" decoding="async"></figure>
+        <ul class="resume-dl">
+          <li><a id="cv-fr" href="photos/CVAM2026F.pdf" download><span data-i18n="cv_dl_fr">Télécharger le CV en français</span><svg class="dl-i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v13M6.5 11.5L12 17l5.5-5.5M5 21h14" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></a></li>
+          <li id="cv-en"><p class="soon"><span data-i18n="cv_en">CV en anglais</span><small data-i18n="cv_soon">À venir</small></p></li>
+        </ul>
       </div>
     </section>
 
-
-    <!-- ══ 02 PROJETS ══ -->
-    <section id="projects" class="sec tone-light" data-tone="light">
-      <div class="sec-mark rv">
-        <span class="sec-idx">02</span>
-        <span class="sec-name" data-i18n="nav_projects">Projets</span>
-      </div>
-
-      <h2 class="projects-title display rv-t" data-i18n="projects_title">Des idées<br><em>aux projets.</em></h2>
-
-      <div class="tracks">
-
-<article class="track rv">
-          <h3 class="track-h">
-            <button class="track-btn" type="button" aria-expanded="false" aria-controls="p2-panel" id="p2-btn">
-              <span class="track-idx">01</span>
-              <span class="track-name" data-i18n="p2_name">Fluency</span>
-              <span class="track-type" data-i18n="p2_type">Anglais / Application personnelle / IA</span>
-              <span class="knob" aria-hidden="true"><i></i></span>
-            </button>
-          </h3>
-          <div class="track-panel" id="p2-panel" role="region" aria-labelledby="p2-btn">
-            <div class="track-inner">
-              <p class="track-desc lead" data-i18n="p2_desc">Progresser en anglais était devenu un vrai besoin pour mes études et la suite. Les solutions qui m’intéressaient étaient payantes : de là est née Fluency, une application personnelle pour apprendre à mon rythme, sur mon ordinateur.</p>
-              <div class="track-cols">
-                <div class="col"><h4 data-i18n="p2_role_label">Ma démarche</h4><p data-i18n="p2_did">Partir de mon besoin, définir l’expérience souhaitée et faire évoluer l’application avec l’aide d’outils d’IA pour le développement. Un projet personnel guidé par l’usage, avec un code réalisé avec assistance IA.</p></div><div class="col"><h4 data-i18n="p2_features_label">Dans l’application</h4><p data-i18n="p2_features">Vocabulaire, leçons, révisions espacées et suivi des erreurs. Les données restent dans le navigateur ; l’IA est facultative, via Ollama en local ou une API compatible.</p></div>
-              </div>
-              <figure class="project-video snippet">
-                <figcaption id="fluency-video-caption" data-i18n="p2_video_label">Fluency · Présentation en motion design</figcaption>
-                <video controls playsinline preload="none" aria-labelledby="fluency-video-caption" hidden>
-                  <source data-src="photos/Fluency%20Pr%C3%A9sentation.mp4" type="video/mp4">
-                </video>
-                <p class="video-note" data-i18n="p2_video_fallback">La présentation vidéo sera bientôt disponible. Le projet est à découvrir sur GitHub.</p>
-              </figure>
-              <p class="project-links"><a class="btn btn-line" href="https://github.com/Armand-mlr/fluency" target="_blank" rel="noopener noreferrer" data-i18n="repo_link">Voir le dépôt GitHub ↗</a></p>
-              <ul class="tags"><li>Next.js</li><li>React</li><li>TypeScript</li><li>IndexedDB</li><li>Ollama</li></ul>
-            </div>
-          </div>
-        </article>
-
-        <article class="track rv">
-          <h3 class="track-h">
-            <button class="track-btn" type="button" aria-expanded="false" aria-controls="p5-panel" id="p5-btn">
-              <span class="track-idx">02</span>
-              <span class="track-name" data-i18n="p5_name">TrackCurator</span>
-              <span class="track-type" data-i18n="p5_type">Données / PostgreSQL / En cours</span>
-              <span class="knob" aria-hidden="true"><i></i></span>
-            </button>
-          </h3>
-          <div class="track-panel" id="p5-panel" role="region" aria-labelledby="p5-btn">
-            <div class="track-inner">
-              <p class="track-desc lead" data-i18n="p5_desc">Un projet personnel en cours, que je construis progressivement pour approfondir le travail sur les données et le backend. Le chantier actuel porte sur les fondations : organiser les données avant de développer la suite.</p>
-              <div class="track-cols">
-                <div class="col"><h4 data-i18n="p5_stage_label">Avancement actuel · A4</h4><p data-i18n="p5_did">Début de la mise en place de la base PostgreSQL. Travail en cours sur le modèle de données, l’ORM — qui relie les objets du code aux tables — et les migrations, pour faire évoluer le schéma de la base.</p></div><div class="col"><h4 data-i18n="p5_next_label">La suite</h4><p data-i18n="p5_next">Stabiliser le schéma et les premières migrations, puis poursuivre le projet par étapes. La base de données est en cours de construction ; le projet n’est pas terminé.</p></div>
-              </div>
-              
-              <p class="project-links"><a class="btn btn-line" href="https://github.com/Armand-mlr/TrackCurator" target="_blank" rel="noopener noreferrer" data-i18n="repo_link">Voir le dépôt GitHub ↗</a></p>
-              <ul class="tags"><li><span data-i18n="project_in_progress">Projet en cours</span></li><li>PostgreSQL</li><li>ORM</li><li>Migrations</li></ul>
-            </div>
-          </div>
-        </article>
-
-        <article class="track rv">
-                    <h3 class="track-h">
-            <button class="track-btn" type="button" aria-expanded="false" aria-controls="p4-panel" id="p4-btn">
-              <span class="track-idx">03</span>
-              <span class="track-name" data-i18n="p4_name">Arbres Binaires<br>de Recherche</span>
-              <span class="track-type">Algorithmique / C / Python / <span data-i18n="p4_type">Analyse</span></span>
-              <span class="knob" aria-hidden="true"><i></i></span>
-            </button>
-          </h3>
-          <div class="track-panel" id="p4-panel" role="region" aria-labelledby="p4-btn">
-            <div class="track-inner">
-              <p class="track-desc lead" data-i18n="p4_desc">
-                Projet allant au-delà de l'implémentation : vérification et génération d'ABR,
-                analyse de complexité formelle, benchmarking sur des milliers d'arbres générés
-                (presque complets, filiformes, quelconques), visualisations matplotlib
-                et rapport complet avec preuves algorithmiques.
-              </p>
-              <div class="track-cols">
-                <div class="col"><h4 data-i18n="col_did">Ce que j'ai fait</h4><p data-i18n="p4_did">Trois méthodes de vérification en C (naïve, définition optimisée, parcours infixe). Génération aléatoire d'arbres selon leur morphologie. Scripts Python de benchmarking et figures matplotlib automatisées.</p></div>
-                <div class="col"><h4 data-i18n="col_proud">Ce qui m'a rendu fier</h4><p data-i18n="p4_proud">Passer de « ça marche » à « je prouve pourquoi ça marche en O(n) et pas O(n²) », et confronter les complexités théoriques aux mesures expérimentales.</p></div>
-              </div>
-              <figure class="snippet">
-                <figcaption data-i18n="p4_snippet_label">vérification ABR / O(n)</figcaption>
-<pre><code>bool is_bst(Node *n, int min, int max) {
-    if (!n) return true;
-    return n->val &gt; min &amp;&amp; n->val &lt; max
-        &amp;&amp; is_bst(n->left,  min,    n->val)
-        &amp;&amp; is_bst(n->right, n->val, max);
-}</code></pre>
-              </figure>
-              <ul class="tags"><li>C</li><li>Python</li><li>Matplotlib</li><li>Complexité O(n)</li><li data-i18n="tag_induction">Induction structurelle</li></ul>
-            </div>
-          </div>
-        </article>
-
-        <article class="track rv">
-                    <h3 class="track-h">
-            <button class="track-btn" type="button" aria-expanded="false" aria-controls="p1-panel" id="p1-btn">
-              <span class="track-idx">04</span>
-              <span class="track-name" data-i18n="p1_name">Comparaison de<br>Structures de Données</span>
-              <span class="track-type">C / <span data-i18n="p1_type">Structures de données / Analyse</span></span>
-              <span class="knob" aria-hidden="true"><i></i></span>
-            </button>
-          </h3>
-          <div class="track-panel" id="p1-panel" role="region" aria-labelledby="p1-btn">
-            <div class="track-inner">
-              <p class="track-desc lead" data-i18n="p1_desc">
-                Étude comparative en C de plusieurs structures de données : tableaux statiques,
-                tableaux dynamiques et listes chaînées. Implémentation complète de chaque structure,
-                mesure expérimentale des performances, et analyse des compromis selon les cas d'usage.
-              </p>
-              <div class="track-cols">
-                <div class="col"><h4 data-i18n="col_did">Ce que j'ai fait</h4><p data-i18n="p1_did">Implémentation rigoureuse des trois structures. Protocole de benchmark reproductible. Comparaison des coûts d'insertion, suppression et accès selon la taille des données.</p></div>
-                <div class="col"><h4 data-i18n="col_limits">Limites honnêtes</h4><p data-i18n="p1_limits">Tests limités à des jeux de données synthétiques. Pas de benchmarks multi-threadés.</p></div>
-                <div class="col"><h4 data-i18n="col_would">Ce que j'ajouterais</h4><p data-i18n="p1_would">Intégration d'arbres et de tables de hachage pour un panorama plus complet. Visualisation des résultats via matplotlib.</p></div>
-              </div>
-              <ul class="tags">
-                <li>C</li>
-                <li data-i18n="tag_dynarray">Tableaux dynamiques</li>
-                <li data-i18n="tag_linkedlist">Listes chaînées</li>
-                <li data-i18n="tag_memory">Gestion mémoire</li>
-                <li>Benchmarking</li>
-              </ul>
-            </div>
-          </div>
-        </article>
-
-        <article class="track rv">
-                    <h3 class="track-h">
-            <button class="track-btn" type="button" aria-expanded="false" aria-controls="p3-panel" id="p3-btn">
-              <span class="track-idx">05</span>
-              <span class="track-name" data-i18n="p3_name">Application Web<br>SPA / Refuges</span>
-              <span class="track-type">Web / Flask / PostgreSQL / <span data-i18n="p3_type">Base de données</span></span>
-              <span class="knob" aria-hidden="true"><i></i></span>
-            </button>
-          </h3>
-          <div class="track-panel" id="p3-panel" role="region" aria-labelledby="p3-btn">
-            <div class="track-inner">
-              <p class="track-desc lead" data-i18n="p3_desc">
-                Conception et développement complet d'une application web pour la gestion des refuges
-                de la SPA. Du schéma entité-association jusqu'au site fonctionnel : modélisation,
-                implémentation PostgreSQL, et interface Flask permettant aux employés de gérer
-                les animaux, les soins et les transferts entre refuges.
-              </p>
-              <div class="track-cols">
-                <div class="col"><h4 data-i18n="col_did">Ce que j'ai fait</h4><p data-i18n="p3_did">Modélisation relationnelle complète sous PostgreSQL. Interface employé sécurisée (login/mot de passe). Fonctionnalités CRUD : ajout de pensionnaires, saisie de soins, transferts. Suivi des vaccins avec génération de listes de rappel.</p></div>
-                <div class="col"><h4 data-i18n="col_learned">Ce qui m'a appris le plus</h4><p data-i18n="p3_learned">Garantir l'intégrité des données au niveau de la base (contraintes, clés étrangères) et non seulement au niveau applicatif. Dissocier la logique métier des vues Flask.</p></div>
-              </div>
-              <figure class="snippet">
-                <figcaption data-i18n="p3_snippet_label">vaccins à rappeler / requête SQL</figcaption>
-<pre><code>SELECT a.nom, a.espece, s.date_soin, s.type_soin
-FROM animal a
-JOIN soin s ON a.id_animal = s.id_animal
-WHERE s.type_soin = 'vaccin'
-  AND s.date_soin &lt; NOW() - INTERVAL '1 year'
-ORDER BY s.date_soin ASC;</code></pre>
-              </figure>
-              <ul class="tags"><li>Python</li><li>Flask</li><li>PostgreSQL</li><li>psycopg2</li><li>SQL</li><li data-i18n="tag_db">Modélisation BDD</li></ul>
-            </div>
-          </div>
-        </article>
-      </div>
-    </section>
-
-
-    <!-- ══ 03 COMPÉTENCES : des cadrans ══ -->
-    <section id="skills" class="sec tone-dark" data-tone="dark">
-      <div class="curve" aria-hidden="true"><i></i></div>
-
-      <div class="sec-mark rv">
-        <span class="sec-idx">03</span>
-        <span class="sec-name" data-i18n="nav_skills">Compétences</span>
-      </div>
-
-      <h2 class="skills-title display rv-t" data-i18n="skills_title">Ce que<br><em>je pratique.</em></h2>
-
-      <div class="banks">
-        <div class="bank rv">
-          <h3 class="bank-name" data-i18n="skills_languages">Langages</h3>
-          <ul class="dials">
-            <li class="dial" style="--v:.75"><svg class="dial-g" viewBox="0 0 44 44" aria-hidden="true"><circle class="dial-bg" cx="22" cy="22" r="18"/><circle class="dial-fg" cx="22" cy="22" r="18" pathLength="100"/><circle class="dial-dot" cx="40" cy="22" r="2"/></svg><span class="dial-name">Python</span></li>
-            <li class="dial" style="--v:.65"><svg class="dial-g" viewBox="0 0 44 44" aria-hidden="true"><circle class="dial-bg" cx="22" cy="22" r="18"/><circle class="dial-fg" cx="22" cy="22" r="18" pathLength="100"/><circle class="dial-dot" cx="40" cy="22" r="2"/></svg><span class="dial-name">C</span></li>
-            <li class="dial" style="--v:.55"><svg class="dial-g" viewBox="0 0 44 44" aria-hidden="true"><circle class="dial-bg" cx="22" cy="22" r="18"/><circle class="dial-fg" cx="22" cy="22" r="18" pathLength="100"/><circle class="dial-dot" cx="40" cy="22" r="2"/></svg><span class="dial-name">JavaScript</span></li>
-            <li class="dial" style="--v:.50"><svg class="dial-g" viewBox="0 0 44 44" aria-hidden="true"><circle class="dial-bg" cx="22" cy="22" r="18"/><circle class="dial-fg" cx="22" cy="22" r="18" pathLength="100"/><circle class="dial-dot" cx="40" cy="22" r="2"/></svg><span class="dial-name">SQL</span></li>
-            <li class="dial" style="--v:.75"><svg class="dial-g" viewBox="0 0 44 44" aria-hidden="true"><circle class="dial-bg" cx="22" cy="22" r="18"/><circle class="dial-fg" cx="22" cy="22" r="18" pathLength="100"/><circle class="dial-dot" cx="40" cy="22" r="2"/></svg><span class="dial-name">HTML / CSS</span></li>
-          </ul>
+    <!-- ══ CONTACT ══ -->
+    <section class="view v-contact" id="contact" data-view="contact">
+      <div class="contact">
+        <div class="contact-text">
+          <h1 class="h-xxl" data-i18n="contact_title">Travaillons<br>ensemble.</h1>
+          <p class="lead" data-i18n="contact_desc">Je recherche une alternance en Île-de-France pour mon cycle ingénieur à l’ESIEE Paris (2026–2029), en développement logiciel, données ou IA. Je souhaite rejoindre une équipe, contribuer à des projets concrets et progresser au contact de ses pratiques.</p>
+          <p class="avail" data-i18n="footer_avail">Disponible en alternance, Île-de-France</p>
+          <p class="contact-actions"><a class="lk" href="mailto:armand.mulier.pro@icloud.com"><span><span data-i18n="contact_btn">Envoyer un message</span></span><i aria-hidden="true">→</i></a><a class="lk" href="#cv"><span><span data-i18n="see_cv">Voir mon CV</span></span><i aria-hidden="true">→</i></a></p>
         </div>
-        <div class="bank rv">
-          <h3 class="bank-name" data-i18n="skills_theory">Théorie &amp; Algorithmique</h3>
-          <ul class="dials">
-            <li class="dial" style="--v:.80"><svg class="dial-g" viewBox="0 0 44 44" aria-hidden="true"><circle class="dial-bg" cx="22" cy="22" r="18"/><circle class="dial-fg" cx="22" cy="22" r="18" pathLength="100"/><circle class="dial-dot" cx="40" cy="22" r="2"/></svg><span class="dial-name" data-i18n="sk_ds">Structures de données</span></li>
-            <li class="dial" style="--v:.70"><svg class="dial-g" viewBox="0 0 44 44" aria-hidden="true"><circle class="dial-bg" cx="22" cy="22" r="18"/><circle class="dial-fg" cx="22" cy="22" r="18" pathLength="100"/><circle class="dial-dot" cx="40" cy="22" r="2"/></svg><span class="dial-name" data-i18n="sk_complexity">Complexité algorithmique</span></li>
-            <li class="dial" style="--v:.65"><svg class="dial-g" viewBox="0 0 44 44" aria-hidden="true"><circle class="dial-bg" cx="22" cy="22" r="18"/><circle class="dial-fg" cx="22" cy="22" r="18" pathLength="100"/><circle class="dial-dot" cx="40" cy="22" r="2"/></svg><span class="dial-name" data-i18n="sk_automata">Automates &amp; Langages</span></li>
-            <li class="dial" style="--v:.60"><svg class="dial-g" viewBox="0 0 44 44" aria-hidden="true"><circle class="dial-bg" cx="22" cy="22" r="18"/><circle class="dial-fg" cx="22" cy="22" r="18" pathLength="100"/><circle class="dial-dot" cx="40" cy="22" r="2"/></svg><span class="dial-name" data-i18n="sk_induction">Induction structurelle</span></li>
-          </ul>
-        </div>
-        <div class="bank rv">
-          <h3 class="bank-name" data-i18n="skills_tools">Outils &amp; Pratiques</h3>
-          <ul class="dials">
-            <li class="dial" style="--v:.65"><svg class="dial-g" viewBox="0 0 44 44" aria-hidden="true"><circle class="dial-bg" cx="22" cy="22" r="18"/><circle class="dial-fg" cx="22" cy="22" r="18" pathLength="100"/><circle class="dial-dot" cx="40" cy="22" r="2"/></svg><span class="dial-name">Git / GitHub</span></li>
-            <li class="dial" style="--v:.60"><svg class="dial-g" viewBox="0 0 44 44" aria-hidden="true"><circle class="dial-bg" cx="22" cy="22" r="18"/><circle class="dial-fg" cx="22" cy="22" r="18" pathLength="100"/><circle class="dial-dot" cx="40" cy="22" r="2"/></svg><span class="dial-name">Linux / Terminal</span></li>
-            <li class="dial" style="--v:.50"><svg class="dial-g" viewBox="0 0 44 44" aria-hidden="true"><circle class="dial-bg" cx="22" cy="22" r="18"/><circle class="dial-fg" cx="22" cy="22" r="18" pathLength="100"/><circle class="dial-dot" cx="40" cy="22" r="2"/></svg><span class="dial-name">Matplotlib</span></li>
-            <li class="dial" style="--v:.55"><svg class="dial-g" viewBox="0 0 44 44" aria-hidden="true"><circle class="dial-bg" cx="22" cy="22" r="18"/><circle class="dial-fg" cx="22" cy="22" r="18" pathLength="100"/><circle class="dial-dot" cx="40" cy="22" r="2"/></svg><span class="dial-name">Makefile / GCC</span></li>
-          </ul>
-        </div>
-        <div class="bank rv">
-          <h3 class="bank-name" data-i18n="skills_lang_spoken">Langues</h3>
-          <ul class="dials">
-            <li class="dial" style="--v:.80"><svg class="dial-g" viewBox="0 0 44 44" aria-hidden="true"><circle class="dial-bg" cx="22" cy="22" r="18"/><circle class="dial-fg" cx="22" cy="22" r="18" pathLength="100"/><circle class="dial-dot" cx="40" cy="22" r="2"/></svg><span class="dial-name" data-i18n="sk_english">Anglais</span></li>
-            <li class="dial" style="--v:.35"><svg class="dial-g" viewBox="0 0 44 44" aria-hidden="true"><circle class="dial-bg" cx="22" cy="22" r="18"/><circle class="dial-fg" cx="22" cy="22" r="18" pathLength="100"/><circle class="dial-dot" cx="40" cy="22" r="2"/></svg><span class="dial-name" data-i18n="sk_spanish">Espagnol</span></li>
-          </ul>
+        <div class="card tone-paper">
+          <h2 class="card-n">Armand Mulier</h2>
+          <dl>
+            <div><dt data-i18n="contact_email_label">Email</dt><dd><a class="sel" href="mailto:armand.mulier.pro@icloud.com">armand.mulier.pro@icloud.com</a><button type="button" class="copy" data-copy="armand.mulier.pro@icloud.com" data-i18n="copy">Copier</button></dd></div>
+            <div><dt data-i18n="contact_phone_label">Téléphone</dt><dd><a class="sel" href="tel:+33633595499">+33 6 33 59 54 99</a></dd></div>
+            <div><dt data-i18n="profiles">Profils</dt><dd class="profiles"><a href="https://www.linkedin.com/in/armand-mulier/" target="_blank" rel="noopener noreferrer"><span>LinkedIn</span><svg class="ext-i" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 9l6-6M4.5 3H9v4.5" fill="none" stroke="currentColor" stroke-width="1.3"/></svg></a><a href="https://github.com/Armand-mlr" target="_blank" rel="noopener noreferrer"><span>GitHub</span><svg class="ext-i" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 9l6-6M4.5 3H9v4.5" fill="none" stroke="currentColor" stroke-width="1.3"/></svg></a></dd></div>
+            <div><dt data-i18n="contact_location_label">Localisation</dt><dd><span class="sel">Île-de-France</span></dd></div>
+          </dl>
+          <p class="sr-only" id="copy-status" role="status"></p>
         </div>
       </div>
-    </section>
-
-    <!-- ══ 04 AILLEURS : la séquence signature, le scroll comme télécommande ══ -->
-    <section id="interests" class="sig" data-tone="dark">
-      <div class="sig-stage">
-        <div class="sec-mark sig-mark">
-          <span class="sec-idx">04</span>
-          <span class="sec-name" data-i18n="gallery_label">Ailleurs</span>
-        </div>
-
-        <div class="drum" aria-hidden="true">
-          <div class="drum-names">
-            <span class="drum-n" data-i18n="row_cuisine">Cuisine</span>
-            <span class="drum-n" data-i18n="row_piano">Piano</span>
-            <span class="drum-n" data-i18n="row_photo">Photo</span>
-            <span class="drum-n" data-i18n="row_dj">DJing</span>
-          </div>
-          <div class="drum-lines">
-            <p class="drum-l" data-i18n="sig_cuisine">La cuisine apprend la précision.</p>
-            <p class="drum-l" data-i18n="sig_piano">Le piano apprend la patience.</p>
-            <p class="drum-l" data-i18n="sig_photo">Prendre des photos apprend à cadrer.</p>
-            <p class="drum-l"></p>
-          </div>
-          <div class="drum-count"><span class="drum-i">1</span><span class="drum-of">/ 4</span></div>
-        </div>
-
-        <div class="sig-text">
-          <h2 class="display" data-i18n="gallery_title">Au-delà<br><em>du code.</em></h2>
-          <p class="sig-outro" aria-hidden="true" data-i18n="sig_outro">Ces pratiques forment la même logique que le développement, et je les emmène au travail.</p>
-          <p class="sr-only" data-i18n="gallery_desc">La cuisine apprend la précision. Prendre des photos apprend à cadrer. Le piano apprend la patience. Ces pratiques forment la même logique que le développement, et je les emmène au travail.</p>
-        </div>
-
-        <p class="sig-hint" aria-hidden="true" data-i18n="sig_hint">Continuez à faire défiler</p>
-      </div>
-    </section>
-
-    <!-- Galerie : deux lignes en contrepoint -->
-    <section id="gallery" class="gal tone-light" data-tone="light" aria-label="Galerie">
-      <div class="gal-stage">
-        <div class="gal-track" data-cat="Cuisine">
-          <span class="gal-track-name" data-i18n="gal_cuisine">Cuisine</span>
-          <div class="gal-clips"></div>
-        </div>
-        <div class="gal-track" data-cat="Photo">
-          <span class="gal-track-name" data-i18n="gal_photo">Photo</span>
-          <div class="gal-clips"></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ══ 05 CONTACT ══ -->
-    <section id="contact" class="sec tone-dark" data-tone="dark">
-      <div class="curve" aria-hidden="true"><i></i></div>
-
-      <div class="sec-mark rv">
-        <span class="sec-idx">05</span>
-        <span class="sec-name" data-i18n="nav_contact">Contact</span>
-      </div>
-
-      <div class="contact-grid">
-        <div class="contact-head">
-          <svg class="halo" viewBox="0 0 200 200" aria-hidden="true"><circle cx="100" cy="100" r="98" pathLength="100"/></svg>
-          <span class="halo-point" aria-hidden="true"></span>
-          <h2 class="contact-title display rv-t" data-i18n="contact_title">Travaillons<br><em>ensemble.</em></h2>
-        </div>
-        <p class="contact-desc lead rv" data-i18n="contact_desc">Je recherche une alternance en Île-de-France pour mon cycle ingénieur à l’ESIEE Paris (2026–2029), en développement logiciel, données ou IA. Je souhaite rejoindre une équipe, contribuer à des projets concrets et progresser au contact de ses pratiques.</p>
-
-        <dl class="contact-list rv">
-          <div class="c-row">
-            <dt data-i18n="contact_email_label">Email</dt>
-            <dd><a href="mailto:armand.mulier.pro@icloud.com" class="c-mail">armand.mulier.pro@icloud.com</a></dd>
-          </div>
-          <div class="c-row">
-            <dt data-i18n="contact_phone_label">Téléphone</dt>
-            <dd><a href="tel:+33633595499" class="c-link">+33 6 33 59 54 99</a></dd>
-          </div>
-          <div class="c-row">
-            <dt data-i18n="contact_location_label">Localisation</dt>
-            <dd><span class="c-muted">Île-de-France</span></dd>
-          </div>
-        </dl>
-
-        <div class="contact-cta rv">
-          <a href="mailto:armand.mulier.pro@icloud.com" class="btn btn-solid" data-i18n="contact_btn">Envoyer un message</a>
-        </div>
-      </div>
-
-      <footer class="footer">
-        <span>© 2026 Armand Mulier</span>
-        <span data-i18n="footer_avail">Disponible en alternance, Île-de-France</span>
-      </footer>
+      <p class="contact-foot"><span>© 2026 Armand Mulier</span><a class="lk rev" href="#top"><i aria-hidden="true">←</i><span data-i18n="back_home">Retour à l’accueil</span></a></p>
     </section>
 
   </main>
 
-  <!-- Progression : un anneau qui se referme -->
-  <div class="progress" aria-hidden="true"><svg viewBox="0 0 40 40"><circle class="pg-bg" cx="20" cy="20" r="16"/><circle class="pg-fg" cx="20" cy="20" r="16" pathLength="100"/></svg></div>
-  <button class="sound" type="button" aria-pressed="false" aria-label="Son / Sound">
-    <i class="led"></i><span data-i18n="sound">Son</span>
-  </button>
+  <!-- Visionneuse des galeries -->
+  <dialog id="lb" class="tone-paper" aria-label="Visionneuse">
+    <div class="lb-stage"><button type="button" class="lb-arrow" data-step="-1" aria-label="Image précédente" data-i18n-attr="aria-label:lb_prev">←</button><img id="lb-img" alt=""><button type="button" class="lb-arrow" data-step="1" aria-label="Image suivante" data-i18n-attr="aria-label:lb_next">→</button></div>
+    <div class="lb-bar"><p id="lb-cap"></p><p id="lb-count"></p><button type="button" id="lb-close" autofocus><span data-i18n="close">Fermer</span> ×</button></div>
+  </dialog>
 
   <script src="script.js"></script>
 </body>

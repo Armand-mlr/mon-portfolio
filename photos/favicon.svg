@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <title>Armand Mulier</title>
+  <rect width="64" height="64" fill="#1726b5"/>
+  <g fill="none" stroke="#edff5c" stroke-width="1.6">
+    <circle cx="69" cy="-14" r="29"/>
+    <circle cx="69" cy="-14" r="34"/>
+  </g>
+  <g fill="#fbfaf2">
+    <path fill-rule="evenodd" d="M6 44 16 20h6l10 24h-6.7l-1.8-4.8h-9.1L12.5 44Zm10.1-10h5.8L19 26.2Z"/>
+    <path d="M33 44V20h6.7l6 12.4L51.8 20H58v24h-5.8V29.7l-5.1 10.1h-3l-5.3-10.1V44Z"/>
+  </g>
+</svg>
