@@ -1,86 +1,49 @@
-# Pressage, portfolio d'Armand Mulier
+# Pressage — le portfolio d’Armand Mulier
 
-Refonte du portfolio selon le kit « Pressage » : chaque projet est une édition (pochette, disque, macaron, livret).
-Site statique en HTML, CSS et JavaScript, sans dépendance ni étape de build.
+Je suis élève ingénieur à l’ESIEE Paris. Dans ce portfolio, je présente mes projets personnels et universitaires, de l’étude d’algorithmes en C aux outils que j’ai conçus pour apprendre l’anglais ou préparer un set de DJ.
+
+J’ai imaginé **Pressage** comme une collection de vinyles. Chaque projet a sa pochette et son disque. On peut tirer le vinyle, ouvrir le livret et découvrir le besoin de départ, mon rôle dans le projet et ce que j’en ai appris.
+
+**[Visiter le portfolio](https://armand-mlr.github.io/mon-portfolio/)** · [Parcourir la collection](https://armand-mlr.github.io/mon-portfolio/#projects) · [Voir mon CV](https://armand-mlr.github.io/mon-portfolio/#cv)
+
+## Les six éditions
+
+| Édition | Projet | Ce qu’on y découvre |
+| --- | --- | --- |
+| AM–01 | **Fluency** | Une application pour travailler mon anglais avec des leçons, des révisions espacées et un suivi des erreurs. L’aide de l’IA est facultative. [Dépôt GitHub](https://github.com/Armand-mlr/fluency) |
+| AM–02 | **TrackCurator** | Un projet de base de données musicale en cours. La fiche présente l’étape A4, consacrée au schéma PostgreSQL et aux premières migrations. [Dépôt GitHub](https://github.com/Armand-mlr/TrackCurator) |
+| AM–03 | **Sillage** | Une application de bureau née d’un besoin lié au DJing, pour récupérer l’audio d’une vidéo en WAV ou MP3. Le livret contient une démonstration vidéo. [Dépôt GitHub](https://github.com/Armand-mlr/Sillage) |
+| AM–04 | **Arbres binaires de recherche** | Trois méthodes de vérification en C, comparées sur des arbres de différentes formes. Des scripts Python et des graphiques Matplotlib permettent de confronter les mesures à la complexité théorique. |
+| AM–05 | **Comparaison de structures de données** | Une étude en C du coût des insertions, suppressions et accès dans des tableaux statiques, des tableaux dynamiques et des listes chaînées. |
+| AM–06 | **Refuges** | Une application Flask et PostgreSQL pour gérer les animaux, les soins et les transferts entre refuges. |
+
+## Parcourir le site
+
+L’interface est disponible en français et en anglais. La rubrique **Compétences** relie les technologies à des exemples concrets. En sélectionnant Python, on retrouve aussi bien les scripts de mesure des arbres binaires que les vues Flask de Refuges. [Voir les exemples Python](https://armand-mlr.github.io/mon-portfolio/#skills/python)
+
+Dans **Ailleurs**, je partage aussi ce que je fais en dehors de l’informatique. La galerie cuisine réunit dix plats, dont le canard et purée, les profiteroles et le fraisier. Une seconde galerie rassemble quatorze de mes photographies. [Galerie cuisine](https://armand-mlr.github.io/mon-portfolio/#galerie/cuisine) · [Galerie photo](https://armand-mlr.github.io/mon-portfolio/#galerie/photo)
+
+## Mon rôle et celui de l’IA
+
+Ce site est parti d’un premier portfolio réalisé pour apprendre le développement front-end. Pour la refonte Pressage, j’ai choisi la direction artistique, associé chaque projet à un univers visuel et précisé les interactions que je voulais. J’ai ensuite affiné la navigation, le choix des photos et la présentation des projets à partir des versions que j’ai essayées.
+
+L’IA a produit l’essentiel du CSS et du JavaScript de cette refonte, notamment les transitions, les mouvements des disques et le curseur interactif. Le HTML reprend la base du portfolio précédent, adaptée aux livrets, aux galeries et à la page CV. J’ai aussi utilisé l’IA pour créer le portrait illustré et retoucher le décor de certaines photos de cuisine.
 
 ## Lancer le site en local
 
-Ouvrir `index.html` suffit. Pour retrouver le comportement d'un hébergement (GitHub Pages) :
+Le site utilise **HTML, CSS et JavaScript**, sans framework ni étape de compilation. Ouvrir `index.html` suffit pour le parcourir. Pour le servir en HTTP, exécuter cette commande depuis la racine du dépôt, puis ouvrir [localhost sur le port 8000](http://localhost:8000).
 
-    cd Pressage-2026-11-14-Galerie-Canard
-    python3 -m http.server 8000
+```sh
+python3 -m http.server 8000
+```
 
-puis ouvrir http://localhost:8000
+Les pochettes et les vinyles se trouvent dans `collection/`. Le dossier `photos/` contient les images des galeries, leurs vignettes, les médias de présentation, les icônes et le CV.
 
-## Contenu du dossier
+### Mettre à jour le CV ou la vidéo Fluency
 
-- `index.html`, `styles.css`, `script.js` : le site (français dans le HTML, anglais dans `script.js`)
-- `collection/` : les 12 masters du kit, inchangés, et leurs copies en 640 px (`-640.webp`) pour les petits formats
-- `photos/` : les 24 photos des galeries (`t/` = vignettes), la vidéo et le poster de Sillage, le CV, les icônes
-- `captures/` : captures prises sur le site construit, au cadrage des planches 1, 2, 3, 6, 29, 30 et 31
+- **CV.** La page de téléchargement propose le [PDF français](photos/CVAM2026F.pdf). Pour activer la version anglaise, déposer son PDF dans `photos/` et renseigner `CV.en` au début de `script.js`. Le choix du document est indépendant de la langue de navigation.
+- **Vidéo Fluency.** Le livret cherche le fichier facultatif `photos/Fluency Présentation.mp4` à l’ouverture. Tant que le fichier est absent, un texte de remplacement s’affiche. La lecture se lance manuellement.
 
-## Destinations
+## Contact
 
-`#top`, `#projects`, `#about`, `#skills`, `#interests`, `#contact` (ancres historiques conservées),
-`#projet/fluency`, `#projet/trackcurator`, `#projet/sillage`, `#projet/arbres`, `#projet/structures`, `#projet/refuges`
-(ajouter `/livret` pour ouvrir directement le livret), `#interests/piano` (et les quatre autres pratiques),
-`#galerie/cuisine`, `#galerie/photo`, et une destination par image, par exemple `#galerie/photo/escalier`.
-
-## Passe de retouches (novembre 2026)
-
-- Accueil : titre « Sélection de projets », une ligne de légende par projet, lien « Ouvrir le projet … », « Voir les 6 projets », « Voir mon CV »
-- CV : nouvelle destination `#cv` avec le portrait et le choix de la langue du document ; les quatre anciens téléchargements y mènent
-- Compétences : une compétence ouvre ses projets (adresse partageable, par exemple `#skills/python`), encart « En cours d'apprentissage »
-- Parcours : la page tient dans la hauteur à 1440 × 900 et 1366 × 768 ; les deux paragraphes personnels sont dans « Lire la suite du parcours »
-- Contact : carte de visite avec LinkedIn, pied de page avec « Retour à l'accueil »
-- Curseur : macaron qui indique le geste (lien, bouton, galerie, disque), souris uniquement
-- Menu : la destination active est signalée, CV compris
-
-### Ajouter le CV anglais
-
-1. Déposer le PDF dans `photos/` (par exemple `photos/CVAM2026E.pdf`).
-2. Dans `script.js`, renseigner la seule ligne prévue pour cela, en haut du fichier :
-
-       const CV = { fr: 'photos/CVAM2026F.pdf', en: 'photos/CVAM2026E.pdf' };
-
-La rangée « CV en anglais · À venir » devient alors un téléchargement actif. Tant que `en` est vide, elle reste un simple texte.
-
-### Vérifications des retouches (Chrome sans interface, français et anglais)
-
-- dépassement vertical mesuré après chargement des images, zoom 100 % : 0 px sur Accueil, Parcours, Contact, CV et Compétences à 1440 × 900 et à 1366 × 768 ; défilement vertical normal et aucun défilement horizontal à 390 × 844 et 360 × 740
-- accueil : trois sélections, clics rapides, changement de langue après sélection : nom, légende, lien et visuel restent synchronisés
-- CV : quatre chemins (menu, accueil, Parcours, Contact), arrivée directe, rechargement, Précédent / Suivant ; `photos/CVAM2026F.pdf` est le fichier d'origine, inchangé (58 086 octets)
-- compétences : clic, Entrée, Espace, lien direct ; le survol ne change rien ; Python, C, SQL et les deux entrées de théorie ouvrent deux projets
-- contact : LinkedIn, GitHub, `mailto:`, `tel:`, copie vérifiée dans le presse-papiers, « Copié » annoncé
-- curseur : point, lien, bouton, plus, disque, traction, sur bleu et sur papier (carte ivoire et livret compris) ; repli sur l'adresse, la vidéo, la visionneuse, après Tab et en mouvement réduit
-- régression : traction du disque, livret, galeries, visionneuse, langue, retour navigateur, sans JavaScript
-
-Non vérifié : lecture à 200 % de zoom, appareil hybride réel (souris puis toucher), couleurs forcées, Safari et Firefox, téléphone physique.
-
-Captures : `captures/retouches/`, avec les trois planches de référence à côté.
-
-## Tests réalisés (Chrome sans interface, 1512×850, 1440×900, 768×1024, 390×844, 360×740)
-
-- aucune erreur JavaScript, aucun défilement horizontal de page, en français et en anglais
-- accueil : sortie du disque, changement de disque au clic et aux flèches, changements rapides sans résidu
-- collection vers édition et retour : position de la grille et focus restaurés
-- disque : traction à la souris, bouton Sortir / Rentrer, repos à 8 %, butée à 58 %
-- livret : ouverture animée, lien direct, touche Échap, bouton Retour du navigateur
-- six démonstrations des livrets, vidéo Sillage présente, repli Fluency affiché
-- galeries : 10 plats et 14 photographies, visionneuse (compteur, flèches, Échap, retour du focus), lien direct vers une image
-- copie de l'e-mail vérifiée dans le presse-papiers, langue conservée après rechargement
-- sans JavaScript : tous les contenus et liens restent dans la page ; mouvement réduit : poses finales immédiates
-
-## À vérifier sur appareil physique
-
-- gestes tactiles réels : traction du disque, balayage dans la visionneuse et dans le sélecteur
-- Safari (macOS et iOS) et Firefox : seul Chrome a été testé ; sans View Transitions, les changements de page se font par simple apparition
-- rendu en Helvetica Neue sur Mac (les captures ont été faites avec la police de repli)
-- fluidité des animations sur téléphone
-
-## Écarts connus avec le kit
-
-- les gestes propres à chaque pochette (signes de Fluency qui s'écartent, onglet de TrackCurator qui se soulève) ne sont pas faits : chaque pochette est une image unique. Seul le reflet du disque Sillage à l'extraction est en place.
-- les textes d'information viennent de la V3 ; seuls les titres et légendes de pochette, ainsi que les libellés des démonstrations, viennent du kit.
-- le CV anglais n'est pas fourni : sa rangée affiche « À venir ».
-- la vidéo Fluency n'est pas dans l'archive : déposer `photos/Fluency Présentation.mp4` pour qu'elle remplace le texte de repli.
+Pour échanger au sujet d’un projet ou d’une alternance, mes coordonnées sont sur la [carte de contact](https://armand-mlr.github.io/mon-portfolio/#contact) et sur [LinkedIn](https://www.linkedin.com/in/armand-mulier/).
